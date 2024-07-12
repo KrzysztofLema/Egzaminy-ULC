@@ -1,0 +1,11 @@
+repos:
+- repo: https://github.com/krzysztofzablocki/Sourcery
+  rev: 2.0.2
+  hooks:
+  - id: sourcery
+    args: [--quiet]
+- repo: https://github.com/nicklockwood/SwiftFormat
+  rev: 0.52.8
+  hooks:
+  - id: swiftformat
+    args: [--config, .swiftformat, --quiet]

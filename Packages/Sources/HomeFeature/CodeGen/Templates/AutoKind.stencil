@@ -1,0 +1,21 @@
+// MARK: - AutoKind conformances
+
+{% for enum in types.all|enum|implements:"AutoKind" %}
+extension {{ enum.name }} {
+    enum Kind: String, RawRepresentable, CaseIterable, Identifiable {
+        {% for case in enum.cases %}
+        case {{ case.name }}
+        {% endfor %}
+
+        var id: String { rawValue }
+    }
+ 
+    var kind: Kind {
+        switch self {
+        {% for case in enum.cases %}
+        case .{{ case.name }}: .{{ case.name }}
+        {% endfor %}
+        }
+    }
+}
+{% endfor %}

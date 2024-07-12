@@ -1,0 +1,22 @@
+configurations:
+    - sources:
+        include:
+            - Packages/Sources/
+      templates:
+          - Packages/Sources/SettingsFeature/CodeGen/Templates/
+      output: Packages/Sources/SettingsFeature/CodeGen/
+      baseIndentation: 4
+    # Add Packages generation config here, you can just add another sources/templates/output section
+      args:
+        settingsView: BetaSettingsView
+        settingsStructure: BetaSettings
+        settingsExternalData: BetaSettingsExternalData
+        settingsImports: 
+          - SharedModels
+    - sources:
+        include:
+            - Packages/Sources/HomeFeature/
+      templates:
+          - Packages/Sources/HomeFeature/CodeGen/Templates/
+      output: Packages/Sources/HomeFeature/CodeGen/
+      baseIndentation: 4

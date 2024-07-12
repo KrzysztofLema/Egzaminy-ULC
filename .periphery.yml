@@ -1,0 +1,9 @@
+retain_public: true
+schemes:
+  - Egzaminy-ULC
+  - PlaybookDemo
+targets:
+  - PlaybookDemo
+  - Egzaminy-ULC
+  - Egzaminy-ULCUITests
+workspace: Main.xcworkspace

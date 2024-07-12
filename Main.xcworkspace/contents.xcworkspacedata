@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Packages">
+   </FileRef>
+   <FileRef
+      location = "container:Apps/Main/Egzaminy-ULC.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:AppFeature.xctestplan">
+   </FileRef>
+</Workspace>
