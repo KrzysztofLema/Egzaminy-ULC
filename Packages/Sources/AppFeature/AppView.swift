@@ -13,9 +13,6 @@ var stored: [LeakableModel] = []
 public struct AppView: View {
     @ObserveInjection private var iO
     @State private var settingsModel = SettingsModel()
-    @State private var homeModel = HomeModel(postProvider: .init(loadPosts: {
-        ([Post(title: "Title", subtitle: "Subtitle")], [])
-    }), animationSettings: .init())
 
     public init() {
         #if DEBUG
@@ -30,11 +27,11 @@ public struct AppView: View {
 
     public var body: some View {
         TabView {
-            HomeView(model: homeModel)
+            HomeView()
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-            
+
             VStack {
                 Button("Leaks") {
                     stored.append(.init())
@@ -48,9 +45,6 @@ public struct AppView: View {
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
-        }
-        .onChange(of: settingsModel.betaSettings.animations) { _, value in
-            homeModel.animationSettings = value
         }
         .enableInjection()
     }

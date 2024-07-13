@@ -21,7 +21,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		952D941D2C418E21006163B5 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 952D941C2C418E21006163B5 /* AppFeature */; };
+		9520EC332C42F8C6005342ED /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 952B25502C42CB4500DB5168 /* Package.resolved */; };
+		9520EC352C42FA62005342ED /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 9520EC342C42FA62005342ED /* AppFeature */; };
 		959581FF2C4182DC0036F76B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959581FA2C4182DC0036F76B /* Preview Assets.xcassets */; };
 		959582002C4182DC0036F76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959581FC2C4182DC0036F76B /* Assets.xcassets */; };
 		959582012C4182DC0036F76B /* EgzaminyULCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959581FD2C4182DC0036F76B /* EgzaminyULCApp.swift */; };
@@ -52,7 +53,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		9520EC2A2C42EC45005342ED /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
+		9520EC2B2C42EC45005342ED /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		952B254F2C4278DB00DB5168 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
+		952B25502C42CB4500DB5168 /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Package.resolved; sourceTree = "<group>"; };
 		952D94152C418C69006163B5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		952D94162C418C69006163B5 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		952D94182C418D3E006163B5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
@@ -100,13 +104,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				952D941D2C418E21006163B5 /* AppFeature in Frameworks */,
+				9520EC352C42FA62005342ED /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9520EC2C2C42EC45005342ED /* AppFeature */ = {
+			isa = PBXGroup;
+			children = (
+				9520EC2A2C42EC45005342ED /* AppView.swift */,
+				9520EC2B2C42EC45005342ED /* TestModel.swift */,
+			);
+			name = AppFeature;
+			path = ../../Packages/Sources/AppFeature;
+			sourceTree = "<group>";
+		};
 		952B254E2C4278C000DB5168 /* ci_scripts */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +160,7 @@
 		959581FE2C4182DC0036F76B /* Egzaminy-ULC */ = {
 			isa = PBXGroup;
 			children = (
+				952B25502C42CB4500DB5168 /* Package.resolved */,
 				959581FB2C4182DC0036F76B /* Preview Content */,
 				959581FC2C4182DC0036F76B /* Assets.xcassets */,
 				959581FD2C4182DC0036F76B /* EgzaminyULCApp.swift */,
@@ -215,6 +230,7 @@
 		CDD451062A52E257003EBCDC /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9520EC2C2C42EC45005342ED /* AppFeature */,
 				952D941B2C418D49006163B5 /* Package.swift */,
 				952D941A2C418D3E006163B5 /* AppFeature */,
 				952D94172C418C69006163B5 /* AppFeature */,
@@ -295,7 +311,7 @@
 			);
 			name = "Egzaminy-ULC";
 			packageProductDependencies = (
-				952D941C2C418E21006163B5 /* AppFeature */,
+				9520EC342C42FA62005342ED /* AppFeature */,
 			);
 			productName = ProjectTemplate;
 			productReference = CDC244042A52DB400051EE1C /* Egzaminy-ULC.app */;
@@ -309,7 +325,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1540;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1540;
 				TargetAttributes = {
 					959582052C4185200036F76B = {
 						CreatedOnToolsVersion = 15.4;
@@ -381,6 +397,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				959582002C4182DC0036F76B /* Assets.xcassets in Resources */,
+				9520EC332C42F8C6005342ED /* Package.resolved in Resources */,
 				959581FF2C4182DC0036F76B /* Preview Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -604,6 +621,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = N9NV32GD8G;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -614,6 +632,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = N9NV32GD8G;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -654,7 +673,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_ASSET_PATHS = "\"Egzaminy-ULC/Preview Content\"";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -672,6 +693,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -720,7 +742,9 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_ASSET_PATHS = "\"Egzaminy-ULC/Preview Content\"";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -732,6 +756,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -747,10 +772,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Egzaminy-ULC/Preview Content\"";
 				DEVELOPMENT_TEAM = 74925668M8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = "Egzaminy-ULC";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -786,10 +813,12 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Egzaminy-ULC/Preview Content\"";
 				DEVELOPMENT_TEAM = 74925668M8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = "Egzaminy-ULC";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -878,7 +907,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		952D941C2C418E21006163B5 /* AppFeature */ = {
+		9520EC342C42FA62005342ED /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
 		};

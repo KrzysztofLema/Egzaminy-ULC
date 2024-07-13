@@ -1,40 +1,25 @@
+import SharedModels
 import SharedViews
 import SwiftUI
 
 public struct HomeView: View {
     @ObserveInjection private var iO
-    var model: HomeModel
 
-    public init(model: HomeModel) {
-        self.model = model
-    }
+    public init() {}
 
     public var body: some View {
-        VStack {
-            Text("Swifty Stack!")
-                .font(.title)
-                .fontWeight(.bold)
-                .multilineTextAlignment(.center)
-                .padding()
+        ScrollView {
+            VStack {
+                Text("Kursy".uppercased())
+                    .font(.footnote.weight(.semibold))
+                    .foregroundColor(.secondary)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .padding(.horizontal, 20)
 
-            Menu(content: {
-                ForEach(Array(Filter.Kind.allCases), id: \.rawValue) { kind in
-                    Text(kind.rawValue)
+                ForEach(exams) { exam in
+                    ExamView(exam: exam)
                 }
-            }, label: {
-                Label("Filter", systemImage: "plus")
-                    .bold()
-            })
-            .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(.horizontal)
-
-            List(model.posts) { post in
-                PostView(model: post, animationSettings: model.animationSettings)
             }
-            .listStyle(.plain)
-        }
-        .task {
-            await model.onAppear()
         }
         .enableInjection()
     }
