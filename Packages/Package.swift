@@ -14,7 +14,6 @@ let package = Package(
     ],
     dependencies: [
         .package(url: "https://github.com/krzysztofzablocki/Inject.git", exact: "1.2.3"),
-        .package(url: "https://github.com/realm/SwiftLint", exact: "0.52.3"),
         .package(url: "https://github.com/krzysztofzablocki/Difference.git", exact: "1.0.2"),
         .package(url: "https://github.com/vtourraine/AcknowList", exact: "3.0.1"),
         .package(url: "https://github.com/krzysztofzablocki/LifetimeTracker.git", exact: "1.8.2"),
@@ -98,14 +97,6 @@ let package = Package(
         ),
     ]
 )
-
-// Inject base plugins into each target
-package.targets = package.targets.map { target in
-    var plugins = target.plugins ?? []
-    plugins.append(.plugin(name: "SwiftLintPlugin", package: "SwiftLint"))
-    target.plugins = plugins
-    return target
-}
 
 extension Product {
     static func singleTargetLibrary(_ name: String) -> Product {
