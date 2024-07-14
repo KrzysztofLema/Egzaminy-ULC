@@ -31,7 +31,6 @@ public struct AppView: View {
                 .tabItem {
                     Label("Home", systemImage: "house")
                 }
-
             VStack {
                 Button("Leaks") {
                     stored.append(.init())

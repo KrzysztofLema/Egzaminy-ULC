@@ -30,6 +30,7 @@ let package = Package(
                 "SharedModels",
                 "HomeFeature",
                 "SettingsFeature",
+                "ExamDetailFeature",
                 .product(name: "LifetimeTracker", package: "LifetimeTracker"),
                 "AutomaticSettings",
             ]
@@ -46,6 +47,8 @@ let package = Package(
             dependencies: [
                 "SharedViews",
                 "SharedModels",
+                "ExamDetailFeature",
+                "CoreUI",
             ]
         ),
         .testTarget(
@@ -62,6 +65,18 @@ let package = Package(
                 "SharedModels",
                 "AcknowList",
                 "Roadmap",
+            ]
+        ),
+        .target(
+            name: "CoreUI",
+            dependencies: []
+        ),
+        .target(
+            name: "ExamDetailFeature",
+            dependencies: [
+                "SharedViews",
+                "SharedModels",
+                "CoreUI",
             ]
         ),
         .target(
