@@ -6,8 +6,10 @@ import SwiftUI
 struct EgzaminyULCApp: App {
     var body: some Scene {
         WindowGroup {
-            AppView()
-                .environment(\.colorScheme, .dark)
+            NavigationView {
+                AppView()
+                    .preferredColorScheme(.dark)
+            }
         }
     }
 }
