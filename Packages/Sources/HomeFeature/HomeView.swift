@@ -11,7 +11,7 @@ public struct HomeView: View {
     public var body: some View {
         ScrollView {
             VStack {
-                ForEach(exams) { exam in
+                ForEach(ExamMock.mock) { exam in
                     NavigationLink(destination: ExamDetailView(exam: exam)) {
                         ExamView(exam: exam)
                     }
