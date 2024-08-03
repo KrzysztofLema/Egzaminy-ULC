@@ -1,4 +1,5 @@
 import CoreUI
+import QuizFeature
 import SharedModels
 import SharedViews
 import SwiftUI
@@ -6,6 +7,8 @@ import SwiftUI
 public struct ExamDetailView: View {
     @ObserveInjection private var iO
     @Environment(\.dismiss) var dismiss
+    @State var showQuiz = false
+    @State var selectedIndex = 0
 
     let exam: Exam
 
@@ -29,15 +32,18 @@ public struct ExamDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
 
-                ForEach(exam.subjects) { subject in
-                    NavigationLink {
-                        Text(subject.title)
-                    } label: {
-                        SubjectView(subject: subject)
-                    }
+                ForEach(Array(exam.subjects.enumerated()), id: \.offset) { index, subject in
+                    SubjectView(subject: subject)
+                        .onTapGesture {
+                            showQuiz = true
+                            selectedIndex = index
+                        }
                 }
             }
         }
+        .fullScreenCover(isPresented: $showQuiz, content: {
+            QuizFeatureView(show: $showQuiz, subject: exam.subjects[selectedIndex])
+        })
         .enableInjection()
     }
 
