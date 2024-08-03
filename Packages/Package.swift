@@ -21,6 +21,7 @@ let package = Package(
         .package(url: "https://github.com/playbook-ui/playbook-ios", exact: "0.3.4"),
         .package(url: "https://github.com/krzysztofzablocki/AutomaticSettings", exact: "1.1.0"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.12.1"),
     ],
     targets: [
         .target(
@@ -49,6 +50,7 @@ let package = Package(
                 "SharedModels",
                 "ExamDetailFeature",
                 "CoreUI",
+                "SharedTCA",
             ]
         ),
         .testTarget(
@@ -116,6 +118,12 @@ let package = Package(
             dependencies: [
                 "SharedViews",
                 "SharedModels",
+            ]
+        ),
+        .target(
+            name: "SharedTCA",
+            dependencies: [
+                .product(name: "ComposableArchitecture",package: "swift-composable-architecture"),
             ]
         ),
     ]
