@@ -22,7 +22,6 @@
 
 /* Begin PBXBuildFile section */
 		951D4F2F2C58F9E500A35473 /* ExamsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 951D4F2E2C58F9E500A35473 /* ExamsMock.json */; };
-		9520EC332C42F8C6005342ED /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 952B25502C42CB4500DB5168 /* Package.resolved */; };
 		9520EC352C42FA62005342ED /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 9520EC342C42FA62005342ED /* AppFeature */; };
 		959581FF2C4182DC0036F76B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959581FA2C4182DC0036F76B /* Preview Assets.xcassets */; };
 		959582002C4182DC0036F76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959581FC2C4182DC0036F76B /* Assets.xcassets */; };
@@ -30,6 +29,8 @@
 		959582092C4185200036F76B /* Egzaminy_ULCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959582082C4185200036F76B /* Egzaminy_ULCUITests.swift */; };
 		9595820B2C4185200036F76B /* Egzaminy_ULCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595820A2C4185200036F76B /* Egzaminy_ULCUITestsLaunchTests.swift */; };
 		959582182C4185A10036F76B /* Egzaminy_ULCUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959582172C4185A10036F76B /* Egzaminy_ULCUnitTests.swift */; };
+		95B18E792C5E6F600038518D /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = 95B18E772C5E6F600038518D /* ci_post_clone.sh */; };
+		95FA826B2C5E6A33000058B3 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 952B25502C42CB4500DB5168 /* Package.resolved */; };
 		CD10C0FE2AF7723200414D0A /* PlaybookDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C0FD2AF7723200414D0A /* PlaybookDemoApp.swift */; };
 		CD10C1022AF7723300414D0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD10C1012AF7723300414D0A /* Assets.xcassets */; };
 		CD10C1052AF7723300414D0A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD10C1042AF7723300414D0A /* Preview Assets.xcassets */; };
@@ -57,7 +58,6 @@
 		951D4F2E2C58F9E500A35473 /* ExamsMock.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ExamsMock.json; sourceTree = "<group>"; };
 		9520EC2A2C42EC45005342ED /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		9520EC2B2C42EC45005342ED /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
-		952B254F2C4278DB00DB5168 /* ci_post_clone.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		952B25502C42CB4500DB5168 /* Package.resolved */ = {isa = PBXFileReference; lastKnownFileType = text; path = Package.resolved; sourceTree = "<group>"; };
 		952D94152C418C69006163B5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		952D94162C418C69006163B5 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
@@ -72,6 +72,7 @@
 		9595820A2C4185200036F76B /* Egzaminy_ULCUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egzaminy_ULCUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		959582152C4185A10036F76B /* Egzaminy-ULCUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Egzaminy-ULCUnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		959582172C4185A10036F76B /* Egzaminy_ULCUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egzaminy_ULCUnitTests.swift; sourceTree = "<group>"; };
+		95B18E772C5E6F600038518D /* ci_post_clone.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		CD10C0FB2AF7723200414D0A /* PlaybookDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaybookDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD10C0FD2AF7723200414D0A /* PlaybookDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybookDemoApp.swift; sourceTree = "<group>"; };
 		CD10C1012AF7723300414D0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -123,14 +124,6 @@
 			path = ../../Packages/Sources/AppFeature;
 			sourceTree = "<group>";
 		};
-		952B254E2C4278C000DB5168 /* ci_scripts */ = {
-			isa = PBXGroup;
-			children = (
-				952B254F2C4278DB00DB5168 /* ci_post_clone.sh */,
-			);
-			path = ci_scripts;
-			sourceTree = "<group>";
-		};
 		952D94172C418C69006163B5 /* AppFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -163,6 +156,7 @@
 		959581FE2C4182DC0036F76B /* Egzaminy-ULC */ = {
 			isa = PBXGroup;
 			children = (
+				95B18E782C5E6F600038518D /* ci_scripts */,
 				952B25502C42CB4500DB5168 /* Package.resolved */,
 				959581FB2C4182DC0036F76B /* Preview Content */,
 				959581FC2C4182DC0036F76B /* Assets.xcassets */,
@@ -188,6 +182,15 @@
 			path = "Egzaminy-ULCUnitTests";
 			sourceTree = "<group>";
 		};
+		95B18E782C5E6F600038518D /* ci_scripts */ = {
+			isa = PBXGroup;
+			children = (
+				95B18E772C5E6F600038518D /* ci_post_clone.sh */,
+			);
+			name = ci_scripts;
+			path = ../../../ci_scripts;
+			sourceTree = "<group>";
+		};
 		CD10C0FC2AF7723200414D0A /* PlaybookDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,7 +212,6 @@
 		CDC243FB2A52DB400051EE1C = {
 			isa = PBXGroup;
 			children = (
-				952B254E2C4278C000DB5168 /* ci_scripts */,
 				959581FE2C4182DC0036F76B /* Egzaminy-ULC */,
 				CD10C0FC2AF7723200414D0A /* PlaybookDemo */,
 				959582072C4185200036F76B /* Egzaminy-ULCUITests */,
@@ -400,8 +402,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				959582002C4182DC0036F76B /* Assets.xcassets in Resources */,
-				9520EC332C42F8C6005342ED /* Package.resolved in Resources */,
 				959581FF2C4182DC0036F76B /* Preview Assets.xcassets in Resources */,
+				95FA826B2C5E6A33000058B3 /* Package.resolved in Resources */,
+				95B18E792C5E6F600038518D /* ci_post_clone.sh in Resources */,
 				951D4F2F2C58F9E500A35473 /* ExamsMock.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -707,6 +710,7 @@
 					"-Xlinker",
 					"-interposable",
 				);
+				OTHER_SWIFT_FLAGS = "";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -765,6 +769,7 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				OTHER_SWIFT_FLAGS = "";
 				SWIFT_COMPILATION_MODE = wholemodule;
 			};
 			name = Release;
@@ -799,6 +804,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.1;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "pl.krzysztoflema.Egzaminy-ULC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
@@ -840,6 +846,7 @@
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 0.1;
+				OTHER_SWIFT_FLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "pl.krzysztoflema.Egzaminy-ULC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = auto;
