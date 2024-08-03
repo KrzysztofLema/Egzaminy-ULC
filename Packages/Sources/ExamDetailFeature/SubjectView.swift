@@ -8,7 +8,7 @@ struct SubjectView: View {
 
     var body: some View {
         HStack {
-            Image(systemName:subject.image)
+            Image(systemName: subject.image)
                 .resizable()
                 .frame(width: 32.0, height: 32.0)
                 .padding(5)
@@ -25,13 +25,13 @@ struct SubjectView: View {
                 .font(.footnote)
             }
         }
-
         .foregroundColor(.white)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(20)
         .background(
             Rectangle().fill(.ultraThinMaterial).mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
         )
+
         .enableInjection()
     }
 }

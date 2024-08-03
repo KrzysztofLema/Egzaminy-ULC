@@ -13,349 +13,394 @@
           "image": "paperplane.fill",
           "questions": [
             {
-              "id": "PL080-0001",
-              "title": "Czy profile klasyczne są duo bardziej \"wrażliwe\" na zabrudzenia od profili laminarnych?",
-              "anwsers": [
+              "questionNumber": "PL080-0001",
+              "title": "Czy profile klasyczne są dużo bardziej \"wrażliwe\" na zabrudzenia od profili laminarnych?",
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Nie, ale tylko na małych kątach natarcia"
+                  "answerID": "a",
+                  "answer": "Nie, ale tylko na małych kątach natarcia",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "b",
-                  "anwser": "Nie"
+                  "answerID": "b",
+                  "answer": "Nie",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "c",
-                  "anwser": "Tak, ale tylko na dużych kątach natarcia"
+                  "answerID": "c",
+                  "answer": "Tak, ale tylko na dużych kątach natarcia",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Tak"
+                  "answerID": "d",
+                  "answer": "Tak",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "b"
             },
             {
-              "id": "PL080-0003",
+              "questionNumber": "PL080-0003",
               "title": "Aby zapobiec zjawisku flateru giętno-lotkowemu należy:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Zwiększyć szywność giętną skrzydła; zastosować wyważenia masowe lotek"
+                  "answerID": "a",
+                  "answer": "Zwiększyć szywność giętną skrzydła; zastosować wyważenia masowe lotek",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "b",
-                  "anwser": "Zastosować kompensacje aerodynamiczną; przesunąć środek ciękości jak najbliej osi skrętnej"
+                  "answerID": "b",
+                  "answer": "Zastosować kompensacje aerodynamiczną; przesunąć środek ciękości jak najbliej osi skrętnej",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Zastosować klapkę odciążającą; zwiększyć sztywność skrętną skrzydła"
+                  "answerID": "c",
+                  "answer": "Zastosować klapkę odciążającą; zwiększyć sztywność skrętną skrzydła",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Zastosować klapkę odciąającą; zastosować wyważenia masowe lotek"
+                  "answerID": "d",
+                  "answer": "Zastosować klapkę odciąającą; zastosować wyważenia masowe lotek",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "a"
             },
             {
-              "id": "PL080-0004",
+              "questionNumber": "PL080-0004",
               "title": "Aby zapobiec zjawisku flatteru giętno-skrętnemu należy:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Zastosować klapkę dociążającą: zastosować wyważenia masowe lotek"
+                  "answerID": "a",
+                  "answer": "Zastosować klapkę dociążającą: zastosować wyważenia masowe lotek",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "b",
-                  "anwser": "Zastosować kompensację aerodynamiczną; przesunąć środek ciężkości skrzydła jak najbliżej osi skrętnej"
+                  "answerID": "b",
+                  "answer": "Zastosować kompensację aerodynamiczną; przesunąć środek ciężkości skrzydła jak najbliżej osi skrętnej",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Zastosować klapkę odciążającą; zwiększyć sztywność skrętną skrzydła"
+                  "answerID": "c",
+                  "answer": "Zastosować klapkę odciążającą; zwiększyć sztywność skrętną skrzydła",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Zwiększyć sztywność skrętną skrzydła; przsunąć środek ciężkości skrzydła jak najbliej osi skrętnej"
+                  "answerID": "d",
+                  "answer": "Zwiększyć sztywność skrętną skrzydła; przsunąć środek ciężkości skrzydła jak najbliej osi skrętnej",
+                  "isCorrect" : true
                 }
               ],
-              "correctAnwser": "d"
             },
             {
-              "id": "PL080-0005",
+              "questionNumber": "PL080-0005",
               "title": "Aby zapobiec zjawisku odwrotnego działania lotek należy:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Zwiększyć sztywność skrętną skrzydła"
+                  "answerID": "a",
+                  "answer": "Zwiększyć sztywność skrętną skrzydła",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "b",
-                  "anwser": "Zastosować komensację aerodynamiczną"
+                  "answerID": "b",
+                  "answer": "Zastosować komensację aerodynamiczną",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Zastosować klapkę dociążającą"
+                  "answerID": "c",
+                  "answer": "Zastosować klapkę dociążającą",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Zastosować klapkę odciążającą"
+                  "answerID": "d",
+                  "answer": "Zastosować klapkę odciążającą",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "a"
             },
             {
-              "id": "PL080-0006",
+              "questionNumber": "PL080-0006",
               "title": "Aby zapobiec zjawisku trzepotania usterzeń należy:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Zastosować usterzenia typu T; zastosować klapkę wyważającą"
+                  "answerID": "a",
+                  "answer": "Zastosować usterzenia typu T; zastosować klapkę wyważającą",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "b",
-                  "anwser": "Zwiększyć sztywność giętną usterzenia; zwiększyć sztywność skrętną usterzenia"
+                  "answerID": "b",
+                  "answer": "Zwiększyć sztywność giętną usterzenia; zwiększyć sztywność skrętną usterzenia",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Zastosować klapkę wyważającą; starannie opracować przejście skrzydło - kadłub"
+                  "answerID": "c",
+                  "answer": "Zastosować klapkę wyważającą; starannie opracować przejście skrzydło - kadłub",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Zastosować usterzenia typu T; starannie opracować przejscie skrzydło - kadłub"
+                  "answerID": "d",
+                  "answer": "Zastosować usterzenia typu T; starannie opracować przejscie skrzydło - kadłub",
+                  "isCorrect" : true
                 }
               ],
-              "correctAnwser": "d"
             },
             {
-              "id": "PL080-0007",
+              "questionNumber": "PL080-0007",
               "title": "Aerodynamiczna krawędź natarcia to linia łącząca punkty płata lotniczego w których:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Ciśnienie jest większe od ciśnienia spiętrzenia"
+                  "answerID": "a",
+                  "answer": "Ciśnienie jest większe od ciśnienia spiętrzenia",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "b",
-                  "anwser": "Prędkość strumienia jest równa zeru, a ciśnienie - ciśnieniu spiętrzania"
+                  "answerID": "b",
+                  "answer": "Prędkość strumienia jest równa zeru, a ciśnienie - ciśnieniu spiętrzania",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "c",
-                  "anwser": "Prędkość strumienia jest równa zeru"
+                  "answerID": "c",
+                  "answer": "Prędkość strumienia jest równa zeru",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Prędkość strumienia jest równa zeru, a ciśnienie osiąga wartość minimalną"
+                  "answerID": "d",
+                  "answer": "Prędkość strumienia jest równa zeru, a ciśnienie osiąga wartość minimalną",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "b"
             },
             {
-              "id": "PL080-0008",
+              "questionNumber": "PL080-0008",
               "title": "Brak wyważenia masowego lotek na dużych prędkościach lotu jest bezpośrednią przyczyną występowania:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Flatteru giętno-skrętnego"
+                  "answerID": "a",
+                  "answer": "Flatteru giętno-skrętnego",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "b",
-                  "anwser": "Dywergencji skrętnej skrzydła"
+                  "answerID": "b",
+                  "answer": "Dywergencji skrętnej skrzydła",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Flatteru lotkowego"
+                  "answerID": "c",
+                  "answer": "Flatteru lotkowego",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "d",
-                  "anwser": "Odwrotnego działania lotek"
+                  "answerID": "d",
+                  "answer": "Odwrotnego działania lotek",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "c"
             },
             {
-              "id": "PL080-0009",
+              "questionNumber": "PL080-0009",
               "title": "Buffering to inaczej:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Flatter lotkowy"
+                  "answerID": "a",
+                  "answer": "Flatter lotkowy",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "b",
-                  "anwser": "Drgania giętno - skrętne"
+                  "answerID": "b",
+                  "answer": "Drgania giętno - skrętne",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Flatter usterzenia"
+                  "answerID": "c",
+                  "answer": "Flatter usterzenia",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Trzepotanie usterzeń"
+                  "answerID": "d",
+                  "answer": "Trzepotanie usterzeń",
+                  "isCorrect" : true
                 }
               ],
-              "correctAnwser": "d"
             },
             {
-              "id": "PL080-0010",
+              "questionNumber": "PL080-0010",
               "title": "Ciało porusza się po okręgu z prędkością \"V\". Jeżeli zwiększymy dwukrotnie prędkość ciała to:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Prędkość kątowa \"W\" wzrośnie dwukrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie czterokrotnie"
+                  "answerID": "a",
+                  "answer": "Prędkość kątowa \"W\" wzrośnie dwukrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie czterokrotnie",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "b",
-                  "anwser": "Prędkość kątkowa \"W\" wzrosnie czterokrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie czterokrotnie"
+                  "answerID": "b",
+                  "answer": "Prędkość kątkowa \"W\" wzrosnie czterokrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie czterokrotnie",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Prędkość kątkowa \"W\" wzrośnie czterokrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie dwukrotnie"
+                  "answerID": "c",
+                  "answer": "Prędkość kątkowa \"W\" wzrośnie czterokrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie dwukrotnie",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Prędkość kątowa \"W\" wzrośnie dwukrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie dwukrotnie "
+                  "answerID": "d",
+                  "answer": "Prędkość kątowa \"W\" wzrośnie dwukrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie dwukrotnie ",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "a"
             },
             {
-              "id": "PL080-0011",
+              "questionNumber": "PL080-0011",
               "title": "Ciało porusza się po okręgu z prędkością \"U\". Jeżeli zwiększymy dwukrotnie promień okręgu to:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Prędkość kątowa \"W\" zmaleje dwukrotnie - droga przebyta przez ciało w czasie okresu \"T\" zmaleje dwukrotnie - przyśpieszenie dośrodkowe \"AR\" zmaleje dwukrotnie"
+                  "answerID": "a",
+                  "answer": "Prędkość kątowa \"W\" zmaleje dwukrotnie - droga przebyta przez ciało w czasie okresu \"T\" zmaleje dwukrotnie - przyśpieszenie dośrodkowe \"AR\" zmaleje dwukrotnie",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "b",
-                  "anwser": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" zmaleje dwukrotnie - przyśpieszenie dośrodkowe ‘ar’ zmaleje dwukrotnie"
+                  "answerID": "b",
+                  "answer": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" zmaleje dwukrotnie, - przyśpieszenie dośrodkowe ‘ar’ zmaleje dwukrotnie",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" wzrośnie dwukrotnie -przyśpieszenie dośrodkowe ‘ar’ wzrośnie dwukrotnie"
+                  "answerID": "c",
+                  "answer": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" wzrośnie dwukrotnie -przyśpieszenie dośrodkowe ‘ar’ wzrośnie dwukrotnie",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" wzrośnie dwukrotnie -przyśpieszenie dośrodkowe ‘ar’ nie zmieni się"
+                  "answerID": "d",
+                  "answer": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" wzrośnie dwukrotnie -przyśpieszenie dośrodkowe ‘ar’ nie zmieni się",
+                  "isCorrect": true
                 }
               ],
-              "correctAnwser": "d"
             },
             {
-              "id": "PL080-0012",
+              "questionNumber": "PL080-0012",
               "title": "Ciało porusza się ze stałą prędkością \"U\" po okręgu o promieniu \"R\". Wypadkowy wektor przyśpieszenia działającego na to ciało jest zawsze skierowany:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "W stronę środka okręgu"
+                  "answerID": "a",
+                  "answer": "W stronę środka okręgu",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "b",
-                  "anwser": "Na zewnątrz okręgu"
+                  "answerID": "b",
+                  "answer": "Na zewnątrz okręgu",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Skoro prędkość \"U\" jest stała, to na ciało nie działa żadne przyśpieszenie"
+                  "answerID": "c",
+                  "answer": "Skoro prędkość \"U\" jest stała, to na ciało nie działa żadne przyśpieszenie",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Stycznie do okręgu"
+                  "answerID": "d",
+                  "answer": "Stycznie do okręgu",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "a"
             },
             {
-              "id": "PL080-0014",
+              "questionNumber": "PL080-0014",
               "title": "Ciśnienie statyczne w punkcie przejścia z opływu laminarnego w turbulentny jest:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Minimalne na górnej powierzchni i maksymalne na dolnej powierzchni"
+                  "answerID": "a",
+                  "answer": "Minimalne na górnej powierzchni i maksymalne na dolnej powierzchni",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "b",
-                  "anwser": "Maksymalne na górnej powierzchni i minimalne na dolnej powierzchni"
+                  "answerID": "b",
+                  "answer": "Maksymalne na górnej powierzchni i minimalne na dolnej powierzchni",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Minimalne na górnej powierzchni i minimalne na dolnej powierzchni"
+                  "answerID": "c",
+                  "answer": "Minimalne na górnej powierzchni i minimalne na dolnej powierzchni",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Maksymalne na górnej powierzchni i maksymalne na dolnej powierzchni"
+                  "answerID": "d",
+                  "answer": "Maksymalne na górnej powierzchni i maksymalne na dolnej powierzchni",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "a"
             },
             {
-              "id": "PL080-0015",
+              "questionNumber": "PL080-0015",
               "title": "Co to jest równanie stanu powietrza:",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Związek między ciśnieniem statycznym, gęstością, temperaturą i stałą gazową powietrza p = &rho;.g.R.T [Pa]."
+                  "answerID": "a",
+                  "answer": "Związek między ciśnieniem statycznym, gęstością, temperaturą i stałą gazową powietrza p = &rho;.g.R.T [Pa].",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "b",
-                  "anwser": "Związek istniejący pomiędzy ciśnieniem powietrza i jego temperaturą."
+                  "answerID": "b",
+                  "answer": "Związek istniejący pomiędzy ciśnieniem powietrza i jego temperaturą.",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Równanie określające równowagę między ciśnieniem powietrza i jego wilgotnością."
+                  "answerID": "c",
+                  "answer": "Równanie określające równowagę między ciśnieniem powietrza i jego wilgotnością.",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Równanie określające równowagę między cisnieniem powietrza a przyśpieszeniem ziemskim."
+                  "answerID": "d",
+                  "answer": "Równanie określające równowagę między cisnieniem powietrza a przyśpieszeniem ziemskim.",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "a"
             },
             {
-              "id": "PL080-0016",
+              "questionNumber": "PL080-0016",
               "title": "Co się rozumie pod pojęciem „sterowności” obiektu latającego (samolotu, śmigłowca, szybowca, lotni etc) ?",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Zapewnianie uzyskiwania osiągów przewidzianych projektem obiektu."
+                  "answerID": "a",
+                  "answer": "Zapewnianie uzyskiwania osiągów przewidzianych projektem obiektu.",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "b",
-                  "anwser": "Zapewnianie możliwości wykonywania manewrów akrobatycznych."
+                  "answerID": "b",
+                  "answer": "Zapewnianie możliwości wykonywania manewrów akrobatycznych.",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Zdolność do „odpowiadania” przez obiekt na zadawane przez pilota impulsy sterujące."
+                  "answerID": "c",
+                  "answer": "Zdolność do „odpowiadania” przez obiekt na zadawane przez pilota impulsy sterujące.",
+                  "isCorrect" : true
                 },
                 {
-                  "id": "d",
-                  "anwser": "Zapewnienie, że obiekt jest stateczny statycznie i dynamicznie."
+                  "answerID": "d",
+                  "answer": "Zapewnienie, że obiekt jest stateczny statycznie i dynamicznie.",
+                  "isCorrect" : false
                 }
               ],
-              "correctAnwser": "c"
             },
             {
-              "id": "PL080-0017",
+              "questionNumber": "PL080-0017",
               "title": "Co to jest „ciśnienie spiętrzeniowe”?",
-              "anwsers": [
+              "answers": [
                 {
-                  "id": "a",
-                  "anwser": "Najniższe zmierzone ciśnienie"
+                  "answerID": "a",
+                  "answer": "Najniższe zmierzone ciśnienie",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "b",
-                  "anwser": "Najwyższe zmierzone ciśnienie."
+                  "answerID": "b",
+                  "answer": "Najwyższe zmierzone ciśnienie.",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "c",
-                  "anwser": "Suma ciśnienia dynamicznego i statycznego"
+                  "answerID": "c",
+                  "answer": "Suma ciśnienia dynamicznego i statycznego",
+                  "isCorrect" : false
                 },
                 {
-                  "id": "d",
-                  "anwser": "Różnica ciśnienia dynamicznego i ciśnienia statycznego"
+                  "answerID": "d",
+                  "answer": "Różnica ciśnienia dynamicznego i ciśnienia statycznego",
+                  "isCorrect" : true
                 }
               ],
-              "correctAnwser": "d"
             }
           ]
         },

@@ -77,6 +77,7 @@ let package = Package(
                 "SharedViews",
                 "SharedModels",
                 "CoreUI",
+                "QuizFeature",
             ]
         ),
         .target(
@@ -108,6 +109,13 @@ let package = Package(
                 .product(name: "Difference", package: "Difference"),
                 .product(name: "LifetimeTracker", package: "LifetimeTracker"),
                 "AutomaticSettings",
+            ]
+        ),
+        .target(
+            name: "QuizFeature",
+            dependencies: [
+                "SharedViews",
+                "SharedModels",
             ]
         ),
     ]
