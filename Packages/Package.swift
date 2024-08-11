@@ -9,7 +9,7 @@ let package = Package(
         .iOS(.v17),
     ],
     products: [
-        .singleTargetLibrary("AppFeature"),
+        .singleTargetLibrary("AppRootFeature"),
         .singleTargetLibrary("PlaybookFeature"),
     ],
     dependencies: [
@@ -25,21 +25,16 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "AppFeature",
+            name: "AppRootFeature",
             dependencies: [
-                "SharedViews",
-                "SharedModels",
                 "HomeFeature",
-                "SettingsFeature",
-                "ExamDetailFeature",
-                .product(name: "LifetimeTracker", package: "LifetimeTracker"),
-                "AutomaticSettings",
+                .product(name: "ComposableArchitecture",package: "swift-composable-architecture"),
             ]
         ),
         .testTarget(
-            name: "AppFeatureTests",
+            name: "AppRootFeatureTests",
             dependencies: [
-                "AppFeature",
+                "AppRootFeature",
                 "TestExtensions",
             ]
         ),
@@ -48,16 +43,21 @@ let package = Package(
             dependencies: [
                 "SharedViews",
                 "SharedModels",
+                "ExamsListFeature",
+                "SettingsFeature",
                 "ExamDetailFeature",
-                "CoreUI",
-                "SharedTCA",
+                .product(name: "LifetimeTracker", package: "LifetimeTracker"),
+                "AutomaticSettings",
+                .product(name: "ComposableArchitecture",package: "swift-composable-architecture"),
             ]
         ),
-        .testTarget(
-            name: "HomeFeatureTests",
+        .target(
+            name: "ExamsListFeature",
             dependencies: [
-                "HomeFeature",
-                "TestExtensions",
+                "SharedViews",
+                "SharedModels",
+                "ExamDetailFeature",
+                "CoreUI",
             ]
         ),
         .target(
@@ -118,12 +118,6 @@ let package = Package(
             dependencies: [
                 "SharedViews",
                 "SharedModels",
-            ]
-        ),
-        .target(
-            name: "SharedTCA",
-            dependencies: [
-                .product(name: "ComposableArchitecture",package: "swift-composable-architecture"),
             ]
         ),
     ]

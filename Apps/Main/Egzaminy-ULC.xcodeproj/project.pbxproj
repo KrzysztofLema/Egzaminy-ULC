@@ -22,7 +22,6 @@
 
 /* Begin PBXBuildFile section */
 		951D4F2F2C58F9E500A35473 /* ExamsMock.json in Resources */ = {isa = PBXBuildFile; fileRef = 951D4F2E2C58F9E500A35473 /* ExamsMock.json */; };
-		9520EC352C42FA62005342ED /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 9520EC342C42FA62005342ED /* AppFeature */; };
 		959581FF2C4182DC0036F76B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959581FA2C4182DC0036F76B /* Preview Assets.xcassets */; };
 		959582002C4182DC0036F76B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 959581FC2C4182DC0036F76B /* Assets.xcassets */; };
 		959582012C4182DC0036F76B /* EgzaminyULCApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959581FD2C4182DC0036F76B /* EgzaminyULCApp.swift */; };
@@ -30,6 +29,7 @@
 		9595820B2C4185200036F76B /* Egzaminy_ULCUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9595820A2C4185200036F76B /* Egzaminy_ULCUITestsLaunchTests.swift */; };
 		959582182C4185A10036F76B /* Egzaminy_ULCUnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 959582172C4185A10036F76B /* Egzaminy_ULCUnitTests.swift */; };
 		95B18E792C5E6F600038518D /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = 95B18E772C5E6F600038518D /* ci_post_clone.sh */; };
+		95D102362C68B67B00DE31E5 /* AppRootFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 95D102352C68B67B00DE31E5 /* AppRootFeature */; };
 		95FA826B2C5E6A33000058B3 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 952B25502C42CB4500DB5168 /* Package.resolved */; };
 		CD10C0FE2AF7723200414D0A /* PlaybookDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C0FD2AF7723200414D0A /* PlaybookDemoApp.swift */; };
 		CD10C1022AF7723300414D0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD10C1012AF7723300414D0A /* Assets.xcassets */; };
@@ -107,7 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9520EC352C42FA62005342ED /* AppFeature in Frameworks */,
+				95D102362C68B67B00DE31E5 /* AppRootFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -316,7 +316,7 @@
 			);
 			name = "Egzaminy-ULC";
 			packageProductDependencies = (
-				9520EC342C42FA62005342ED /* AppFeature */,
+				95D102352C68B67B00DE31E5 /* AppRootFeature */,
 			);
 			productName = ProjectTemplate;
 			productReference = CDC244042A52DB400051EE1C /* Egzaminy-ULC.app */;
@@ -918,9 +918,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9520EC342C42FA62005342ED /* AppFeature */ = {
+		95D102352C68B67B00DE31E5 /* AppRootFeature */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = AppFeature;
+			productName = AppRootFeature;
 		};
 		CD10C1092AF7728F00414D0A /* PlaybookFeature */ = {
 			isa = XCSwiftPackageProductDependency;
