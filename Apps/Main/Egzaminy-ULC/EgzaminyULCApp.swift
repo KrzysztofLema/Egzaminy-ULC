@@ -1,4 +1,3 @@
-import AppFeature
 import SharedViews
 import SwiftUI
 
@@ -7,8 +6,7 @@ struct EgzaminyULCApp: App {
     var body: some Scene {
         WindowGroup {
             NavigationView {
-                AppView()
-                    .preferredColorScheme(.dark)
+                
             }
         }
     }
