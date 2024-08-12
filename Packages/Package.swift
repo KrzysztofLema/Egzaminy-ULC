@@ -28,7 +28,9 @@ let package = Package(
             name: "AppRootFeature",
             dependencies: [
                 "HomeFeature",
-                .product(name: "ComposableArchitecture",package: "swift-composable-architecture"),
+                "ExamDetailFeature",
+                "ExamsListFeature",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
         .testTarget(
@@ -45,10 +47,9 @@ let package = Package(
                 "SharedModels",
                 "ExamsListFeature",
                 "SettingsFeature",
-                "ExamDetailFeature",
                 .product(name: "LifetimeTracker", package: "LifetimeTracker"),
                 "AutomaticSettings",
-                .product(name: "ComposableArchitecture",package: "swift-composable-architecture"),
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
         .target(
@@ -80,6 +81,7 @@ let package = Package(
                 "SharedModels",
                 "CoreUI",
                 "QuizFeature",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
         .target(
@@ -118,6 +120,7 @@ let package = Package(
             dependencies: [
                 "SharedViews",
                 "SharedModels",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
     ]
