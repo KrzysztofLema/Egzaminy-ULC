@@ -1,21 +1,22 @@
+import ComposableArchitecture
 import CoreUI
 import QuizFeature
 import SharedModels
 import SharedViews
 import SwiftUI
 
+@ViewAction(for: ExamDetail.self)
 public struct ExamDetailView: View {
     @ObserveInjection private var iO
-    @Environment(\.dismiss) var dismiss
+
+    @Bindable public var store: StoreOf<ExamDetail>
     @State var showQuiz = false
     @State var selectedIndex = 0
-
-    let exam: Exam
 
     public var body: some View {
         ScrollView {
             VStack {
-                Image(exam.image)
+                Image(store.exam.image)
                     .resizable()
                     .scaledToFill()
                     .shadow(radius: 20)
@@ -32,32 +33,23 @@ public struct ExamDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
 
-                ForEach(Array(exam.subjects.enumerated()), id: \.offset) { index, subject in
+                ForEach(Array(store.exam.subjects.enumerated()), id: \.offset) { index, subject in
                     SubjectView(subject: subject)
                         .onTapGesture {
-                            showQuiz = true
+                            send(.presentQuizSubjectButtonTapped(subject))
                             selectedIndex = index
                         }
                 }
             }
         }
-        .fullScreenCover(isPresented: $showQuiz, content: {
-            QuizFeatureView(show: $showQuiz, subject: exam.subjects[selectedIndex])
+        .tabViewStyle(.automatic)
+        .fullScreenCover(store: store.scope(state: \.$destination.presentQuiz, action: \.destination.presentQuiz), content: { store in
+            QuizView(store: store)
         })
         .enableInjection()
     }
 
-    public init(exam: Exam) {
-        self.exam = exam
-    }
-}
-
-extension UIApplication {
-    static var safeAreaTopInset: CGFloat {
-        UIApplication.shared.connectedScenes
-            .first { $0.activationState == .foregroundActive && $0 is UIWindowScene }
-            .flatMap { $0 as? UIWindowScene }?.windows
-            .first { $0.isKeyWindow }?
-            .safeAreaInsets.top ?? 0
+    public init(store: StoreOf<ExamDetail>) {
+        self.store = store
     }
 }

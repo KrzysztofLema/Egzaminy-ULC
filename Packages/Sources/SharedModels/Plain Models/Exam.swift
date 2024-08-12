@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Exam: Identifiable, Codable {
+public struct Exam: Identifiable, Codable, Equatable {
     public let id = UUID()
     public var title: String
     public var subtitle: String

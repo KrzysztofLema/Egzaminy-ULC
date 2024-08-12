@@ -10,11 +10,13 @@ struct SubjectView: View {
         HStack {
             Image(systemName: subject.image)
                 .resizable()
+                .foregroundColor(.primary)
                 .frame(width: 32.0, height: 32.0)
                 .padding(5)
 
             VStack(alignment: .leading, spacing: 12) {
                 Text(subject.title)
+                    .foregroundColor(.primary)
                     .font(.headline)
 
                 HStack {
@@ -22,6 +24,7 @@ struct SubjectView: View {
                     ProgressView(value: 60, total: 120)
                     Text("120")
                 }
+                .foregroundColor(.secondary)
                 .font(.footnote)
             }
         }

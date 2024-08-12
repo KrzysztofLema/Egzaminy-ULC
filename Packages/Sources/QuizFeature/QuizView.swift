@@ -1,14 +1,13 @@
+import ComposableArchitecture
 import SharedModels
 import SharedViews
 import SwiftUI
 
-public struct QuizFeatureView: View {
+public struct QuizView: View {
     @ObserveInjection private var iO
-    @Binding var show: Bool
+    @Bindable var store: StoreOf<Quiz>
+
     @State var isBookmarkSelected = false
-    @State var presentedQuestion = 0
-    
-    var subject: Subject
 
     public var body: some View {
         VStack(spacing: 20) {
@@ -21,7 +20,7 @@ public struct QuizFeatureView: View {
             }
 
             VStack {
-                QuestionView(question: subject.questions[presentedQuestion])
+                QuestionView(question: store.subject.questions[store.presentedQuestion])
             }
             .padding()
             .background(
@@ -31,8 +30,7 @@ public struct QuizFeatureView: View {
             Spacer()
 
             Button(action: {
-                presentedQuestion += 1
-                
+                store.send(.nextQuestionButtonTapped)
             }, label: {
                 Text("Następne")
             })
@@ -48,7 +46,7 @@ public struct QuizFeatureView: View {
 
     var closeButton: some View {
         Button {
-            show = false
+            store.send(.closeQuizButtonTapped)
         } label: {
             Image(systemName: "xmark")
                 .font(.body.weight(.regular))
@@ -77,9 +75,8 @@ public struct QuizFeatureView: View {
             .lineLimit(1)
     }
 
-    public init(show: Binding<Bool>, subject: Subject) {
-        _show = show
-        self.subject = subject
+    public init(store: StoreOf<Quiz>) {
+        self.store = store
     }
 }
 
