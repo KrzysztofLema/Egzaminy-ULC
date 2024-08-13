@@ -1,24 +1,18 @@
 import Foundation
 
-public struct Subject: Identifiable, Codable, Equatable {
+public struct Subject: Identifiable, Equatable {
     public let id = UUID()
     public let title: String
     public let image: String
     public let questions: [Question]
+}
 
-    private enum CodingKeys: CodingKey {
-        case title
-        case image
-        case questions
-    }
-
+extension Subject {
     public init(
-        title: String,
-        image: String,
-        questions: [Question]
+        dto: SubjectDto
     ) {
-        self.title = title
-        self.image = image
-        self.questions = questions
+        title = dto.title
+        image = dto.image
+        questions = dto.questions.map(Question.init)
     }
 }

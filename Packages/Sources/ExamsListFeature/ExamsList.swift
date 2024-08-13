@@ -7,7 +7,7 @@ import SharedModels
 public struct ExamsList {
     @ObservableState
     public struct State {
-        var exams: [Exam] = ExamMock.mock
+        var exams: [Exam] = Exam.jsonMock
         public var path = StackState<Path.State>()
 
         public init() {}
