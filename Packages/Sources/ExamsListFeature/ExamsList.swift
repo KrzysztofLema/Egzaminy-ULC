@@ -29,9 +29,6 @@ public struct ExamsList {
             case let .examDetailButtonTapped(exam):
                 state.path.append(.examDetailView(.init(exam: exam)))
                 return .none
-            case let .path(.element(id: _, action: .examDetailView(exam))):
-
-                return .none
             case .path:
                 return .none
             }

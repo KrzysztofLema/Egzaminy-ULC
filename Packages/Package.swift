@@ -34,7 +34,7 @@ let package = Package(
             ]
         ),
         .testTarget(
-            name: "AppRootFeatureTests",
+            name: "AppRootFeatureTest",
             dependencies: [
                 "AppRootFeature",
                 "TestExtensions",
@@ -119,6 +119,15 @@ let package = Package(
             name: "QuizFeature",
             dependencies: [
                 "SharedViews",
+                "SharedModels",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
+        .testTarget(
+            name: "QuizFeatureTest",
+            dependencies: [
+                "QuizFeature",
+                "TestExtensions",
                 "SharedModels",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]

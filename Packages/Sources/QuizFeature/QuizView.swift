@@ -3,9 +3,10 @@ import SharedModels
 import SharedViews
 import SwiftUI
 
+@ViewAction(for: Quiz.self)
 public struct QuizView: View {
     @ObserveInjection private var iO
-    @Bindable var store: StoreOf<Quiz>
+    @Bindable public var store: StoreOf<Quiz>
 
     @State var isBookmarkSelected = false
 
@@ -20,7 +21,20 @@ public struct QuizView: View {
             }
 
             VStack {
-                QuestionView(question: store.subject.questions[store.presentedQuestion])
+                Text(store.questions[store.presentedQuestionNumber].title)
+                    .font(.title3.width(.condensed))
+                    .multilineTextAlignment(.center)
+                    .fontWeight(.medium)
+                    .frame(maxWidth: .infinity)
+                    .padding(30)
+                    .background(.ultraThinMaterial)
+                    .cornerRadius(10)
+                    .padding(.bottom, 35)
+                    .layoutPriority(1)
+
+                ForEachStore(store.scope(state: \.answers, action: \.answers)) { store in
+                    AnswerView(store: store)
+                }
             }
             .padding()
             .background(
@@ -30,7 +44,7 @@ public struct QuizView: View {
             Spacer()
 
             Button(action: {
-                store.send(.nextQuestionButtonTapped)
+                send(.nextQuestionButtonTapped)
             }, label: {
                 Text("Następne")
             })
@@ -40,13 +54,15 @@ public struct QuizView: View {
             .padding()
         }
         .frame(maxHeight: .infinity, alignment: .top)
-
+        .onAppear(perform: {
+            send(.onViewLoad)
+        })
         .enableInjection()
     }
 
     var closeButton: some View {
         Button {
-            store.send(.closeQuizButtonTapped)
+            send(.closeQuizButtonTapped)
         } label: {
             Image(systemName: "xmark")
                 .font(.body.weight(.regular))

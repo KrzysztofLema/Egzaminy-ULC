@@ -36,7 +36,7 @@ public struct ExamDetailView: View {
                 ForEach(Array(store.exam.subjects.enumerated()), id: \.offset) { index, subject in
                     SubjectView(subject: subject)
                         .onTapGesture {
-                            send(.presentQuizSubjectButtonTapped(subject))
+                            send(.presentQuizSubjectButtonTapped(subject.questions))
                             selectedIndex = index
                         }
                 }
