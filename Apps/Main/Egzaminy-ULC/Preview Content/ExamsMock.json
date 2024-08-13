@@ -18,22 +18,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Nie, ale tylko na małych kątach natarcia",
+                  "answerText": "Nie, ale tylko na małych kątach natarcia",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "b",
-                  "answer": "Nie",
+                  "answerText": "Nie",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "c",
-                  "answer": "Tak, ale tylko na dużych kątach natarcia",
+                  "answerText": "Tak, ale tylko na dużych kątach natarcia",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Tak",
+                  "answerText": "Tak",
                   "isCorrect" : false
                 }
               ],
@@ -44,22 +44,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Zwiększyć szywność giętną skrzydła; zastosować wyważenia masowe lotek",
+                  "answerText": "Zwiększyć szywność giętną skrzydła; zastosować wyważenia masowe lotek",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "b",
-                  "answer": "Zastosować kompensacje aerodynamiczną; przesunąć środek ciękości jak najbliej osi skrętnej",
+                  "answerText": "Zastosować kompensacje aerodynamiczną; przesunąć środek ciękości jak najbliej osi skrętnej",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Zastosować klapkę odciążającą; zwiększyć sztywność skrętną skrzydła",
+                  "answerText": "Zastosować klapkę odciążającą; zwiększyć sztywność skrętną skrzydła",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Zastosować klapkę odciąającą; zastosować wyważenia masowe lotek",
+                  "answerText": "Zastosować klapkę odciąającą; zastosować wyważenia masowe lotek",
                   "isCorrect" : false
                 }
               ],
@@ -70,22 +70,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Zastosować klapkę dociążającą: zastosować wyważenia masowe lotek",
+                  "answerText": "Zastosować klapkę dociążającą: zastosować wyważenia masowe lotek",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "b",
-                  "answer": "Zastosować kompensację aerodynamiczną; przesunąć środek ciężkości skrzydła jak najbliżej osi skrętnej",
+                  "answerText": "Zastosować kompensację aerodynamiczną; przesunąć środek ciężkości skrzydła jak najbliżej osi skrętnej",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Zastosować klapkę odciążającą; zwiększyć sztywność skrętną skrzydła",
+                  "answerText": "Zastosować klapkę odciążającą; zwiększyć sztywność skrętną skrzydła",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Zwiększyć sztywność skrętną skrzydła; przsunąć środek ciężkości skrzydła jak najbliej osi skrętnej",
+                  "answerText": "Zwiększyć sztywność skrętną skrzydła; przsunąć środek ciężkości skrzydła jak najbliej osi skrętnej",
                   "isCorrect" : true
                 }
               ],
@@ -96,22 +96,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Zwiększyć sztywność skrętną skrzydła",
+                  "answerText": "Zwiększyć sztywność skrętną skrzydła",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "b",
-                  "answer": "Zastosować komensację aerodynamiczną",
+                  "answerText": "Zastosować komensację aerodynamiczną",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Zastosować klapkę dociążającą",
+                  "answerText": "Zastosować klapkę dociążającą",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Zastosować klapkę odciążającą",
+                  "answerText": "Zastosować klapkę odciążającą",
                   "isCorrect" : false
                 }
               ],
@@ -122,22 +122,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Zastosować usterzenia typu T; zastosować klapkę wyważającą",
+                  "answerText": "Zastosować usterzenia typu T; zastosować klapkę wyważającą",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "b",
-                  "answer": "Zwiększyć sztywność giętną usterzenia; zwiększyć sztywność skrętną usterzenia",
+                  "answerText": "Zwiększyć sztywność giętną usterzenia; zwiększyć sztywność skrętną usterzenia",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Zastosować klapkę wyważającą; starannie opracować przejście skrzydło - kadłub",
+                  "answerText": "Zastosować klapkę wyważającą; starannie opracować przejście skrzydło - kadłub",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Zastosować usterzenia typu T; starannie opracować przejscie skrzydło - kadłub",
+                  "answerText": "Zastosować usterzenia typu T; starannie opracować przejscie skrzydło - kadłub",
                   "isCorrect" : true
                 }
               ],
@@ -148,22 +148,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Ciśnienie jest większe od ciśnienia spiętrzenia",
+                  "answerText": "Ciśnienie jest większe od ciśnienia spiętrzenia",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "b",
-                  "answer": "Prędkość strumienia jest równa zeru, a ciśnienie - ciśnieniu spiętrzania",
+                  "answerText": "Prędkość strumienia jest równa zeru, a ciśnienie - ciśnieniu spiętrzania",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "c",
-                  "answer": "Prędkość strumienia jest równa zeru",
+                  "answerText": "Prędkość strumienia jest równa zeru",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Prędkość strumienia jest równa zeru, a ciśnienie osiąga wartość minimalną",
+                  "answerText": "Prędkość strumienia jest równa zeru, a ciśnienie osiąga wartość minimalną",
                   "isCorrect" : false
                 }
               ],
@@ -174,22 +174,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Flatteru giętno-skrętnego",
+                  "answerText": "Flatteru giętno-skrętnego",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "b",
-                  "answer": "Dywergencji skrętnej skrzydła",
+                  "answerText": "Dywergencji skrętnej skrzydła",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Flatteru lotkowego",
+                  "answerText": "Flatteru lotkowego",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "d",
-                  "answer": "Odwrotnego działania lotek",
+                  "answerText": "Odwrotnego działania lotek",
                   "isCorrect" : false
                 }
               ],
@@ -200,22 +200,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Flatter lotkowy",
+                  "answerText": "Flatter lotkowy",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "b",
-                  "answer": "Drgania giętno - skrętne",
+                  "answerText": "Drgania giętno - skrętne",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Flatter usterzenia",
+                  "answerText": "Flatter usterzenia",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Trzepotanie usterzeń",
+                  "answerText": "Trzepotanie usterzeń",
                   "isCorrect" : true
                 }
               ],
@@ -226,22 +226,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Prędkość kątowa \"W\" wzrośnie dwukrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie czterokrotnie",
+                  "answerText": "Prędkość kątowa \"W\" wzrośnie dwukrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie czterokrotnie",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "b",
-                  "answer": "Prędkość kątkowa \"W\" wzrosnie czterokrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie czterokrotnie",
+                  "answerText": "Prędkość kątkowa \"W\" wzrosnie czterokrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie czterokrotnie",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Prędkość kątkowa \"W\" wzrośnie czterokrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie dwukrotnie",
+                  "answerText": "Prędkość kątkowa \"W\" wzrośnie czterokrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie dwukrotnie",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Prędkość kątowa \"W\" wzrośnie dwukrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie dwukrotnie ",
+                  "answerText": "Prędkość kątowa \"W\" wzrośnie dwukrotnie - przyśpieszenie dośrodkowe \"AR\" wzrośnie dwukrotnie ",
                   "isCorrect" : false
                 }
               ],
@@ -252,22 +252,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Prędkość kątowa \"W\" zmaleje dwukrotnie - droga przebyta przez ciało w czasie okresu \"T\" zmaleje dwukrotnie - przyśpieszenie dośrodkowe \"AR\" zmaleje dwukrotnie",
+                  "answerText": "Prędkość kątowa \"W\" zmaleje dwukrotnie - droga przebyta przez ciało w czasie okresu \"T\" zmaleje dwukrotnie - przyśpieszenie dośrodkowe \"AR\" zmaleje dwukrotnie",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "b",
-                  "answer": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" zmaleje dwukrotnie, - przyśpieszenie dośrodkowe ‘ar’ zmaleje dwukrotnie",
+                  "answerText": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" zmaleje dwukrotnie, - przyśpieszenie dośrodkowe ‘ar’ zmaleje dwukrotnie",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" wzrośnie dwukrotnie -przyśpieszenie dośrodkowe ‘ar’ wzrośnie dwukrotnie",
+                  "answerText": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" wzrośnie dwukrotnie -przyśpieszenie dośrodkowe ‘ar’ wzrośnie dwukrotnie",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" wzrośnie dwukrotnie -przyśpieszenie dośrodkowe ‘ar’ nie zmieni się",
+                  "answerText": "Prędkość kątowa \"W\" zmaleje dwukrotnie -droga przebyta przez ciało w czasie okresu \"T\" wzrośnie dwukrotnie -przyśpieszenie dośrodkowe ‘ar’ nie zmieni się",
                   "isCorrect": true
                 }
               ],
@@ -278,22 +278,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "W stronę środka okręgu",
+                  "answerText": "W stronę środka okręgu",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "b",
-                  "answer": "Na zewnątrz okręgu",
+                  "answerText": "Na zewnątrz okręgu",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Skoro prędkość \"U\" jest stała, to na ciało nie działa żadne przyśpieszenie",
+                  "answerText": "Skoro prędkość \"U\" jest stała, to na ciało nie działa żadne przyśpieszenie",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Stycznie do okręgu",
+                  "answerText": "Stycznie do okręgu",
                   "isCorrect" : false
                 }
               ],
@@ -304,22 +304,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Minimalne na górnej powierzchni i maksymalne na dolnej powierzchni",
+                  "answerText": "Minimalne na górnej powierzchni i maksymalne na dolnej powierzchni",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "b",
-                  "answer": "Maksymalne na górnej powierzchni i minimalne na dolnej powierzchni",
+                  "answerText": "Maksymalne na górnej powierzchni i minimalne na dolnej powierzchni",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Minimalne na górnej powierzchni i minimalne na dolnej powierzchni",
+                  "answerText": "Minimalne na górnej powierzchni i minimalne na dolnej powierzchni",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Maksymalne na górnej powierzchni i maksymalne na dolnej powierzchni",
+                  "answerText": "Maksymalne na górnej powierzchni i maksymalne na dolnej powierzchni",
                   "isCorrect" : false
                 }
               ],
@@ -330,22 +330,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Związek między ciśnieniem statycznym, gęstością, temperaturą i stałą gazową powietrza p = &rho;.g.R.T [Pa].",
+                  "answerText": "Związek między ciśnieniem statycznym, gęstością, temperaturą i stałą gazową powietrza p = &rho;.g.R.T [Pa].",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "b",
-                  "answer": "Związek istniejący pomiędzy ciśnieniem powietrza i jego temperaturą.",
+                  "answerText": "Związek istniejący pomiędzy ciśnieniem powietrza i jego temperaturą.",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Równanie określające równowagę między ciśnieniem powietrza i jego wilgotnością.",
+                  "answerText": "Równanie określające równowagę między ciśnieniem powietrza i jego wilgotnością.",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Równanie określające równowagę między cisnieniem powietrza a przyśpieszeniem ziemskim.",
+                  "answerText": "Równanie określające równowagę między cisnieniem powietrza a przyśpieszeniem ziemskim.",
                   "isCorrect" : false
                 }
               ],
@@ -356,22 +356,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Zapewnianie uzyskiwania osiągów przewidzianych projektem obiektu.",
+                  "answerText": "Zapewnianie uzyskiwania osiągów przewidzianych projektem obiektu.",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "b",
-                  "answer": "Zapewnianie możliwości wykonywania manewrów akrobatycznych.",
+                  "answerText": "Zapewnianie możliwości wykonywania manewrów akrobatycznych.",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Zdolność do „odpowiadania” przez obiekt na zadawane przez pilota impulsy sterujące.",
+                  "answerText": "Zdolność do „odpowiadania” przez obiekt na zadawane przez pilota impulsy sterujące.",
                   "isCorrect" : true
                 },
                 {
                   "answerID": "d",
-                  "answer": "Zapewnienie, że obiekt jest stateczny statycznie i dynamicznie.",
+                  "answerText": "Zapewnienie, że obiekt jest stateczny statycznie i dynamicznie.",
                   "isCorrect" : false
                 }
               ],
@@ -382,22 +382,22 @@
               "answers": [
                 {
                   "answerID": "a",
-                  "answer": "Najniższe zmierzone ciśnienie",
+                  "answerText": "Najniższe zmierzone ciśnienie",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "b",
-                  "answer": "Najwyższe zmierzone ciśnienie.",
+                  "answerText": "Najwyższe zmierzone ciśnienie.",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "c",
-                  "answer": "Suma ciśnienia dynamicznego i statycznego",
+                  "answerText": "Suma ciśnienia dynamicznego i statycznego",
                   "isCorrect" : false
                 },
                 {
                   "answerID": "d",
-                  "answer": "Różnica ciśnienia dynamicznego i ciśnienia statycznego",
+                  "answerText": "Różnica ciśnienia dynamicznego i ciśnienia statycznego",
                   "isCorrect" : true
                 }
               ],

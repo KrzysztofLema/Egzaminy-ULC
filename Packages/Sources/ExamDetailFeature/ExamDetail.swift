@@ -21,7 +21,7 @@ public struct ExamDetail {
 
         @CasePathable
         public enum View: Equatable {
-            case presentQuizSubjectButtonTapped(Subject)
+            case presentQuizSubjectButtonTapped([Question])
         }
     }
 
@@ -50,8 +50,8 @@ public struct ExamDetail {
             switch action {
             case .destination:
                 return .none
-            case let .view(.presentQuizSubjectButtonTapped(subject)):
-                state.destination = .presentQuiz(Quiz.State(subject: subject))
+            case let .view(.presentQuizSubjectButtonTapped(questions)):
+                state.destination = .presentQuiz(Quiz.State(questions: questions))
                 return .none
             }
         }

@@ -12,13 +12,7 @@
 
   },
   "testTargets" : [
-    {
-      "target" : {
-        "containerPath" : "container:..\/..\/Packages",
-        "identifier" : "HomeFeatureTests",
-        "name" : "HomeFeatureTests"
-      }
-    }
+
   ],
   "version" : 1
 }
