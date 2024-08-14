@@ -48,6 +48,7 @@ public struct QuizView: View {
             }, label: {
                 Text("Następne")
             })
+            .disabled(!store.isNextButtonEnabled)
             .frame(maxWidth: .infinity)
             .padding()
             .background(RoundedRectangle(cornerRadius: 10))
@@ -57,6 +58,7 @@ public struct QuizView: View {
         .onAppear(perform: {
             send(.onViewLoad)
         })
+        .alert(store: store.scope(state: \.$alert, action: \.alert))
         .enableInjection()
     }
 
