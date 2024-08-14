@@ -10,8 +10,6 @@ public struct ExamDetailView: View {
     @ObserveInjection private var iO
 
     @Bindable public var store: StoreOf<ExamDetail>
-    @State var showQuiz = false
-    @State var selectedIndex = 0
 
     public var body: some View {
         ScrollView {
@@ -33,11 +31,10 @@ public struct ExamDetailView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.horizontal, 20)
 
-                ForEach(Array(store.exam.subjects.enumerated()), id: \.offset) { index, subject in
-                    SubjectView(subject: subject)
+                ForEachStore(store.scope(state: \.subjects, action: \.subjects)) { store in
+                    SubjectView(store: store)
                         .onTapGesture {
-                            send(.presentQuizSubjectButtonTapped(subject.questions))
-                            selectedIndex = index
+                            send(.presentQuizSubjectButtonTapped(store.subject))
                         }
                 }
             }

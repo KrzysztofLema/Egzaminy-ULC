@@ -13,7 +13,6 @@ struct EgzaminyULCApp: App {
         WindowGroup {
             AppRootView(store: Store(initialState: AppRoot.State(), reducer: {
                 AppRoot()
-                    ._printChanges()
             }))
         }
     }
