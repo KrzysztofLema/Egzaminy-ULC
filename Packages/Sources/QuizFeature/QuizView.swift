@@ -21,7 +21,7 @@ public struct QuizView: View {
             }
 
             VStack {
-                Text(store.questions[store.presentedQuestionNumber].title)
+                Text(store.questions[store.subject.currentProgress].title)
                     .font(.title3.width(.condensed))
                     .multilineTextAlignment(.center)
                     .fontWeight(.medium)

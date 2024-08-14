@@ -5,16 +5,19 @@ import SharedModels
 @Reducer
 public struct Quiz {
     @ObservableState
-    public struct State: Equatable {
+    public struct State: Identifiable, Equatable {
+        public let id: UUID
+        var subject: Subject
         @Presents var alert: AlertState<Action.Alert>?
         var answers: IdentifiedArrayOf<AnswerFeature.State> = []
         var isNextButtonEnabled = false
-        var presentedQuestionNumber: Int = 0
         var selectedAnswer: AnswerFeature.State?
         var questions: IdentifiedArrayOf<Question> = []
 
-        public init(questions: [Question]) {
-            self.questions = IdentifiedArrayOf(uniqueElements: questions)
+        public init(id: UUID, subject: Subject) {
+            self.id = id
+            self.subject = subject
+            questions = IdentifiedArrayOf(uniqueElements: subject.questions)
         }
     }
 
@@ -32,6 +35,12 @@ public struct Quiz {
             case confirmNotCorrect
         }
 
+        @CasePathable
+        public enum Delegate: Equatable {
+            case updateCurrentProgress(UUID, Int)
+        }
+
+        case delegate(Delegate)
         case alert(PresentationAction<Alert>)
         case nextQuestion
         case selectedAnswer(AnswerFeature.Action)
@@ -46,9 +55,9 @@ public struct Quiz {
         Reduce { state, action in
             switch action {
             case .alert(.presented(.confirmCorrect)):
-                state.presentedQuestionNumber += 1
+                state.subject.currentProgress += 1
                 state.selectedAnswer = nil
-                let answers = state.questions[state.presentedQuestionNumber].answers.map {
+                let answers = state.questions[state.subject.currentProgress].answers.map {
                     AnswerFeature.State(
                         id: uuid(),
                         answer: $0
@@ -85,7 +94,7 @@ public struct Quiz {
             case .selectedAnswer:
                 return .none
             case .view(.onViewLoad):
-                let answers = state.questions[state.presentedQuestionNumber].answers.map {
+                let answers = state.questions[state.subject.currentProgress].answers.map {
                     AnswerFeature.State(
                         id: uuid(),
                         answer: $0
@@ -101,12 +110,19 @@ public struct Quiz {
                 return .run { _ in
                     await dismiss()
                 }
+            case .delegate:
+                return .none
             }
         }
         .forEach(\.answers, action: \.answers) {
             AnswerFeature()
         }
         .ifLet(\.$alert, action: \.alert)
+        .onChange(of: \.subject.currentProgress) { _, newValue in
+            Reduce { state, _ in
+                .send(.delegate(.updateCurrentProgress(state.subject.id, newValue)))
+            }
+        }
     }
 
     public init() {}
