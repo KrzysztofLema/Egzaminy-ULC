@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import ExamDetailFeature
+import ExamsClient
 import Foundation
 import SharedModels
 
@@ -7,10 +8,20 @@ import SharedModels
 public struct ExamsList {
     @ObservableState
     public struct State {
-        var exams: [Exam] = Exam.jsonMock
-        public var path = StackState<Path.State>()
+        var exams: IdentifiedArrayOf<Exam> = []
+        public var path: StackState<Path.State>
 
-        public init() {}
+        public init(path: StackState<Path.State> = StackState<Path.State>()) {
+            self.path = path
+
+            @Dependency(\.examsClient) var examsClient
+
+            do {
+                exams = try IdentifiedArrayOf(uniqueElements: examsClient.exams())
+            } catch {
+                exams = []
+            }
+        }
     }
 
     public enum Action {
