@@ -11,8 +11,9 @@ public struct ExamDetail {
         let exam: Exam
         var subjects: IdentifiedArrayOf<SubjectFeature.State> = []
 
-        public init(exam: Exam) {
+        public init(exam: Exam, destination: Destination.State? = nil) {
             self.exam = exam
+            self.destination = destination
             subjects = IdentifiedArrayOf(uniqueElements: exam.subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
         }
     }

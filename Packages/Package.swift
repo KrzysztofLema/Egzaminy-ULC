@@ -22,6 +22,7 @@ let package = Package(
         .package(url: "https://github.com/krzysztofzablocki/AutomaticSettings", exact: "1.1.0"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.12.1"),
+        .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.0"),
     ],
     targets: [
         .target(
@@ -30,6 +31,7 @@ let package = Package(
                 "HomeFeature",
                 "ExamDetailFeature",
                 "ExamsListFeature",
+                "QuizFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
@@ -59,6 +61,7 @@ let package = Package(
                 "SharedModels",
                 "ExamDetailFeature",
                 "CoreUI",
+                "ExamsClient",
             ]
         ),
         .target(
@@ -73,6 +76,13 @@ let package = Package(
         .target(
             name: "CoreUI",
             dependencies: []
+        ),
+        .target(
+            name: "ExamsClient",
+            dependencies: [
+                "SharedModels",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]
         ),
         .target(
             name: "ExamDetailFeature",
