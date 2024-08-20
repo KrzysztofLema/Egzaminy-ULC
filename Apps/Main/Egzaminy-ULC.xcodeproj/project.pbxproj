@@ -64,6 +64,7 @@
 		952D94182C418D3E006163B5 /* AppView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppView.swift; sourceTree = "<group>"; };
 		952D94192C418D3E006163B5 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		952D941B2C418D49006163B5 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../../Packages/Package.swift; sourceTree = "<group>"; };
+		958674E62C74BEB200AF3D52 /* Egzaminy-ULC.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Egzaminy-ULC.xctestplan"; sourceTree = "<group>"; };
 		959581FA2C4182DC0036F76B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		959581FC2C4182DC0036F76B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		959581FD2C4182DC0036F76B /* EgzaminyULCApp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EgzaminyULCApp.swift; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 				959581FB2C4182DC0036F76B /* Preview Content */,
 				959581FC2C4182DC0036F76B /* Assets.xcassets */,
 				959581FD2C4182DC0036F76B /* EgzaminyULCApp.swift */,
+				958674E62C74BEB200AF3D52 /* Egzaminy-ULC.xctestplan */,
 			);
 			path = "Egzaminy-ULC";
 			sourceTree = "<group>";
