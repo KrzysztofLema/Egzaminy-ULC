@@ -7,7 +7,4 @@
    <FileRef
       location = "container:Apps/Main/Egzaminy-ULC.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:AppFeature.xctestplan">
-   </FileRef>
 </Workspace>

@@ -7,7 +7,7 @@ import SharedModels
 @Reducer
 public struct ExamsList {
     @ObservableState
-    public struct State {
+    public struct State: Equatable {
         var exams: IdentifiedArrayOf<Exam> = []
         public var path: StackState<Path.State>
 

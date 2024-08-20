@@ -25,6 +25,10 @@ extension ExamClient: DependencyKey {
     }
 }
 
+extension ExamClient: TestDependencyKey {
+    public static let testValue = Self { [] }
+}
+
 extension DependencyValues {
     public var examsClient: ExamClient {
         get { self[ExamClient.self] }

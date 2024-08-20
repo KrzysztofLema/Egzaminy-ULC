@@ -54,6 +54,14 @@ let package = Package(
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
+        .testTarget(
+            name: "HomeFeatureTest",
+            dependencies: [
+                "HomeFeature",
+                "TestExtensions",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
         .target(
             name: "ExamsListFeature",
             dependencies: [

@@ -6,7 +6,7 @@ import Foundation
 @Reducer
 public struct Home {
     @ObservableState
-    public struct State {
+    public struct State: Equatable {
         var selectedTab: Tab = .exams
         public var examsList: ExamsList.State
 
@@ -17,7 +17,6 @@ public struct Home {
 
     public enum Action {
         case onTabSelection(Tab)
-
         case examsList(ExamsList.Action)
     }
 
@@ -41,7 +40,7 @@ public struct Home {
 }
 
 extension Home {
-    public enum Tab {
+    public enum Tab: Equatable {
         case exams, settings
 
         var title: String {
