@@ -25,6 +25,13 @@
         "identifier" : "ExamsListTest",
         "name" : "ExamsListTest"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "QuizFeatureTest",
+        "name" : "QuizFeatureTest"
+      }
     }
   ],
   "version" : 1

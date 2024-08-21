@@ -4,7 +4,7 @@ import TestExtensions
 
 @MainActor
 final class HomeTests: XCTestCase {
-    func testBasics_SelectedTab() async {
+    func testBasicsSelectedTab() async {
         let store = TestStore(initialState: Home.State()) {
             Home()
         } withDependencies: {
