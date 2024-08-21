@@ -20,7 +20,7 @@ extension Exam {
         image = dto.image
         background = dto.background
         logo = dto.logo
-        subjects = dto.subjects.map(Subject.init)
+        subjects = dto.subjects.map { Subject(dto: $0) }
     }
 }
 
