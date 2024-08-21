@@ -18,6 +18,13 @@
         "identifier" : "HomeFeatureTest",
         "name" : "HomeFeatureTest"
       }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/..\/Packages",
+        "identifier" : "ExamsListTest",
+        "name" : "ExamsListTest"
+      }
     }
   ],
   "version" : 1
