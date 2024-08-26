@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import Inject
 import SharedModels
 import SwiftUI
 
@@ -53,7 +54,7 @@ struct AnswerView: View {
         .padding()
         .frame(maxWidth: .infinity, alignment: .leading)
         .background(content: {
-            store.isSelected ? Color(.blue) : Color(.white)
+            store.isSelected ? Color(.blue) : Color.black.opacity(0.1)
         })
         .cornerRadius(10)
         .onTapGesture {

@@ -7,17 +7,31 @@ import HomeFeature
 public struct AppRoot {
     @ObservableState
     public struct State {
+        public var appDelegate: AppDelegateReducer.State
         var home: Home.State
-        public init(home: Home.State = Home.State()) {
+
+        public init(
+            appDelegate: AppDelegateReducer.State = AppDelegateReducer.State(),
+            home: Home.State = Home.State()
+        ) {
+            self.appDelegate = appDelegate
             self.home = home
         }
     }
 
     public enum Action {
         case home(Home.Action)
+        case appDelegate(AppDelegateReducer.Action)
     }
 
     public var body: some ReducerOf<Self> {
+        Scope(
+            state: \.appDelegate,
+            action: \.appDelegate
+        ) {
+            AppDelegateReducer()
+        }
+
         Scope(
             state: \.home,
             action: \.home
@@ -28,6 +42,8 @@ public struct AppRoot {
         Reduce { _, action in
             switch action {
             case .home:
+                return .none
+            case .appDelegate:
                 return .none
             }
         }

@@ -1,10 +1,8 @@
-import AcknowList
 import AutomaticSettings
 import ComposableArchitecture
 import ExamDetailFeature
 import ExamsListFeature
 import LifetimeTracker
-import Roadmap
 import SettingsFeature
 import SharedModels
 import SharedViews
@@ -15,7 +13,7 @@ var stored: [LeakableModel] = []
 public struct HomeView: View {
     @Bindable var store: StoreOf<Home>
     @ObserveInjection private var iO
-    @State private var settingsModel = SettingsModel()
+    @Environment(\.colorScheme) var colorScheme
 
     public init(store: StoreOf<Home>) {
         self.store = store
@@ -29,12 +27,35 @@ public struct HomeView: View {
                 }
                 .tag(Home.Tab.exams)
 
-            SettingsView(model: settingsModel)
+            SettingsView(store: store.scope(state: \.settings, action: \.settings))
                 .tabItem {
                     Label("Settings", systemImage: "gear")
                 }
                 .tag(Home.Tab.settings)
         }
+
         .enableInjection()
+    }
+}
+
+extension Color {
+    public static func hex(_ hex: UInt) -> Self {
+        Self(
+            red: Double((hex & 0xff0000) >> 16) / 255,
+            green: Double((hex & 0x00ff00) >> 8) / 255,
+            blue: Double(hex & 0x0000ff) / 255,
+            opacity: 1
+        )
+    }
+}
+
+extension UIColor {
+    public static func hex(_ hex: UInt) -> Self {
+        Self(
+            red: CGFloat((hex & 0xff0000) >> 16) / 255,
+            green: CGFloat((hex & 0x00ff00) >> 8) / 255,
+            blue: CGFloat(hex & 0x0000ff) / 255,
+            alpha: 1
+        )
     }
 }
