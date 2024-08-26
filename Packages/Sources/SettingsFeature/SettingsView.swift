@@ -1,5 +1,5 @@
-import AcknowList
-import Roadmap
+import ComposableArchitecture
+import CoreUI
 import SharedModels
 import SharedViews
 import SwiftUI
@@ -7,51 +7,56 @@ import SwiftUI
 public struct SettingsView: View {
     @ObserveInjection private var iO
 
-    @Bindable
-    public var model: SettingsModel
+    @Bindable var store: StoreOf<Settings>
 
-    public init(model: SettingsModel) {
-        self.model = model
-    }
+    var subscreen: Subscreen?
 
     public var body: some View {
         NavigationStack {
-            List {
-                ForEach(Array(SettingsModel.Subscreen.allCases)) { subscreen in
-                    NavigationLink(subscreen.displayString, value: subscreen)
-                }
-            }
-            .navigationDestination(for: SettingsModel.Subscreen.self) { subscreen in
-                switch subscreen {
-                case .licenses:
-                    if let licenses = AcknowParser.defaultAcknowList() {
-                        AcknowListSwiftUIView(acknowList: licenses)
+            VStack {
+                List {
+                    Group {
+                        ForEach(Array(Subscreen.allCases)) { subscreen in
+                            NavigationLink(subscreen.displayString, value: subscreen)
+                        }
+                        Text("Version number: 0.1")
+                            .font(.caption)
+                            .frame(maxWidth: .infinity, alignment: .bottom)
                     }
-                case .roadmap:
-                    RoadmapView(configuration: RoadmapConfiguration(
-                        roadmapJSONURL: URL(string: "https://simplejsoncms.com/api/83pe0psm7e")!,
-                        voter: CustomFeatureVoter(),
-                        namespace: "roadmaptest",
-                        allowVotes: true,
-                        allowSearching: true
-                    ))
-                case .betaSettings:
-                    BetaSettingsView(
-                        viewModel: .init(
-                            settings: model.betaSettings,
-                            externalData: .init(),
-                            save: { newValue in
-                                model.subscreen = nil
-                                model.betaSettings = newValue
-                            },
-                            dismiss: { model.subscreen = nil }
-                        )
-                    )
+                    .listRowBackground(Color.primaryBackground)
+                }
+                .scrollContentBackground(.hidden)
+                .background(Color.primaryBackground)
+            }
+            .navigationDestination(for: Subscreen.self) { subscreen in
+                switch subscreen {
                 case .settings:
                     EmptyView()
+                case .appearance:
+                    Appearance(colorScheme: $store.userSettings.colorScheme)
                 }
             }
         }
         .enableInjection()
+    }
+
+    public init(store: StoreOf<Settings>) {
+        self.store = store
+    }
+}
+
+enum Subscreen: String, Identifiable, CaseIterable {
+    case settings
+    case appearance
+
+    var id: String { rawValue }
+
+    var displayString: String {
+        switch self {
+        case .settings:
+            "Settings"
+        case .appearance:
+            "Appearance"
+        }
     }
 }

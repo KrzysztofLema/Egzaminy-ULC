@@ -77,8 +77,22 @@ let package = Package(
             dependencies: [
                 "SharedViews",
                 "SharedModels",
-                "AcknowList",
-                "Roadmap",
+                "UserSettingsClient",
+                "UIApplicationClient",
+                "CoreUI",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
+        .target(
+            name: "UserSettingsClient",
+            dependencies: [
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]
+        ),
+        .target(
+            name: "UIApplicationClient",
+            dependencies: [
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
         .target(

@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import CoreUI
 import ExamDetailFeature
 import SharedModels
 import SharedViews
@@ -14,14 +15,18 @@ public struct ExamsListView: View {
 
     public var body: some View {
         NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
-            ScrollView(showsIndicators: false) {
-                VStack {
-                    ForEach(store.exams) { exam in
-                        Button(action: {
-                            store.send(.examDetailButtonTapped(exam))
-                        }, label: {
-                            ExamView(exam: exam)
-                        })
+            ZStack {
+                Color.primaryBackground.ignoresSafeArea()
+
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        ForEach(store.exams) { exam in
+                            Button(action: {
+                                store.send(.examDetailButtonTapped(exam))
+                            }, label: {
+                                ExamView(exam: exam)
+                            })
+                        }
                     }
                 }
             }

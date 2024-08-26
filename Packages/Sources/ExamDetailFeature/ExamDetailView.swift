@@ -12,30 +12,34 @@ public struct ExamDetailView: View {
     @Bindable public var store: StoreOf<ExamDetail>
 
     public var body: some View {
-        ScrollView {
-            VStack {
-                Image(store.exam.image)
-                    .resizable()
-                    .scaledToFill()
-                    .shadow(radius: 20)
-                    .cornerRadius(30.0)
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 30)
-                            .fill(.black.opacity(0.2))
-                    }
-                    .strokeStyle(cornerRadius: 30)
+        ZStack {
+            Color.primaryBackground.ignoresSafeArea()
 
-                Text("Wybierz przedmiot:".uppercased())
-                    .font(.footnote.weight(.semibold))
-                    .foregroundColor(.secondary)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding(.horizontal, 20)
-
-                ForEachStore(store.scope(state: \.subjects, action: \.subjects)) { store in
-                    SubjectView(store: store)
-                        .onTapGesture {
-                            send(.presentQuizSubjectButtonTapped(store.subject))
+            ScrollView(showsIndicators: false) {
+                VStack {
+                    Image(store.exam.image)
+                        .resizable()
+                        .scaledToFill()
+                        .shadow(radius: 20)
+                        .cornerRadius(30.0)
+                        .overlay {
+                            RoundedRectangle(cornerRadius: 30)
+                                .fill(.black.opacity(0.2))
                         }
+                        .strokeStyle(cornerRadius: 30)
+
+                    Text("Wybierz przedmiot:".uppercased())
+                        .font(.footnote.weight(.semibold))
+                        .foregroundColor(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 20)
+
+                    ForEachStore(store.scope(state: \.subjects, action: \.subjects)) { store in
+                        SubjectView(store: store)
+                            .onTapGesture {
+                                send(.presentQuizSubjectButtonTapped(store.subject))
+                            }
+                    }
                 }
             }
         }

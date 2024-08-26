@@ -9,6 +9,7 @@ final class HomeTests: XCTestCase {
             Home()
         } withDependencies: {
             $0.examsClient = .testValue
+            $0.userSettings = .testValue
         }
 
         XCTAssertTrue(store.state.selectedTab == .exams)

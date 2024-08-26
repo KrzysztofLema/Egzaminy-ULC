@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import CoreUI
 import SharedModels
 import SharedViews
 import SwiftUI
@@ -11,48 +12,53 @@ public struct QuizView: View {
     @State var isBookmarkSelected = false
 
     public var body: some View {
-        VStack(spacing: 20) {
-            HStack {
-                bookmarkButton
-                Spacer()
-                titleText
-                Spacer()
-                closeButton
-            }
-
-            VStack {
-                Text(store.questions[store.subject.currentProgress].title)
-                    .font(.title3.width(.condensed))
-                    .multilineTextAlignment(.center)
-                    .fontWeight(.medium)
-                    .frame(maxWidth: .infinity)
-                    .padding(30)
-                    .background(.ultraThinMaterial)
-                    .cornerRadius(10)
-                    .padding(.bottom, 35)
-                    .layoutPriority(1)
-
-                ForEachStore(store.scope(state: \.answers, action: \.answers)) { store in
-                    AnswerView(store: store)
+        ZStack {
+            Color.primaryBackground.ignoresSafeArea()
+            VStack(spacing: 20) {
+                HStack {
+                    bookmarkButton
+                    Spacer()
+                    titleText
+                    Spacer()
+                    closeButton
                 }
+                .padding(16)
+
+                VStack {
+                    Text(store.questions[store.subject.currentProgress].title)
+                        .font(.title3.width(.condensed))
+                        .multilineTextAlignment(.center)
+                        .fontWeight(.medium)
+                        .frame(maxWidth: .infinity)
+                        .padding(30)
+                        .background(Color.black.opacity(0.1))
+                        .cornerRadius(10)
+                        .padding(.bottom, 35)
+                        .layoutPriority(1)
+
+                    ForEachStore(store.scope(state: \.answers, action: \.answers)) { store in
+                        AnswerView(store: store)
+                    }
+                }
+                .padding()
+                .background(
+                    RoundedRectangle(cornerRadius: 10).fill(.ultraThinMaterial)
+                )
+                .padding(16)
+
+                Spacer()
+
+                Button(action: {
+                    send(.nextQuestionButtonTapped)
+                }, label: {
+                    Text("Następne")
+                })
+                .disabled(!store.isNextButtonEnabled)
+                .frame(maxWidth: .infinity)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 10))
+                .padding()
             }
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 10).fill(.ultraThinMaterial)
-            )
-
-            Spacer()
-
-            Button(action: {
-                send(.nextQuestionButtonTapped)
-            }, label: {
-                Text("Następne")
-            })
-            .disabled(!store.isNextButtonEnabled)
-            .frame(maxWidth: .infinity)
-            .padding()
-            .background(RoundedRectangle(cornerRadius: 10))
-            .padding()
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .onAppear(perform: {
