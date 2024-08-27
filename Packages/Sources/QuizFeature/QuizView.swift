@@ -52,11 +52,13 @@ public struct QuizView: View {
                     send(.nextQuestionButtonTapped)
                 }, label: {
                     Text("Następne")
+                        .foregroundColor(store.isNextButtonEnabled ? .white : .gray)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(RoundedRectangle(cornerRadius: 10))
+                        .padding()
                 })
                 .disabled(!store.isNextButtonEnabled)
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(RoundedRectangle(cornerRadius: 10))
                 .padding()
             }
         }
