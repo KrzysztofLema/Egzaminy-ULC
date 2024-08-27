@@ -47,19 +47,19 @@ struct AnswerView: View {
     @Bindable var store: StoreOf<AnswerFeature>
 
     var body: some View {
-        HStack {
-            Text("\(store.answer.answerID): ".uppercased())
-            Text(store.answer.answerText)
-        }
-        .padding()
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(content: {
-            store.isSelected ? Color(.blue) : Color.black.opacity(0.1)
-        })
-        .cornerRadius(10)
-        .onTapGesture {
-            send(.onAnswerButtonTapped)
-        }
+        Text(store.answer.answerText)
+            .font(.subheadline)
+            .fixedSize(horizontal: false, vertical: true)
+            .lineLimit(5)
+            .padding()
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .background(content: {
+                store.isSelected ? Color(.blue) : Color.black.opacity(0.1)
+            })
+            .cornerRadius(10)
+            .onTapGesture {
+                send(.onAnswerButtonTapped)
+            }
     }
 }
 

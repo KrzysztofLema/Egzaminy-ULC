@@ -14,7 +14,8 @@ public struct QuizView: View {
     public var body: some View {
         ZStack {
             Color.primaryBackground.ignoresSafeArea()
-            VStack(spacing: 20) {
+
+            VStack {
                 HStack {
                     bookmarkButton
                     Spacer()
@@ -22,31 +23,35 @@ public struct QuizView: View {
                     Spacer()
                     closeButton
                 }
-                .padding(16)
-
-                VStack {
-                    Text(store.questions[store.subject.currentProgress].title)
-                        .font(.title3.width(.condensed))
-                        .multilineTextAlignment(.center)
-                        .fontWeight(.medium)
-                        .frame(maxWidth: .infinity)
-                        .padding(30)
-                        .background(Color.black.opacity(0.1))
-                        .cornerRadius(10)
-                        .padding(.bottom, 35)
-                        .layoutPriority(1)
-
-                    ForEachStore(store.scope(state: \.answers, action: \.answers)) { store in
-                        AnswerView(store: store)
-                    }
-                }
                 .padding()
-                .background(
-                    RoundedRectangle(cornerRadius: 10).fill(.ultraThinMaterial)
-                )
-                .padding(16)
 
-                Spacer()
+                Spacer(minLength: 5)
+
+                ScrollView(showsIndicators: false) {
+                    VStack {
+                        Text(store.questions[store.subject.currentProgress].title)
+                            .font(.system(.headline))
+                            .multilineTextAlignment(.center)
+                            .lineLimit(nil)
+                            .fixedSize(horizontal: false, vertical: true)
+                            .fontWeight(.medium)
+                            .frame(maxWidth: .infinity)
+                            .padding(30)
+                            .background(Color.black.opacity(0.1))
+                            .cornerRadius(10)
+                            .padding(.bottom, 10)
+
+                        ForEachStore(store.scope(state: \.answers, action: \.answers)) { store in
+                            AnswerView(store: store)
+                        }
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 10).fill(.ultraThinMaterial)
+                    )
+                    .padding(16)
+                    .frame(maxHeight: .infinity)
+                }
 
                 Button(action: {
                     send(.nextQuestionButtonTapped)
@@ -97,28 +102,11 @@ public struct QuizView: View {
 
     var titleText: some View {
         Text("Zasady Lotu")
-            .font(.title.bold())
+            .font(.headline.bold())
             .lineLimit(1)
     }
 
     public init(store: StoreOf<Quiz>) {
         self.store = store
-    }
-}
-
-struct MinimumScaleModifier: ViewModifier {
-    let scaleFactor: CGFloat
-
-    func body(content: Content) -> some View {
-        content
-            .minimumScaleFactor(scaleFactor)
-            .lineLimit(1)
-            .truncationMode(.tail)
-    }
-}
-
-extension View {
-    func minimumScale(_ scaleFactor: CGFloat) -> some View {
-        modifier(MinimumScaleModifier(scaleFactor: scaleFactor))
     }
 }
