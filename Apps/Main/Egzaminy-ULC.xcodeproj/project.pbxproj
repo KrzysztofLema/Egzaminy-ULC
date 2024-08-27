@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -31,10 +31,6 @@
 		95B18E792C5E6F600038518D /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = 95B18E772C5E6F600038518D /* ci_post_clone.sh */; };
 		95D102362C68B67B00DE31E5 /* AppRootFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 95D102352C68B67B00DE31E5 /* AppRootFeature */; };
 		95FA826B2C5E6A33000058B3 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 952B25502C42CB4500DB5168 /* Package.resolved */; };
-		CD10C0FE2AF7723200414D0A /* PlaybookDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD10C0FD2AF7723200414D0A /* PlaybookDemoApp.swift */; };
-		CD10C1022AF7723300414D0A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD10C1012AF7723300414D0A /* Assets.xcassets */; };
-		CD10C1052AF7723300414D0A /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CD10C1042AF7723300414D0A /* Preview Assets.xcassets */; };
-		CD10C10A2AF7728F00414D0A /* PlaybookFeature in Frameworks */ = {isa = PBXBuildFile; productRef = CD10C1092AF7728F00414D0A /* PlaybookFeature */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,10 +70,6 @@
 		959582152C4185A10036F76B /* Egzaminy-ULCUnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Egzaminy-ULCUnitTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		959582172C4185A10036F76B /* Egzaminy_ULCUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egzaminy_ULCUnitTests.swift; sourceTree = "<group>"; };
 		95B18E772C5E6F600038518D /* ci_post_clone.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
-		CD10C0FB2AF7723200414D0A /* PlaybookDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaybookDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CD10C0FD2AF7723200414D0A /* PlaybookDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaybookDemoApp.swift; sourceTree = "<group>"; };
-		CD10C1012AF7723300414D0A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CD10C1042AF7723300414D0A /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CDC244042A52DB400051EE1C /* Egzaminy-ULC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Egzaminy-ULC.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -93,14 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD10C0F82AF7723200414D0A /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD10C10A2AF7728F00414D0A /* PlaybookFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -193,29 +177,10 @@
 			path = ../../../ci_scripts;
 			sourceTree = "<group>";
 		};
-		CD10C0FC2AF7723200414D0A /* PlaybookDemo */ = {
-			isa = PBXGroup;
-			children = (
-				CD10C0FD2AF7723200414D0A /* PlaybookDemoApp.swift */,
-				CD10C1012AF7723300414D0A /* Assets.xcassets */,
-				CD10C1032AF7723300414D0A /* Preview Content */,
-			);
-			path = PlaybookDemo;
-			sourceTree = "<group>";
-		};
-		CD10C1032AF7723300414D0A /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				CD10C1042AF7723300414D0A /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
-			sourceTree = "<group>";
-		};
 		CDC243FB2A52DB400051EE1C = {
 			isa = PBXGroup;
 			children = (
 				959581FE2C4182DC0036F76B /* Egzaminy-ULC */,
-				CD10C0FC2AF7723200414D0A /* PlaybookDemo */,
 				959582072C4185200036F76B /* Egzaminy-ULCUITests */,
 				959582162C4185A10036F76B /* Egzaminy-ULCUnitTests */,
 				CDC244052A52DB400051EE1C /* Products */,
@@ -227,7 +192,6 @@
 			isa = PBXGroup;
 			children = (
 				CDC244042A52DB400051EE1C /* Egzaminy-ULC.app */,
-				CD10C0FB2AF7723200414D0A /* PlaybookDemo.app */,
 				959582062C4185200036F76B /* Egzaminy-ULCUITests.xctest */,
 				959582152C4185A10036F76B /* Egzaminy-ULCUnitTests.xctest */,
 			);
@@ -284,26 +248,6 @@
 			productReference = 959582152C4185A10036F76B /* Egzaminy-ULCUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		CD10C0FA2AF7723200414D0A /* PlaybookDemo */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CD10C1082AF7723300414D0A /* Build configuration list for PBXNativeTarget "PlaybookDemo" */;
-			buildPhases = (
-				CD10C0F72AF7723200414D0A /* Sources */,
-				CD10C0F82AF7723200414D0A /* Frameworks */,
-				CD10C0F92AF7723200414D0A /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = PlaybookDemo;
-			packageProductDependencies = (
-				CD10C1092AF7728F00414D0A /* PlaybookFeature */,
-			);
-			productName = PlaybookDemo;
-			productReference = CD10C0FB2AF7723200414D0A /* PlaybookDemo.app */;
-			productType = "com.apple.product-type.application";
-		};
 		CDC244032A52DB400051EE1C /* Egzaminy-ULC */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDC244292A52DB410051EE1C /* Build configuration list for PBXNativeTarget "Egzaminy-ULC" */;
@@ -342,9 +286,6 @@
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = CDC244032A52DB400051EE1C;
 					};
-					CD10C0FA2AF7723200414D0A = {
-						CreatedOnToolsVersion = 15.0.1;
-					};
 					CDBF336F2B112DF400BDCC91 = {
 						CreatedOnToolsVersion = 15.0.1;
 					};
@@ -362,12 +303,14 @@
 				Base,
 			);
 			mainGroup = CDC243FB2A52DB400051EE1C;
+			packageReferences = (
+				950A344C2C7DC2CD00ED9C00 /* XCLocalSwiftPackageReference "../../Packages" */,
+			);
 			productRefGroup = CDC244052A52DB400051EE1C /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				CDC244032A52DB400051EE1C /* Egzaminy-ULC */,
-				CD10C0FA2AF7723200414D0A /* PlaybookDemo */,
 				CDBF336F2B112DF400BDCC91 /* Periphery */,
 				959582052C4185200036F76B /* Egzaminy-ULCUITests */,
 				959582142C4185A10036F76B /* Egzaminy-ULCUnitTests */,
@@ -387,15 +330,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD10C0F92AF7723200414D0A /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD10C1052AF7723300414D0A /* Preview Assets.xcassets in Resources */,
-				CD10C1022AF7723300414D0A /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +365,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/zsh;
-			shellScript = "cd \"${SRC_DIR}\"../../\n/opt/homebrew/bin/periphery scan --format xcode\n";
+			shellScript = "cd \"${SRC_DIR}\"../../\n/opt/homebrew/bin/periphery scan --retain-public --format xcode\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -450,14 +384,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				959582182C4185A10036F76B /* Egzaminy_ULCUnitTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CD10C0F72AF7723200414D0A /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				CD10C0FE2AF7723200414D0A /* PlaybookDemoApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,67 +489,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Egzaminy-ULC.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Egzaminy-ULC";
-				VALIDATE_PRODUCT = YES;
-			};
-			name = Release;
-		};
-		CD10C1062AF7723300414D0A /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PlaybookDemo/Preview Content\"";
-				DEVELOPMENT_TEAM = N9NV32GD8G;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pl.pixle.PlaybookDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		CD10C1072AF7723300414D0A /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"PlaybookDemo/Preview Content\"";
-				DEVELOPMENT_TEAM = N9NV32GD8G;
-				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = pl.pixle.PlaybookDemo;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = iphoneos;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -885,15 +750,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		CD10C1082AF7723300414D0A /* Build configuration list for PBXNativeTarget "PlaybookDemo" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CD10C1062AF7723300414D0A /* Debug */,
-				CD10C1072AF7723300414D0A /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		CDBF33722B112DF400BDCC91 /* Build configuration list for PBXAggregateTarget "Periphery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -923,14 +779,17 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		950A344C2C7DC2CD00ED9C00 /* XCLocalSwiftPackageReference "../../Packages" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../Packages;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		95D102352C68B67B00DE31E5 /* AppRootFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppRootFeature;
-		};
-		CD10C1092AF7728F00414D0A /* PlaybookFeature */ = {
-			isa = XCSwiftPackageProductDependency;
-			productName = PlaybookFeature;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

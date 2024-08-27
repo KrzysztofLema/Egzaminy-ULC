@@ -1,9 +1,9 @@
 retain_public: true
 schemes:
-  - Egzaminy-ULC
-  - PlaybookDemo
+- Egzaminy-ULC
 targets:
-  - PlaybookDemo
-  - Egzaminy-ULC
-  - Egzaminy-ULCUITests
+- Egzaminy-ULC
+- Egzaminy-ULCUITests
+- Egzaminy-ULCUnitTests
+- Main.AppRootFeature
 workspace: Main.xcworkspace

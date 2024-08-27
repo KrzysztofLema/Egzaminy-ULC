@@ -1,1 +1,0 @@
-private protocol AutomaticSettings {}
