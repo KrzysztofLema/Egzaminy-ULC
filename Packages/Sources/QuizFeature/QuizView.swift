@@ -101,9 +101,10 @@ public struct QuizView: View {
     }
 
     var titleText: some View {
-        Text("Zasady Lotu")
-            .font(.headline.bold())
-            .lineLimit(1)
+        Text(store.subject.title)
+            .font(.headline)
+            .multilineTextAlignment(.center)
+            .lineLimit(2)
     }
 
     public init(store: StoreOf<Quiz>) {
