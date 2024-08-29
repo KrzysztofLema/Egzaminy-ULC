@@ -30,8 +30,6 @@ public struct SettingsView: View {
             }
             .navigationDestination(for: Subscreen.self) { subscreen in
                 switch subscreen {
-                case .settings:
-                    EmptyView()
                 case .appearance:
                     Appearance(colorScheme: $store.userSettings.colorScheme)
                 }
@@ -46,15 +44,12 @@ public struct SettingsView: View {
 }
 
 enum Subscreen: String, Identifiable, CaseIterable {
-    case settings
     case appearance
 
     var id: String { rawValue }
 
     var displayString: String {
         switch self {
-        case .settings:
-            "Settings"
         case .appearance:
             "Appearance"
         }
