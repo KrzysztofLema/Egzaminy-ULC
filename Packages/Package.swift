@@ -19,7 +19,7 @@ let package = Package(
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.12.1"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.0"),
-        
+
     ],
     targets: [
         .target(
@@ -37,6 +37,53 @@ let package = Package(
             dependencies: [
                 "AppRootFeature",
                 "TestExtensions",
+            ]
+        ),
+        .target(
+            name: "CoreUI",
+            dependencies: []
+        ),
+        .target(
+            name: "DiagnosticClient",
+            dependencies: [
+                "SharedModels",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]
+        ),
+        .target(
+            name: "ExamDetailFeature",
+            dependencies: [
+                "SharedViews",
+                "SharedModels",
+                "CoreUI",
+                "QuizFeature",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
+        .target(
+            name: "ExamsClient",
+            dependencies: [
+                "SharedModels",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]
+        ),
+        .target(
+            name: "ExamsListFeature",
+            dependencies: [
+                "SharedViews",
+                "SharedModels",
+                "ExamDetailFeature",
+                "CoreUI",
+                "ExamsClient",
+            ]
+        ),
+        .testTarget(
+            name: "ExamsListTest",
+            dependencies: [
+                "ExamsListFeature",
+                "TestExtensions",
+                "SharedModels",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
         .target(
@@ -60,13 +107,17 @@ let package = Package(
             ]
         ),
         .target(
-            name: "ExamsListFeature",
+            name: "SharedModels",
             dependencies: [
-                "SharedViews",
-                "SharedModels",
-                "ExamDetailFeature",
-                "CoreUI",
-                "ExamsClient",
+                .product(name: "Difference", package: "Difference"),
+                .product(name: "LifetimeTracker", package: "LifetimeTracker"),
+                "AutomaticSettings",
+            ]
+        ),
+        .target(
+            name: "SharedViews",
+            dependencies: [
+                .product(name: "Inject", package: "Inject"),
             ]
         ),
         .target(
@@ -77,9 +128,11 @@ let package = Package(
                 "UserSettingsClient",
                 "UIApplicationClient",
                 "CoreUI",
+                "DiagnosticClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
+
         .target(
             name: "UserSettingsClient",
             dependencies: [
@@ -93,45 +146,10 @@ let package = Package(
             ]
         ),
         .target(
-            name: "CoreUI",
-            dependencies: []
-        ),
-        .target(
-            name: "ExamsClient",
-            dependencies: [
-                "SharedModels",
-                .product(name: "Dependencies", package: "swift-dependencies"),
-            ]
-        ),
-        .target(
-            name: "ExamDetailFeature",
-            dependencies: [
-                "SharedViews",
-                "SharedModels",
-                "CoreUI",
-                "QuizFeature",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-            ]
-        ),
-        .target(
             name: "TestExtensions",
             dependencies: [
                 .product(name: "Difference", package: "Difference"),
                 .product(name: "SnapshotTesting", package: "swift-snapshot-testing"),
-            ]
-        ),
-        .target(
-            name: "SharedViews",
-            dependencies: [
-                .product(name: "Inject", package: "Inject"),
-            ]
-        ),
-        .target(
-            name: "SharedModels",
-            dependencies: [
-                .product(name: "Difference", package: "Difference"),
-                .product(name: "LifetimeTracker", package: "LifetimeTracker"),
-                "AutomaticSettings",
             ]
         ),
         .target(
@@ -146,15 +164,6 @@ let package = Package(
             name: "QuizFeatureTest",
             dependencies: [
                 "QuizFeature",
-                "TestExtensions",
-                "SharedModels",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-            ]
-        ),
-        .testTarget(
-            name: "ExamsListTest",
-            dependencies: [
-                "ExamsListFeature",
                 "TestExtensions",
                 "SharedModels",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
