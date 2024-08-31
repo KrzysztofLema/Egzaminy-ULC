@@ -29,7 +29,7 @@ public struct QuizView: View {
 
                 ScrollView(showsIndicators: false) {
                     VStack {
-                        Text(store.questions[store.subject.currentProgress].title)
+                        Text(store.currentQuestion?.title ?? "")
                             .font(.system(.headline))
                             .multilineTextAlignment(.center)
                             .lineLimit(nil)
