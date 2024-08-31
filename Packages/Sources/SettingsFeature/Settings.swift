@@ -1,4 +1,6 @@
 import ComposableArchitecture
+import DiagnosticClient
+import SharedModels
 import UIApplicationClient
 import UserSettingsClient
 
@@ -7,10 +9,13 @@ public struct Settings {
     @ObservableState
     public struct State: Equatable {
         public var userSettings: UserSettings
+        public var appVersion: DiagnosticItem
 
         public init() {
             @Dependency(\.userSettings) var userSettings
+            @Dependency(\.diagnosticClient) var diagnosticClient
             self.userSettings = userSettings.get()
+            appVersion = diagnosticClient.appVersion()
         }
     }
 

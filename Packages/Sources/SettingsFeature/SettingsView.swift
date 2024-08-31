@@ -19,9 +19,13 @@ public struct SettingsView: View {
                         ForEach(Array(Subscreen.allCases)) { subscreen in
                             NavigationLink(subscreen.displayString, value: subscreen)
                         }
-                        Text("Version number: 0.1")
-                            .font(.caption)
-                            .frame(maxWidth: .infinity, alignment: .bottom)
+                        HStack {
+                            Text("\(store.appVersion.title)")
+                                .font(.caption)
+                            Text("\(store.appVersion.value)")
+                                .font(.caption.bold())
+                        }
+                        .frame(maxWidth: .infinity, alignment: .bottom)
                     }
                     .listRowBackground(Color.primaryBackground)
                 }
