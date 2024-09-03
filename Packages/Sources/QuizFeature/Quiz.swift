@@ -13,6 +13,7 @@ public struct Quiz {
         var isNextButtonEnabled = false
         var selectedAnswer: AnswerFeature.State?
         var questions: IdentifiedArrayOf<Question> = []
+        var currentQuestion: Question?
 
         public init(id: UUID, subject: Subject) {
             self.id = id
@@ -55,16 +56,28 @@ public struct Quiz {
         Reduce { state, action in
             switch action {
             case .alert(.presented(.confirmCorrect)):
+                let lastIndex = state.subject.questions.count - 1
+                guard state.subject.currentProgress < lastIndex else {
+                    state.subject.currentProgress = state.questions.count
+                    return .run { send in
+                        await dismiss()
+                    }
+                }
+                
                 state.subject.currentProgress += 1
+                state.currentQuestion = state.questions[state.subject.currentProgress]
+        
                 state.selectedAnswer = nil
-                let answers = state.questions[state.subject.currentProgress].answers.map {
+
+                let answers = state.currentQuestion?.answers.map {
                     AnswerFeature.State(
                         id: uuid(),
                         answer: $0
                     )
                 }
+                
                 state.answers.removeAll()
-                state.answers.append(contentsOf: answers)
+                state.answers.append(contentsOf: answers ?? [])
 
                 state.isNextButtonEnabled = state.selectedAnswer != nil
 
@@ -94,6 +107,9 @@ public struct Quiz {
             case .selectedAnswer:
                 return .none
             case .view(.onViewLoad):
+            
+                state.currentQuestion = state.questions[state.subject.currentProgress]
+                
                 let answers = state.questions[state.subject.currentProgress].answers.map {
                     AnswerFeature.State(
                         id: uuid(),
