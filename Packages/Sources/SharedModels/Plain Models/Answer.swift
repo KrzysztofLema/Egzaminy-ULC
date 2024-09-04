@@ -16,7 +16,6 @@ extension Answer {
     }
 }
 
-#if DEBUG
 extension Answer {
     static let mockAnswers: [Answer] = [
         Answer(id: Answer.ID(), answerID: "a", answerText: "Nie, ale tylko na małych kątach natarcia", isCorrect: false),
@@ -25,4 +24,3 @@ extension Answer {
         Answer(id: Answer.ID(), answerID: "d", answerText: "Tak", isCorrect: false),
     ]
 }
-#endif
