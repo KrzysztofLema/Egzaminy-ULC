@@ -23,6 +23,7 @@ final class ExamsListsTest: XCTestCase {
             ExamsList()
         } withDependencies: {
             $0.examsClient.exams = { [examMock] }
+            $0.coreData.fetchAllExams = { [examMock] }
         }
 
         XCTAssertTrue(store.state.exams.count == 1)
@@ -40,6 +41,7 @@ final class ExamsListsTest: XCTestCase {
             ExamsList()
         } withDependencies: {
             $0.examsClient.exams = { [examMock, examMock2] }
+            $0.coreData.fetchAllExams = { [examMock, examMock2] }
         }
 
         XCTAssertTrue(store.state.exams.count == 2)

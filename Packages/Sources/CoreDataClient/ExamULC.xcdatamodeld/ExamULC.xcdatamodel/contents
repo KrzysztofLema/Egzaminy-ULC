@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="AnswerEntity" representedClassName="AnswerEntity" syncable="YES">
+        <attribute name="answerID" optional="YES" attributeType="String"/>
+        <attribute name="answerTitle" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="isCorrect" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuestionEntity" inverseName="answer" inverseEntity="QuestionEntity"/>
+    </entity>
+    <entity name="ExamEntity" representedClassName="ExamEntity" syncable="YES">
+        <attribute name="background" optional="YES" attributeType="String"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="logo" optional="YES" attributeType="String"/>
+        <attribute name="subtitle" optional="YES" attributeType="String"/>
+        <attribute name="text" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="subjects" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SubjectEntity" inverseName="exam" inverseEntity="SubjectEntity"/>
+    </entity>
+    <entity name="QuestionEntity" representedClassName="QuestionEntity" syncable="YES">
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="questionNumber" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="answer" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AnswerEntity" inverseName="question" inverseEntity="AnswerEntity"/>
+        <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubjectEntity" inverseName="questions" inverseEntity="SubjectEntity"/>
+    </entity>
+    <entity name="SubjectEntity" representedClassName="SubjectEntity" syncable="YES">
+        <attribute name="currentProgress" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="String"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <relationship name="exam" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ExamEntity" inverseName="subjects" inverseEntity="ExamEntity"/>
+        <relationship name="questions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestionEntity" inverseName="subject" inverseEntity="QuestionEntity"/>
+    </entity>
+</model>

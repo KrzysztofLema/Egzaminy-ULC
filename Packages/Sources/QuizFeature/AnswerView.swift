@@ -47,7 +47,7 @@ struct AnswerView: View {
     @Bindable var store: StoreOf<AnswerFeature>
 
     var body: some View {
-        Text(store.answer.answerText)
+        Text(store.answer.answerTitle ?? "")
             .font(.subheadline)
             .fixedSize(horizontal: false, vertical: true)
             .lineLimit(5)

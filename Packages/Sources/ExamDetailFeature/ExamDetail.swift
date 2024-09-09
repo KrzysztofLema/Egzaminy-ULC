@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import CoreDataClient
 import Foundation
 import QuizFeature
 import SharedModels
@@ -14,7 +15,12 @@ public struct ExamDetail {
         public init(exam: Exam, destination: Destination.State? = nil) {
             self.exam = exam
             self.destination = destination
-            subjects = IdentifiedArrayOf(uniqueElements: exam.subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
+            @Dependency(\.coreData) var coreData
+
+            do {
+                let subjects = try coreData.fetchAllSubjects()
+                self.subjects = IdentifiedArrayOf(uniqueElements: subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
+            } catch {}
         }
     }
 

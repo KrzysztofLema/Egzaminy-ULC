@@ -40,6 +40,14 @@ let package = Package(
             ]
         ),
         .target(
+            name: "CoreDataClient",
+            dependencies: [
+                "SharedModels",
+                "ExamsClient",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]
+        ),
+        .target(
             name: "CoreUI",
             dependencies: []
         ),
@@ -70,11 +78,11 @@ let package = Package(
         .target(
             name: "ExamsListFeature",
             dependencies: [
-                "SharedViews",
-                "SharedModels",
-                "ExamDetailFeature",
+                "CoreDataClient",
                 "CoreUI",
-                "ExamsClient",
+                "ExamDetailFeature",
+                "SharedModels",
+                "SharedViews",
             ]
         ),
         .testTarget(

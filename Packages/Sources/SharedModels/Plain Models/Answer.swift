@@ -1,26 +1,38 @@
 import Foundation
 
 public struct Answer: Identifiable, Equatable {
-    public let id: UUID
-    public let answerID: String
-    public let answerText: String
-    public let isCorrect: Bool
+    public var id: String?
+    public var answerID: String?
+    public var answerTitle: String?
+    public var isCorrect: Bool?
+
+    public init(
+        id: UUID? = UUID(),
+        answerID: String?,
+        answerTitle: String?,
+        isCorrect: Bool?
+    ) {
+        self.id = id?.uuidString
+        self.answerID = answerID
+        self.answerTitle = answerTitle
+        self.isCorrect = isCorrect
+    }
 }
 
 extension Answer {
     public init(id: UUID = UUID(), dto: AnswerDto) {
-        self.id = id
+        self.id = id.uuidString
         answerID = dto.answerID
-        answerText = dto.answerText
+        answerTitle = dto.answerText
         isCorrect = dto.isCorrect
     }
 }
 
 extension Answer {
     static let mockAnswers: [Answer] = [
-        Answer(id: Answer.ID(), answerID: "a", answerText: "Nie, ale tylko na małych kątach natarcia", isCorrect: false),
-        Answer(id: Answer.ID(), answerID: "b", answerText: "Nie", isCorrect: true),
-        Answer(id: Answer.ID(), answerID: "c", answerText: "Tak, ale tylko na dużych kątach natarcia", isCorrect: false),
-        Answer(id: Answer.ID(), answerID: "d", answerText: "Tak", isCorrect: false),
+        Answer(answerID: "a", answerTitle: "Nie, ale tylko na małych kątach natarcia", isCorrect: false),
+        Answer(answerID: "b", answerTitle: "Nie", isCorrect: true),
+        Answer(answerID: "c", answerTitle: "Tak, ale tylko na dużych kątach natarcia", isCorrect: false),
+        Answer(answerID: "d", answerTitle: "Tak", isCorrect: false),
     ]
 }

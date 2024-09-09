@@ -12,15 +12,15 @@ struct ExamView: View {
         VStack {
             Spacer()
             VStack(alignment: .leading, spacing: 8) {
-                Text(exam.title)
+                Text(exam.title ?? "")
                     .foregroundColor(.secondary)
                     .font(.largeTitle.weight(.bold))
 
-                Text(exam.subtitle)
+                Text(exam.subtitle ?? "")
                     .foregroundColor(.primary)
                     .font(.footnote.weight(.semibold))
 
-                Text(exam.text)
+                Text(exam.text ?? "")
                     .foregroundColor(.secondary)
                     .font(.footnote)
                     .multilineTextAlignment(.leading)
@@ -34,7 +34,7 @@ struct ExamView: View {
         }
         .strokeStyle(cornerRadius: 32)
         .background(
-            Image(exam.image)
+            Image(exam.image ?? "")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
         )

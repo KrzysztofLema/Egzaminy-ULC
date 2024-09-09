@@ -40,21 +40,21 @@ struct SubjectView: View {
 
     var body: some View {
         HStack {
-            Image(systemName: store.subject.image)
+            Image(systemName: store.subject.image ?? "")
                 .resizable()
                 .foregroundColor(.primary)
                 .frame(width: 32.0, height: 32.0)
                 .padding(5)
 
             VStack(alignment: .leading, spacing: 12) {
-                Text(store.subject.title)
+                Text(store.subject.title ?? "")
                     .foregroundColor(.primary)
                     .font(.headline)
 
                 HStack {
-                    Text("\(store.subject.currentProgress)")
-                    ProgressView(value: Double(store.subject.currentProgress), total: .init(store.subject.questions.count))
-                    Text("\(store.subject.questions.count)")
+                    Text("\(store.subject.currentProgress ?? 0)")
+                    ProgressView(value: Double(store.subject.currentProgress ?? 0), total: .init(store.subject.questions?.count ?? 0))
+                    Text("\(store.subject.questions?.count ?? 0)")
                 }
                 .foregroundColor(.secondary)
                 .font(.footnote)

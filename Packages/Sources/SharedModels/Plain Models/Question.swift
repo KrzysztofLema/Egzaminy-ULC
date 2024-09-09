@@ -1,10 +1,22 @@
 import Foundation
 
 public struct Question: Identifiable, Equatable {
-    public let id: UUID
-    public let questionNumber: String
-    public let title: String
-    public let answers: [Answer]
+    public var id: String?
+    public var questionNumber: String?
+    public var title: String?
+    public var answers: [Answer]?
+
+    public init(
+        id: UUID = UUID(),
+        questionNumber: String?,
+        title: String?,
+        answers: [Answer]?
+    ) {
+        self.id = id.uuidString
+        self.questionNumber = questionNumber
+        self.title = title
+        self.answers = answers
+    }
 }
 
 extension Question {
@@ -12,7 +24,7 @@ extension Question {
         id: UUID = UUID(),
         dto: QuestionDto
     ) {
-        self.id = id
+        self.id = id.uuidString
         questionNumber = dto.questionNumber
         title = dto.title
         answers = dto.answers.map { Answer(dto: $0) }
@@ -21,14 +33,12 @@ extension Question {
 
 extension Question {
     public static let mock = Question(
-        id: Question.ID(),
         questionNumber: "PL080-0001",
         title: "Czy profile klasyczne są dużo bardziej \"wrażliwe\" na zabrudzenia od profili laminarnych?",
         answers: Answer.mockAnswers
     )
 
     public static let mock2 = Question(
-        id: Question.ID(),
         questionNumber: "PL080-0003",
         title: "Aby zapobiec zjawisku flateru giętno-lotkowemu należy:",
         answers: Answer.mockAnswers

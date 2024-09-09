@@ -11,11 +11,11 @@ public struct QuizView: View {
     @Bindable public var store: StoreOf<Quiz>
 
     @State var isBookmarkSelected = false
-    
+
     public var body: some View {
         ZStack {
             Color.primaryBackground.ignoresSafeArea()
-            
+
             VStack {
                 HStack {
                     bookmarkButton
@@ -25,13 +25,13 @@ public struct QuizView: View {
                     closeButton
                 }
                 .padding()
-                
+
                 Spacer(minLength: 5)
-                
+
                 ScrollView(showsIndicators: false) {
                     VStack {
                         QuestionView(questionTitle: store.currentQuestion?.title)
-                        
+
                         ForEachStore(store.scope(state: \.answers, action: \.answers)) { store in
                             AnswerView(store: store)
                         }
@@ -43,7 +43,7 @@ public struct QuizView: View {
                     .padding(16)
                     .frame(maxHeight: .infinity)
                 }
-                
+
                 Button(action: {
                     send(.nextQuestionButtonTapped)
                 }, label: {
@@ -65,7 +65,7 @@ public struct QuizView: View {
         .alert(store: store.scope(state: \.$alert, action: \.alert))
         .enableInjection()
     }
-    
+
     var closeButton: some View {
         Button {
             send(.closeQuizButtonTapped)
@@ -75,7 +75,7 @@ public struct QuizView: View {
                 .background(.ultraThinMaterial, in: Circle())
         }
     }
-    
+
     var bookmarkButton: some View {
         Button {
             isBookmarkSelected.toggle()
@@ -85,14 +85,14 @@ public struct QuizView: View {
                 .animation(.easeInOut(duration: 0.1), value: isBookmarkSelected)
         }
     }
-    
+
     var titleText: some View {
-        Text(store.subject.title)
+        Text(store.subject.title ?? "")
             .font(.headline)
             .multilineTextAlignment(.center)
             .lineLimit(2)
     }
-    
+
     public init(store: StoreOf<Quiz>) {
         self.store = store
     }
@@ -100,8 +100,7 @@ public struct QuizView: View {
 
 private extension View {
     func asQuizIcon() -> some View {
-        self
-            .font(.body.weight(.regular))
+        font(.body.weight(.regular))
             .foregroundColor(.secondary)
             .padding(8)
             .background(.ultraThinMaterial, in: Circle())
@@ -110,7 +109,7 @@ private extension View {
 
 struct QuestionView: View {
     var questionTitle: String?
-    
+
     var body: some View {
         Text(questionTitle ?? "")
             .font(.system(.headline))
