@@ -1,5 +1,6 @@
 [
     {
+        "id": "733dee32-3b8b-44fc-8109-29ec37b99bfa",
         "title": "PPL(A)",
         "subtitle": "Licencja Pilota Turystycznego Samolotowego PPL(A)",
         "text": "Przykładowe pytania egzaminacyjne opublikowane przez Urząd lotnictwa cywilnego do licencji Turystycznej Samolotowej PPL(A).",
@@ -8,6 +9,7 @@
         "logo": "logo-1",
         "subjects": [
             {
+                "id": "2aafd438-f419-463f-a49b-68807f96edc1",
                 "title": "Zasady Lotu",
                 "image": "paperplane.fill",
                 "questions": [
@@ -404,6 +406,7 @@
                 ]
             },
             {
+                "id": "2aafd438-f419-463f-a49b-68807f96edc1",
                 "title": "Meteorologia",
                 "image": "cloud.sun.rain",
                 "questions": [
@@ -800,6 +803,7 @@
                 ]
             },
             {
+                "id" : "5a64803c-8a61-4f02-8b91-8ab578156da3",
                 "title": "Nawigacja",
                 "image": "compass.drawing",
                 "questions": [
@@ -1196,6 +1200,7 @@
                 ]
             },
             {
+                "id" : "72794041-52af-4ebb-972f-d419064386b9",
                 "title": "Ogólna Wiedza o Statku Powietrznym",
                 "image": "airplane",
                 "questions": [
@@ -1592,6 +1597,7 @@
                 ]
             },
             {
+                "id": "495598c0-bb49-45d8-89fa-3cce571cca36",
                 "title": "Osiągi i Planowanie Lotu",
                 "image": "airplane.departure",
                 "questions": [
@@ -1988,6 +1994,7 @@
                 ]
             },
             {
+                "id" : "395d53d0-0f43-4b29-a221-706e1cc473b5",
                 "title": "Prawo Lotnicze",
                 "image": "checkmark.gobackward",
                 "questions": [
@@ -2384,6 +2391,7 @@
                 ]
             },
             {
+                "id" : "0eda5744-6a81-4cb3-985f-a0dcfc2c53f3",
                 "title": "Procedury Operacyjne",
                 "image": "fuelpump.fill",
                 "questions": [
@@ -2780,6 +2788,7 @@
                 ]
             },
             {
+                "id" : "c4111ed9-f6ab-4daf-b3b1-dcb2b5a419ba",
                 "title": "Człowiek: Możliwości i Ograniczenia",
                 "image": "figure.walk.motion.trianglebadge.exclamationmark",
                 "questions": [

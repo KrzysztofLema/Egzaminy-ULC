@@ -1,6 +1,7 @@
 import Foundation
 
 public struct ExamDto: Codable {
+    public var id: String
     public var title: String
     public var subtitle: String
     public var text: String
@@ -10,6 +11,7 @@ public struct ExamDto: Codable {
     public var subjects: [SubjectDto]
 
     enum CodingKeys: CodingKey {
+        case id
         case title
         case subtitle
         case text

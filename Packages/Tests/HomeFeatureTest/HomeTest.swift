@@ -11,6 +11,7 @@ final class HomeTests: XCTestCase {
             $0.examsClient = .testValue
             $0.userSettings = .testValue
             $0.diagnosticClient = .testValue
+            $0.coreData = .testValue
         }
 
         XCTAssertTrue(store.state.selectedTab == .exams)

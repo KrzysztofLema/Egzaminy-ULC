@@ -18,7 +18,7 @@ public struct Quiz {
         public init(id: UUID, subject: Subject) {
             self.id = id
             self.subject = subject
-            questions = IdentifiedArrayOf(uniqueElements: subject.questions)
+            questions = IdentifiedArrayOf(uniqueElements: subject.questions ?? [])
         }
     }
 
@@ -38,7 +38,7 @@ public struct Quiz {
 
         @CasePathable
         public enum Delegate: Equatable {
-            case updateCurrentProgress(UUID, Int)
+            case updateCurrentProgress(String, Int)
         }
 
         case delegate(Delegate)
@@ -56,26 +56,26 @@ public struct Quiz {
         Reduce { state, action in
             switch action {
             case .alert(.presented(.confirmCorrect)):
-                let lastIndex = state.subject.questions.count - 1
-                guard state.subject.currentProgress < lastIndex else {
+                let lastIndex = state.subject.questions?.count ?? 0 - 1
+                guard let currentProgress = state.subject.currentProgress, currentProgress < lastIndex else {
                     state.subject.currentProgress = state.questions.count
-                    return .run { send in
+                    return .run { _ in
                         await dismiss()
                     }
                 }
-                
-                state.subject.currentProgress += 1
-                state.currentQuestion = state.questions[state.subject.currentProgress]
-        
+
+                state.subject.currentProgress! += 1
+                state.currentQuestion = state.questions[state.subject.currentProgress!]
+
                 state.selectedAnswer = nil
 
-                let answers = state.currentQuestion?.answers.map {
+                let answers = state.currentQuestion?.answers?.map {
                     AnswerFeature.State(
                         id: uuid(),
                         answer: $0
                     )
                 }
-                
+
                 state.answers.removeAll()
                 state.answers.append(contentsOf: answers ?? [])
 
@@ -107,16 +107,23 @@ public struct Quiz {
             case .selectedAnswer:
                 return .none
             case .view(.onViewLoad):
-            
-                state.currentQuestion = state.questions[state.subject.currentProgress]
-                
-                let answers = state.questions[state.subject.currentProgress].answers.map {
+                guard let currentProgress = state.subject.currentProgress else {
+                    return .none
+                }
+
+                state.currentQuestion = state.questions[currentProgress]
+
+                let answers = state.questions[currentProgress].answers?.map {
                     AnswerFeature.State(
                         id: uuid(),
                         answer: $0
                     )
                 }
-                state.answers.append(contentsOf: answers)
+                
+                if let answers = answers {
+                    state.answers.append(contentsOf: answers)
+                }
+                
                 return .none
             case .view(.nextQuestionButtonTapped):
                 return .run { send in
@@ -136,7 +143,10 @@ public struct Quiz {
         .ifLet(\.$alert, action: \.alert)
         .onChange(of: \.subject.currentProgress) { _, newValue in
             Reduce { state, _ in
-                .send(.delegate(.updateCurrentProgress(state.subject.id, newValue)))
+                guard let subjectID = state.subject.id, let newValue = newValue else {
+                    return .none
+                }
+                return .send(.delegate(.updateCurrentProgress(subjectID, newValue)))
             }
         }
     }

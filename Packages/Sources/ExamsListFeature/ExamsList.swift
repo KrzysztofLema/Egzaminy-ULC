@@ -1,6 +1,6 @@
 import ComposableArchitecture
+import CoreDataClient
 import ExamDetailFeature
-import ExamsClient
 import Foundation
 import SharedModels
 
@@ -14,11 +14,15 @@ public struct ExamsList {
         public init(path: StackState<Path.State> = StackState<Path.State>()) {
             self.path = path
 
-            @Dependency(\.examsClient) var examsClient
+            @Dependency(\.coreData) var coreData
 
             do {
-                exams = try IdentifiedArrayOf(uniqueElements: examsClient.exams())
+                try coreData.saveExams()
+
+                let exams = try coreData.fetchAllExams()
+                self.exams = IdentifiedArrayOf(uniqueElements: exams)
             } catch {
+                // TODO: Error Handling
                 exams = []
             }
         }
