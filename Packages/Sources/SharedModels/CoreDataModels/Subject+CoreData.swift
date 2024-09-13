@@ -13,22 +13,22 @@ extension Subject: CoreDataPersistable {
         ]
     }
 
-    func toManagedObject(context: NSManagedObjectContext) -> ManagedType {
+    public func toManagedObject(context: NSManagedObjectContext) -> ManagedType {
         let persistedValue = SubjectEntity(context: context)
         persistedValue.id = id
         persistedValue.image = image
         persistedValue.title = title
         persistedValue.timestamp = Date()
         persistedValue.currentProgress = Int64(currentProgress ?? 0)
-        persistedValue.addToQuestions(NSSet(array: questions?.map { question -> QuestionEntity in
+        persistedValue.addToQuestions(NSSet(array: questions?.enumerated().map { index, question -> QuestionEntity in
             let mutableQuestion = question
-            return mutableQuestion.toManagedObject(context: context)
+            return mutableQuestion.toManagedObject(context: context, order: index)
         } ?? []))
 
         return persistedValue
     }
 
-    typealias ManagedType = SubjectEntity
+    public typealias ManagedType = SubjectEntity
 
     public init(managedObject: SubjectEntity?) {
         guard let managedObject else { return }

@@ -30,7 +30,9 @@ extension Subject {
         self.id = id.uuidString
         title = dto.title
         image = dto.image
-        questions = dto.questions.map { Question(dto: $0) }
+        questions = dto.questions.enumerated().map { index, questionDTO in
+            Question(order: index, dto: questionDTO)
+        }
     }
 }
 

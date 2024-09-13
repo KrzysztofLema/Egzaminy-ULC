@@ -7,9 +7,11 @@ extension QuestionEntity {
     }
 
     @NSManaged public var id: String?
-    @NSManaged public var title: String?
+    @NSManaged public var order: Int16
     @NSManaged public var questionNumber: String?
+    @NSManaged public var title: String?
     @NSManaged public var answer: NSSet?
+    @NSManaged public var subject: SubjectEntity?
 }
 
 // MARK: Generated accessors for answer

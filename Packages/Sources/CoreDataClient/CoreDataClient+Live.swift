@@ -16,9 +16,7 @@ extension CoreDataClient {
                     exam.toManagedObject(context: try storageProvider.context())
                 }
                 try storageProvider.save()
-            } catch {
-                
-            }
+            } catch {}
 
         } fetchAllExams: {
             let fetchRequest: NSFetchRequest<ExamEntity> = ExamEntity.fetchRequest()
@@ -31,9 +29,7 @@ extension CoreDataClient {
                 fetchRequest.sortDescriptors = [sortDescriptor]
 
                 return fetchedExams.map { Exam(managedObject: $0) }
-            } catch {
-                
-            }
+            } catch {}
 
             return []
         } fetchAllSubjects: {
@@ -47,9 +43,47 @@ extension CoreDataClient {
                 fetchRequest.sortDescriptors = [sortDescriptor]
 
                 return fetchedSubjects.map { Subject(managedObject: $0) }
-            } catch {
-                
-            }
+            } catch {}
+
+            return []
+        } fetchQuestion: { questionId in
+            @Dependency(\.storageProvider.context) var context
+
+            let fetchRequest: NSFetchRequest<QuestionEntity> = QuestionEntity.fetchRequest()
+            fetchRequest.fetchLimit = 1
+            fetchRequest.predicate = NSPredicate(format: "order == %i", questionId)
+
+            do {
+                let fetchedQuestion = try context().fetch(fetchRequest)
+                if let question = fetchedQuestion.first {
+                    return Question(managedObject: question)
+                }
+            } catch {}
+            return nil
+
+        } fetchAllAnswers: { questionId in
+            @Dependency(\.storageProvider.context) var context
+
+            do {
+                let questionRequest: NSFetchRequest<QuestionEntity> = QuestionEntity.fetchRequest()
+                questionRequest.predicate = NSPredicate(format: "order == %i", questionId)
+                questionRequest.fetchLimit = 1
+
+                let fetchedQuestions = try context().fetch(questionRequest)
+
+                guard let fetchedQuestion = fetchedQuestions.first else {
+                    return []
+                }
+
+                let answersRequest: NSFetchRequest<AnswerEntity> = AnswerEntity.fetchRequest()
+                let answerPredicate = NSPredicate(format: "question == %@", fetchedQuestion)
+                answersRequest.predicate = answerPredicate
+
+                let fetchedAnswers = try context().fetch(answersRequest)
+
+                return fetchedAnswers.map { Answer(managedObject: $0) }
+
+            } catch {}
 
             return []
         }

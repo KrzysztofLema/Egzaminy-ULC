@@ -29,7 +29,7 @@ extension Answer {
 }
 
 extension Answer {
-    static let mockAnswers: [Answer] = [
+    public static let mockAnswers: [Answer] = [
         Answer(answerID: "a", answerTitle: "Nie, ale tylko na małych kątach natarcia", isCorrect: false),
         Answer(answerID: "b", answerTitle: "Nie", isCorrect: true),
         Answer(answerID: "c", answerTitle: "Tak, ale tylko na dużych kątach natarcia", isCorrect: false),
