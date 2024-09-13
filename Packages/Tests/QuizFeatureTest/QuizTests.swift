@@ -14,7 +14,7 @@ final class QuizTests: XCTestCase {
         } withDependencies: {
             $0.uuid = .incrementing
             $0.dismiss = .init { dismissed.setValue(true) }
-            $0.coreData = .testValue
+            $0.coreData.fetchQuestion = { _ in subjectMock.questions?.first }
         }
 
         await store.send(.view(.onViewLoad)) {

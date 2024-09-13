@@ -4,11 +4,12 @@ import Foundation
 import SharedModels
 
 public struct CoreDataClient: DependencyKey {
-    public var saveExams: @Sendable () throws -> Void
     public var fetchAllExams: @Sendable () throws -> [Exam]
     public var fetchAllSubjects: @Sendable () throws -> [Subject]
     public var fetchQuestion: @Sendable (_ index: Int) throws -> Question?
     public var fetchAllAnswers: @Sendable (_ index: Int) throws -> [Answer]
+    public var saveExams: @Sendable () throws -> Void
+    public var updateSubject: @Sendable (Subject) throws -> Void
 }
 
 extension DependencyValues {
@@ -19,13 +20,14 @@ extension DependencyValues {
 }
 
 extension CoreDataClient: TestDependencyKey {
-    public static var testValue: CoreDataClient = Self {} fetchAllExams: {
+    public static var testValue: CoreDataClient = Self {
         []
     } fetchAllSubjects: {
         []
     } fetchQuestion: { _ in
-        .mock
+        nil
     } fetchAllAnswers: { _ in
         []
+    } saveExams: {} updateSubject: { _ in
     }
 }

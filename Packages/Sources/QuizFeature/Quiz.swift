@@ -59,12 +59,19 @@ public struct Quiz {
                 let lastIndex = state.subject.questions?.count ?? 0 - 1
                 guard let currentProgress = state.subject.currentProgress, currentProgress < lastIndex else {
                     state.subject.currentProgress = state.subject.questions?.count
+                    let subject = state.subject
+                    
                     return .run { _ in
+                        do {
+                            try coreData.updateSubject(subject)
+                        }
+                        
                         await dismiss()
                     }
                 }
 
                 state.subject.currentProgress! += 1
+
                 do {
                     let currentQuestion = try coreData.fetchQuestion(state.subject.currentProgress ?? 0)
                     state.currentQuestion = currentQuestion
@@ -117,7 +124,7 @@ public struct Quiz {
                 }
 
                 do {
-                    let currentQuestion = try coreData.fetchQuestion(state.subject.currentProgress ?? 0)
+                    let currentQuestion = try coreData.fetchQuestion(currentProgress)
                     state.currentQuestion = currentQuestion
                     let answers = try coreData.fetchAllAnswers(state.currentQuestion?.order ?? 0).map {
                         AnswerFeature.State(
@@ -135,7 +142,12 @@ public struct Quiz {
                     await send(.nextQuestion)
                 }
             case .view(.closeQuizButtonTapped):
+                let subject = state.subject
                 return .run { _ in
+                    do {
+                        try coreData.updateSubject(subject)
+                    } catch {}
+
                     await dismiss()
                 }
             case .delegate:
