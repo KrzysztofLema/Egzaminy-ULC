@@ -1,10 +1,3 @@
-//
-//  AppRootFeatureTest.swift
-//
-//
-//  Created by Krzysztof Lema on 13/08/2024.
-//
-
 import XCTest
 
 final class AppRootFeatureTest: XCTestCase {

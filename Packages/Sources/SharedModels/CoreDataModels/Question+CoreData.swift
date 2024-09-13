@@ -5,12 +5,20 @@ extension Question: CoreDataPersistable {
     init() {}
 
     var keyMap: [PartialKeyPath<Question>: String] {
-        [:]
+        [
+            \.id: "id",
+            \.questionNumber: "questionNumber",
+            \.title: "title",
+            \.order: "order",
+            \.answers: "answers",
+        ]
     }
 
     public init(managedObject: QuestionEntity?) {
         guard let managedObject else { return }
+
         id = managedObject.id
+        order = Int(managedObject.order)
         questionNumber = managedObject.questionNumber
         title = managedObject.title
 
@@ -18,9 +26,10 @@ extension Question: CoreDataPersistable {
         self.answers = answers?.map { Answer(managedObject: $0) } ?? []
     }
 
-    func toManagedObject(context: NSManagedObjectContext) -> QuestionEntity {
+    public func toManagedObject(context: NSManagedObjectContext, order: Int) -> QuestionEntity {
         let persistedValue = QuestionEntity(context: context)
         persistedValue.id = id
+        persistedValue.order = Int16(order)
         persistedValue.questionNumber = questionNumber
         persistedValue.title = title
 

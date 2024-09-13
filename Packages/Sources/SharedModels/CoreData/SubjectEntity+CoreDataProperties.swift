@@ -9,9 +9,9 @@ extension SubjectEntity {
     @NSManaged public var currentProgress: Int64
     @NSManaged public var id: String?
     @NSManaged public var image: String?
+    @NSManaged public var timestamp: Date?
     @NSManaged public var title: String?
     @NSManaged public var exam: ExamEntity?
-    @NSManaged public var timestamp: Date?
     @NSManaged public var questions: NSSet?
 }
 

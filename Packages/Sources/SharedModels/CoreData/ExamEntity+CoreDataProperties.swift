@@ -6,14 +6,14 @@ extension ExamEntity {
         NSFetchRequest<ExamEntity>(entityName: "ExamEntity")
     }
 
+    @NSManaged public var background: String?
     @NSManaged public var id: String?
     @NSManaged public var image: String?
-    @NSManaged public var subtitle: String?
-    @NSManaged public var title: String?
-    @NSManaged public var text: String?
-    @NSManaged public var background: String?
     @NSManaged public var logo: String?
+    @NSManaged public var subtitle: String?
+    @NSManaged public var text: String?
     @NSManaged public var timestamp: Date?
+    @NSManaged public var title: String?
     @NSManaged public var subjects: NSSet?
 }
 

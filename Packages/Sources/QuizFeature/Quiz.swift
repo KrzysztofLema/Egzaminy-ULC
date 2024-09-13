@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import CoreDataClient
 import Foundation
 import SharedModels
 
@@ -12,13 +13,11 @@ public struct Quiz {
         var answers: IdentifiedArrayOf<AnswerFeature.State> = []
         var isNextButtonEnabled = false
         var selectedAnswer: AnswerFeature.State?
-        var questions: IdentifiedArrayOf<Question> = []
         var currentQuestion: Question?
 
         public init(id: UUID, subject: Subject) {
             self.id = id
             self.subject = subject
-            questions = IdentifiedArrayOf(uniqueElements: subject.questions ?? [])
         }
     }
 
@@ -51,6 +50,7 @@ public struct Quiz {
 
     @Dependency(\.dismiss) var dismiss
     @Dependency(\.uuid) var uuid
+    @Dependency(\.coreData) var coreData
 
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -58,14 +58,19 @@ public struct Quiz {
             case .alert(.presented(.confirmCorrect)):
                 let lastIndex = state.subject.questions?.count ?? 0 - 1
                 guard let currentProgress = state.subject.currentProgress, currentProgress < lastIndex else {
-                    state.subject.currentProgress = state.questions.count
+                    state.subject.currentProgress = state.subject.questions?.count
                     return .run { _ in
                         await dismiss()
                     }
                 }
 
                 state.subject.currentProgress! += 1
-                state.currentQuestion = state.questions[state.subject.currentProgress!]
+                do {
+                    let currentQuestion = try coreData.fetchQuestion(state.subject.currentProgress ?? 0)
+                    state.currentQuestion = currentQuestion
+                } catch {
+                    return .none
+                }
 
                 state.selectedAnswer = nil
 
@@ -111,19 +116,19 @@ public struct Quiz {
                     return .none
                 }
 
-                state.currentQuestion = state.questions[currentProgress]
+                do {
+                    let currentQuestion = try coreData.fetchQuestion(state.subject.currentProgress ?? 0)
+                    state.currentQuestion = currentQuestion
+                    let answers = try coreData.fetchAllAnswers(state.currentQuestion?.order ?? 0).map {
+                        AnswerFeature.State(
+                            id: uuid(),
+                            answer: $0
+                        )
+                    }
 
-                let answers = state.questions[currentProgress].answers?.map {
-                    AnswerFeature.State(
-                        id: uuid(),
-                        answer: $0
-                    )
-                }
-                
-                if let answers = answers {
                     state.answers.append(contentsOf: answers)
-                }
-                
+                } catch {}
+
                 return .none
             case .view(.nextQuestionButtonTapped):
                 return .run { send in
@@ -143,7 +148,7 @@ public struct Quiz {
         .ifLet(\.$alert, action: \.alert)
         .onChange(of: \.subject.currentProgress) { _, newValue in
             Reduce { state, _ in
-                guard let subjectID = state.subject.id, let newValue = newValue else {
+                guard let subjectID = state.subject.id, let newValue else {
                     return .none
                 }
                 return .send(.delegate(.updateCurrentProgress(subjectID, newValue)))

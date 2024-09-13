@@ -166,6 +166,7 @@ let package = Package(
                 "SharedViews",
                 "SharedModels",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                "CoreDataClient",
             ]
         ),
         .testTarget(
@@ -174,6 +175,7 @@ let package = Package(
                 "QuizFeature",
                 "TestExtensions",
                 "SharedModels",
+                "CoreUI",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),

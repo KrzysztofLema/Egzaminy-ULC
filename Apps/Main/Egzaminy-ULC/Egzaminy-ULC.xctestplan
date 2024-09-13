@@ -28,9 +28,16 @@
     },
     {
       "target" : {
-        "containerPath" : "container:",
+        "containerPath" : "container:..\/..\/Packages",
         "identifier" : "QuizFeatureTest",
         "name" : "QuizFeatureTest"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/..\/Packages",
+        "identifier" : "AppRootFeatureTest",
+        "name" : "AppRootFeatureTest"
       }
     }
   ],
