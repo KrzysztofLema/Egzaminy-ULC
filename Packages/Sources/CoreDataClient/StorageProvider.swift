@@ -12,7 +12,7 @@ struct StorageProvider {
     var container: () throws -> NSPersistentContainer
     var context: () throws -> NSManagedObjectContext
     var backgroundContext: () throws -> NSManagedObjectContext
-    var save: () throws -> Void
+    var save: () -> Void
 }
 
 private let persistentContainer: NSPersistentContainer = {
