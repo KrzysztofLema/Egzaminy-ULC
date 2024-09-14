@@ -84,6 +84,10 @@
             argument = "-skipMacroValidation"
             isEnabled = "YES">
          </CommandLineArgument>
+         <CommandLineArgument
+            argument = "-com.apple.CoreData.ConcurrenyDebug 1"
+            isEnabled = "YES">
+         </CommandLineArgument>
       </CommandLineArguments>
       <EnvironmentVariables>
          <EnvironmentVariable
