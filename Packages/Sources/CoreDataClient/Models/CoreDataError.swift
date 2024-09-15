@@ -1,10 +1,11 @@
 import Foundation
 
-enum CoreDataError: Error {
+public enum CoreDataError: Error, Equatable {
     case saveError(NSError)
     case fetchError(NSError)
     case invalidObject
     case questionNotFound
+    case subjectNotFound
 
     var localizedDescription: String {
         switch self {
@@ -16,6 +17,8 @@ enum CoreDataError: Error {
             return "Invalid object encountered."
         case .questionNotFound:
             return "The question with specific ID was not found"
+        case .subjectNotFound:
+            return "The subject with specific ID was not found"
         }
     }
 }

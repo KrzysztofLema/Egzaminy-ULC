@@ -14,13 +14,13 @@ final class QuizTests: XCTestCase {
         } withDependencies: {
             $0.uuid = .incrementing
             $0.dismiss = .init { dismissed.setValue(true) }
-            $0.coreData.fetchQuestion = { _ in subjectMock.questions?.first }
+            $0.coreData.fetchQuestion = { _, _ in .mock }
         }
 
         await store.send(.view(.onViewLoad)) {
             $0.alert = nil
             $0.isNextButtonEnabled = false
-            $0.currentQuestion = subjectMock.questions?.first
+            $0.currentQuestion = .mock
             $0.answers = .init(
                 uniqueElements: store.state.currentQuestion?.answers?.enumerated().map {
                     AnswerFeature.State(

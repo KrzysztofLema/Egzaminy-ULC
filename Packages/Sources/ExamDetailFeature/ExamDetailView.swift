@@ -47,6 +47,7 @@ public struct ExamDetailView: View {
         .fullScreenCover(store: store.scope(state: \.$destination.presentQuiz, action: \.destination.presentQuiz), content: { store in
             QuizView(store: store)
         })
+        .alert(store: store.scope(state: \.$alert, action: \.alert))
         .enableInjection()
     }
 

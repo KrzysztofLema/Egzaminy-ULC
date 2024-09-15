@@ -39,12 +39,12 @@ extension CoreDataClient {
             } catch let error as NSError {
                 throw CoreDataError.fetchError(error)
             }
-        } fetchQuestion: { questionId in
+        } fetchQuestion: { subjectId, questionOrder in
             @Dependency(\.storageProvider.context) var context
 
             let fetchRequest: NSFetchRequest<QuestionEntity> = QuestionEntity.fetchRequest()
             fetchRequest.fetchLimit = 1
-            fetchRequest.predicate = NSPredicate(format: "order == %i", questionId)
+            fetchRequest.predicate = NSPredicate(format: "order == %i AND subject.id == %@", questionOrder, subjectId ?? "")
 
             do {
                 let fetchedQuestion = try context().fetch(fetchRequest)
@@ -98,7 +98,7 @@ extension CoreDataClient {
             } catch {}
 
             storageProvider.save()
-            
+
         } updateSubject: { subject in
             @Dependency(\.storageProvider) var storageProvider
 

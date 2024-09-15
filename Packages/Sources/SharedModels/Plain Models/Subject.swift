@@ -7,6 +7,15 @@ public struct Subject: Equatable {
     public var currentProgress: Int?
     public var questions: [Question]?
 
+    public var isLastQuestion: Bool {
+        guard let questionsCount = questions?.count, let currentProgress else {
+            return false
+        }
+
+        let lastIndex = questionsCount - 1
+        return currentProgress <= lastIndex
+    }
+
     public init(
         id: UUID? = UUID(),
         title: String?,

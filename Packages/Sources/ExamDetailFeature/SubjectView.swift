@@ -1,4 +1,5 @@
 import ComposableArchitecture
+import CoreDataClient
 import SharedModels
 import SharedViews
 import SwiftUI

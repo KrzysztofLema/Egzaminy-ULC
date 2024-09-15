@@ -21,7 +21,7 @@ public struct Quiz {
         }
     }
 
-    public enum Action: ViewAction, Equatable {
+    public enum Action: ViewAction {
         @CasePathable
         public enum View: Equatable {
             case onViewLoad
@@ -46,6 +46,7 @@ public struct Quiz {
         case selectedAnswer(AnswerFeature.Action)
         case view(View)
         case answers(IdentifiedActionOf<AnswerFeature>)
+        case nextQuestionFetched(Result<Question, Error>)
     }
 
     @Dependency(\.dismiss) var dismiss
@@ -56,29 +57,21 @@ public struct Quiz {
         Reduce { state, action in
             switch action {
             case .alert(.presented(.confirmCorrect)):
-                let lastIndex = state.subject.questions?.count ?? 0 - 1
-                guard let currentProgress = state.subject.currentProgress, currentProgress < lastIndex else {
-                    state.subject.currentProgress = state.subject.questions?.count
-                    let subject = state.subject
-                    
-                    return .run { _ in
-                        do {
-                            try coreData.updateSubject(subject)
-                        }
-                        
-                        await dismiss()
-                    }
+                state.subject.currentProgress = (state.subject.currentProgress ?? 0) + 1
+                return .run { [subjectId = state.subject.id, currentProgress = state.subject.currentProgress] send in
+                    await send(.nextQuestionFetched(
+                        Result { try coreData.fetchQuestion(subjectId, currentProgress ?? 0) }
+                    ))
                 }
-
-                state.subject.currentProgress! += 1
-
-                do {
-                    let currentQuestion = try coreData.fetchQuestion(state.subject.currentProgress ?? 0)
-                    state.currentQuestion = currentQuestion
-                } catch {
-                    return .none
-                }
-
+            case .alert(.presented(.confirmNotCorrect)):
+                return .none
+            case .alert(.dismiss):
+                return .none
+            case .nextQuestion:
+                state.alert = .nextQuestion(isAnswerCorrect: state.selectedAnswer?.answer.isCorrect ?? false)
+                return .none
+            case let .nextQuestionFetched(.success(question)):
+                state.currentQuestion = question
                 state.selectedAnswer = nil
 
                 let answers = state.currentQuestion?.answers?.map {
@@ -92,15 +85,16 @@ public struct Quiz {
                 state.answers.append(contentsOf: answers ?? [])
 
                 state.isNextButtonEnabled = state.selectedAnswer != nil
-
                 return .none
-            case .alert(.presented(.confirmNotCorrect)):
-                return .none
-            case .alert(.dismiss):
-                return .none
-            case .nextQuestion:
-                state.alert = .nextQuestion(isAnswerCorrect: state.selectedAnswer?.answer.isCorrect ?? false)
-                return .none
+                
+            case .nextQuestionFetched(.failure):
+                state.subject.currentProgress = state.subject.questions?.count
+                return .run { [subject = state.subject] _ in
+                    do {
+                        try coreData.updateSubject(subject)
+                    }
+                    await dismiss()
+                }
             case let .answers(answerAction):
                 switch answerAction {
                 case let .element(id: _, action: .delegate(.didSelectionChanged(answer))):
@@ -124,7 +118,7 @@ public struct Quiz {
                 }
 
                 do {
-                    let currentQuestion = try coreData.fetchQuestion(currentProgress)
+                    let currentQuestion = try coreData.fetchQuestion(state.subject.id, currentProgress)
                     state.currentQuestion = currentQuestion
                     let answers = try coreData.fetchAllAnswers(state.currentQuestion?.order ?? 0).map {
                         AnswerFeature.State(
@@ -142,8 +136,7 @@ public struct Quiz {
                     await send(.nextQuestion)
                 }
             case .view(.closeQuizButtonTapped):
-                let subject = state.subject
-                return .run { _ in
+                return .run { [subject = state.subject] _ in
                     do {
                         try coreData.updateSubject(subject)
                     } catch {}
