@@ -9,6 +9,8 @@ public struct ExamDetail {
     @ObservableState
     public struct State: Equatable {
         @Presents var destination: Destination.State?
+        @Presents var alert: AlertState<Action.Alert>?
+
         let exam: Exam
         var subjects: IdentifiedArrayOf<SubjectFeature.State> = []
 
@@ -24,14 +26,21 @@ public struct ExamDetail {
         }
     }
 
-    public enum Action: ViewAction, Equatable {
+    public enum Action: ViewAction {
+        case alert(PresentationAction<Alert>)
         case destination(PresentationAction<Destination.Action>)
-        case view(View)
         case subjects(IdentifiedActionOf<SubjectFeature>)
+        case shouldPresentQuiz(Bool, Subject)
+        case view(View)
 
         @CasePathable
-        public enum View: Equatable {
+        public enum View {
             case presentQuizSubjectButtonTapped(Subject)
+        }
+
+        @CasePathable
+        public enum Alert: Equatable {
+            case resetProgressInSubject(Subject)
         }
     }
 
@@ -42,7 +51,7 @@ public struct ExamDetail {
             case presentQuiz(Quiz.State)
         }
 
-        public enum Action: Equatable {
+        public enum Action {
             case presentQuiz(Quiz.Action)
         }
 
@@ -56,6 +65,7 @@ public struct ExamDetail {
     }
 
     @Dependency(\.uuid) var uuid
+    @Dependency(\.coreData) var coreData
 
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
@@ -69,11 +79,24 @@ public struct ExamDetail {
                     return .none
                 }
             case let .view(.presentQuizSubjectButtonTapped(subject)):
+                return .run { send in
+                    await send(.shouldPresentQuiz(subject.isLastQuestion, subject))
+                }
+
+            case let .shouldPresentQuiz(false, subject):
+                state.alert = .lastQuestionAlert(in: subject)
+                return .none
+            case let .shouldPresentQuiz(true, subject):
                 state.destination = .presentQuiz(Quiz.State(id: uuid(), subject: subject))
                 return .none
             case .subjects:
                 return .none
             case .destination:
+                return .none
+            case let .alert(.presented(.resetProgressInSubject(subject))):
+                // TODO: Reset subject progress
+                return .none
+            case .alert:
                 return .none
             }
         }
@@ -84,7 +107,25 @@ public struct ExamDetail {
         .ifLet(\.$destination, action: \.destination) {
             Destination()
         }
+        .ifLet(\.$alert, action: \.alert)
     }
 
     public init() {}
+}
+
+extension AlertState where Action == ExamDetail.Action.Alert {
+    static func lastQuestionAlert(in subject: Subject) -> Self {
+        AlertState {
+            TextState("To jest ostatnie pytanie w tym temacie. Czy chcesz zacząć od nowa?")
+        } actions: {
+            ButtonState(role: .destructive, action: .resetProgressInSubject(subject)) {
+                TextState("Tak")
+            }
+            ButtonState(role: .cancel) {
+                TextState("Nie")
+            }
+        } message: {
+            TextState("Tego nie da się odwrócić!")
+        }
+    }
 }
