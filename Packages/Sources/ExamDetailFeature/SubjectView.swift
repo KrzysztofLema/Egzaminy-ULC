@@ -37,7 +37,7 @@ public struct SubjectFeature {
 struct SubjectView: View {
     @ObserveInjection private var iO
 
-    @Bindable var store: StoreOf<SubjectFeature>
+    var store: StoreOf<SubjectFeature>
 
     var body: some View {
         HStack {

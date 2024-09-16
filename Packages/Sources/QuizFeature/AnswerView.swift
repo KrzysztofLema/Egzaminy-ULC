@@ -44,7 +44,7 @@ public struct AnswerFeature {
 
 @ViewAction(for: AnswerFeature.self)
 struct AnswerView: View {
-    @Bindable var store: StoreOf<AnswerFeature>
+    var store: StoreOf<AnswerFeature>
 
     var body: some View {
         Text(store.answer.answerTitle ?? "")

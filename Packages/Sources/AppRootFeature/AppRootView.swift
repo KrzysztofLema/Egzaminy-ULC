@@ -4,7 +4,7 @@ import HomeFeature
 import SwiftUI
 
 public struct AppRootView: View {
-    @Bindable var store: StoreOf<AppRoot>
+    var store: StoreOf<AppRoot>
 
     public var body: some View {
         HomeView(store: store.scope(state: \.home, action: \.home))

@@ -3,13 +3,12 @@ import ComposableArchitecture
 import SharedModels
 import XCTest
 
-@MainActor
 final class QuizTests: XCTestCase {
     func testSelectAnswer() async {
         let subjectMock = Subject.mock
         let dismissed = LockIsolated(false)
 
-        let store = TestStore(initialState: Quiz.State(id: UUID(), subject: subjectMock)) {
+        let store = await TestStore(initialState: Quiz.State(id: UUID(), subject: subjectMock)) {
             Quiz()
         } withDependencies: {
             $0.uuid = .incrementing
@@ -21,14 +20,6 @@ final class QuizTests: XCTestCase {
             $0.alert = nil
             $0.isNextButtonEnabled = false
             $0.currentQuestion = .mock
-            $0.answers = .init(
-                uniqueElements: store.state.currentQuestion?.answers?.enumerated().map {
-                    AnswerFeature.State(
-                        id: UUID($0.offset),
-                        answer: $0.element
-                    )
-                } ?? []
-            )
         }
 
         await store.send(.nextQuestion) {
