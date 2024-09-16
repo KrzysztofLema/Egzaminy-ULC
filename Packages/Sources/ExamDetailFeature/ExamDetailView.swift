@@ -9,7 +9,7 @@ import SwiftUI
 public struct ExamDetailView: View {
     @ObserveInjection private var iO
 
-    @Bindable public var store: StoreOf<ExamDetail>
+    public var store: StoreOf<ExamDetail>
 
     public var body: some View {
         ZStack {

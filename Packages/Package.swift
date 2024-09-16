@@ -17,7 +17,7 @@ let package = Package(
         .package(url: "https://github.com/krzysztofzablocki/LifetimeTracker.git", exact: "1.8.2"),
         .package(url: "https://github.com/krzysztofzablocki/AutomaticSettings", exact: "1.1.0"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
-        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.12.1"),
+        .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.0"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.0"),
 
     ],

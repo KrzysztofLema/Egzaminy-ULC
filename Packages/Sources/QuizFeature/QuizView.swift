@@ -8,7 +8,7 @@ import SwiftUI
 public struct QuizView: View {
     @ObserveInjection private var iO
 
-    @Bindable public var store: StoreOf<Quiz>
+    public var store: StoreOf<Quiz>
 
     @State var isBookmarkSelected = false
 

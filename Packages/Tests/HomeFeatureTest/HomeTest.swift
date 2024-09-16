@@ -2,10 +2,9 @@ import ComposableArchitecture
 @testable import HomeFeature
 import TestExtensions
 
-@MainActor
 final class HomeTests: XCTestCase {
     func testBasicsSelectedTab() async {
-        let store = TestStore(initialState: Home.State()) {
+        let store = await TestStore(initialState: Home.State()) {
             Home()
         } withDependencies: {
             $0.examsClient = .testValue
@@ -14,7 +13,9 @@ final class HomeTests: XCTestCase {
             $0.coreData = .testValue
         }
 
-        XCTAssertTrue(store.state.selectedTab == .exams)
+        await MainActor.run {
+            XCTAssertTrue(store.state.selectedTab == .exams)
+        }
 
         await store.send(.onTabSelection(.settings)) {
             $0.selectedTab = .settings
