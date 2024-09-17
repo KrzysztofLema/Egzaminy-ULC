@@ -1,4 +1,3 @@
-import AutomaticSettings
 import ComposableArchitecture
 import ExamDetailFeature
 import ExamsListFeature
@@ -7,8 +6,6 @@ import SettingsFeature
 import SharedModels
 import SharedViews
 import SwiftUI
-
-var stored: [LeakableModel] = []
 
 public struct HomeView: View {
     @Bindable var store: StoreOf<Home>

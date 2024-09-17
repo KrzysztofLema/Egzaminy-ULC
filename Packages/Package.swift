@@ -15,7 +15,6 @@ let package = Package(
         .package(url: "https://github.com/krzysztofzablocki/Inject.git", exact: "1.2.3"),
         .package(url: "https://github.com/krzysztofzablocki/Difference.git", exact: "1.0.2"),
         .package(url: "https://github.com/krzysztofzablocki/LifetimeTracker.git", exact: "1.8.2"),
-        .package(url: "https://github.com/krzysztofzablocki/AutomaticSettings", exact: "1.1.0"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.0"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.0"),
@@ -102,7 +101,6 @@ let package = Package(
                 "ExamsListFeature",
                 "SettingsFeature",
                 .product(name: "LifetimeTracker", package: "LifetimeTracker"),
-                "AutomaticSettings",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
@@ -119,7 +117,6 @@ let package = Package(
             dependencies: [
                 .product(name: "Difference", package: "Difference"),
                 .product(name: "LifetimeTracker", package: "LifetimeTracker"),
-                "AutomaticSettings",
             ]
         ),
         .target(
