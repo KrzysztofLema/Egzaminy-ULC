@@ -15,9 +15,10 @@ public struct Quiz {
         var selectedAnswer: AnswerFeature.State?
         var currentQuestion: Question?
 
-        public init(id: UUID, subject: Subject) {
+        public init(id: UUID, subject: Subject, alert: AlertState<Action.Alert>? = nil) {
             self.id = id
             self.subject = subject
+            self.alert = alert
         }
     }
 
@@ -46,7 +47,7 @@ public struct Quiz {
         case selectedAnswer(AnswerFeature.Action)
         case view(View)
         case answers(IdentifiedActionOf<AnswerFeature>)
-        case nextQuestionFetched(Result<Question, Error>)
+        case updateCurrentQuestion(Result<Question, Error>)
     }
 
     @Dependency(\.dismiss) var dismiss
@@ -59,7 +60,7 @@ public struct Quiz {
             case .alert(.presented(.confirmCorrect)):
                 state.subject.currentProgress = (state.subject.currentProgress ?? 0) + 1
                 return .run { [subjectId = state.subject.id, currentProgress = state.subject.currentProgress] send in
-                    await send(.nextQuestionFetched(
+                    await send(.updateCurrentQuestion(
                         Result { try coreData.fetchQuestion(subjectId, currentProgress ?? 0) }
                     ))
                 }
@@ -70,7 +71,7 @@ public struct Quiz {
             case .nextQuestion:
                 state.alert = .nextQuestion(isAnswerCorrect: state.selectedAnswer?.answer.isCorrect ?? false)
                 return .none
-            case let .nextQuestionFetched(.success(question)):
+            case let .updateCurrentQuestion(.success(question)):
                 state.currentQuestion = question
                 state.selectedAnswer = nil
 
@@ -86,13 +87,16 @@ public struct Quiz {
 
                 state.isNextButtonEnabled = state.selectedAnswer != nil
                 return .none
-                
-            case .nextQuestionFetched(.failure):
+            case .updateCurrentQuestion(.failure(CoreDataError.questionNotFound)):
                 state.subject.currentProgress = state.subject.questions?.count
                 return .run { [subject = state.subject] _ in
                     do {
                         try coreData.updateSubject(subject)
                     }
+                    await dismiss()
+                }
+            case .updateCurrentQuestion(.failure):
+                return .run { send in
                     await dismiss()
                 }
             case let .answers(answerAction):
@@ -113,24 +117,11 @@ public struct Quiz {
             case .selectedAnswer:
                 return .none
             case .view(.onViewLoad):
-                guard let currentProgress = state.subject.currentProgress else {
-                    return .none
+                return .run { [subjectId = state.subject.id, currentProgress = state.subject.currentProgress] send in
+                    await send(.updateCurrentQuestion(
+                        Result { try coreData.fetchQuestion(subjectId, currentProgress ?? 0) }
+                    ))
                 }
-
-                do {
-                    let currentQuestion = try coreData.fetchQuestion(state.subject.id, currentProgress)
-                    state.currentQuestion = currentQuestion
-                    let answers = try coreData.fetchAllAnswers(state.currentQuestion?.order ?? 0).map {
-                        AnswerFeature.State(
-                            id: uuid(),
-                            answer: $0
-                        )
-                    }
-
-                    state.answers.append(contentsOf: answers)
-                } catch {}
-
-                return .none
             case .view(.nextQuestionButtonTapped):
                 return .run { send in
                     await send(.nextQuestion)

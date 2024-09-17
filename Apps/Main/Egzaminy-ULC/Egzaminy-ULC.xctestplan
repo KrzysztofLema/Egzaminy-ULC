@@ -15,8 +15,8 @@
     {
       "target" : {
         "containerPath" : "container:..\/..\/Packages",
-        "identifier" : "HomeFeatureTest",
-        "name" : "HomeFeatureTest"
+        "identifier" : "AppRootFeatureTest",
+        "name" : "AppRootFeatureTest"
       }
     },
     {
@@ -36,8 +36,8 @@
     {
       "target" : {
         "containerPath" : "container:..\/..\/Packages",
-        "identifier" : "AppRootFeatureTest",
-        "name" : "AppRootFeatureTest"
+        "identifier" : "HomeFeatureTest",
+        "name" : "HomeFeatureTest"
       }
     }
   ],

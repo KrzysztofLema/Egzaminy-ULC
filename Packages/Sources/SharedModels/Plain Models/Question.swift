@@ -38,6 +38,7 @@ extension Question {
 
 extension Question {
     public static let mock = Question(
+        id: UUID(),
         order: 0,
         questionNumber: "PL080-0001",
         title: "Czy profile klasyczne są dużo bardziej \"wrażliwe\" na zabrudzenia od profili laminarnych?",
@@ -45,6 +46,7 @@ extension Question {
     )
 
     public static let mock2 = Question(
+        id: UUID(),
         order: 1,
         questionNumber: "PL080-0003",
         title: "Aby zapobiec zjawisku flateru giętno-lotkowemu należy:",
