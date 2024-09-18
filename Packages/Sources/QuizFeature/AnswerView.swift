@@ -4,7 +4,7 @@ import SharedModels
 import SwiftUI
 
 @Reducer
-public struct AnswerFeature {
+public struct AnswerFeature: Equatable {
     @ObservableState
     public struct State: Equatable, Identifiable {
         public let id: UUID

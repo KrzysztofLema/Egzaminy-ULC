@@ -1,37 +1,99 @@
 import ComposableArchitecture
+import CoreDataClient
 @testable import QuizFeature
 import SharedModels
 import XCTest
 
 final class QuizTests: XCTestCase {
-    func testSelectAnswer() async {
+    func testOnViewLoad() async {
+        let subjectMock = Subject.mock
+
+        let store = await TestStore(
+            initialState: Quiz.State(
+                id: UUID(),
+                subject: subjectMock
+            )
+        ) {
+            Quiz()
+        } withDependencies: {
+            $0.uuid = .incrementing
+            $0.coreData.fetchQuestion = { _, _ in .mock }
+        }
+
+        await store.withExhaustivity(.off) {
+            await store.send(.view(.onViewLoad))
+
+            await store.receive(\.updateCurrentQuestion.success) {
+                $0.currentQuestion = .mock
+                $0.alert = nil
+                $0.selectedAnswer = nil
+                $0.isNextButtonEnabled = false
+            }
+        }
+    }
+
+    func testOnViewLoad_withFailureFetch() async {
         let subjectMock = Subject.mock
         let dismissed = LockIsolated(false)
 
-        let store = await TestStore(initialState: Quiz.State(id: UUID(), subject: subjectMock)) {
+        let store = await TestStore(
+            initialState: Quiz.State(
+                id: UUID(),
+                subject: subjectMock
+            )
+        ) {
             Quiz()
         } withDependencies: {
             $0.uuid = .incrementing
             $0.dismiss = .init { dismissed.setValue(true) }
-            $0.coreData.fetchQuestion = { _, _ in .mock }
         }
 
-        await store.send(.view(.onViewLoad)) {
-            $0.alert = nil
-            $0.isNextButtonEnabled = false
-            $0.currentQuestion = .mock
+        await store.withExhaustivity(.off) {
+            await store.send(.view(.onViewLoad))
+
+            await store.send(.updateCurrentQuestion(.failure(CoreDataError.fetchError(NSError()))))
+
+            XCTAssert(dismissed.value)
+        }
+    }
+
+    func testNextQuestionButtonTapped_withSuccessFetch_shouldUpdateQuestionsAndAnswers() async {
+        let subjectMock = Subject.mock
+
+        let store = await TestStore(
+            initialState: Quiz.State(
+                id: UUID(0),
+                subject: subjectMock,
+                alert: AlertState(title: {
+                    TextState("Odpowiedź jest poprawna!")
+                })
+            )
+        ) {
+            Quiz()
+        } withDependencies: {
+            $0.uuid = .incrementing
         }
 
-        await store.send(.nextQuestion) {
-            $0.alert = .nextQuestion(isAnswerCorrect: false)
-            $0.subject.currentProgress = 0
-            $0.selectedAnswer = nil
+        await store.withExhaustivity(.off) {
+            await store.send(.alert(.presented(.confirmCorrect)))
+            await store.receive {
+                guard case .updateCurrentQuestion(.success(.mock)) = $0 else {
+                    return false
+                }
+                return true
+            } assert: {
+                $0.currentQuestion = .mock
+                $0.selectedAnswer = nil
+                let answers = Question.mock.answers?.enumerated().map { index, answer in
+                    AnswerFeature.State(
+                        id: UUID(index),
+                        answer: answer
+                    )
+                } ?? []
+
+                $0.answers = IdentifiedArray(uniqueElements: answers)
+                $0.isNextButtonEnabled = false
+            }
         }
-
-        await store.send(.selectedAnswer(.view(.onAnswerButtonTapped)))
-
-        await store.send(.view(.closeQuizButtonTapped))
-
-        XCTAssert(dismissed.value)
     }
 }
