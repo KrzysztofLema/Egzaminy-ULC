@@ -128,12 +128,13 @@ let package = Package(
         .target(
             name: "SettingsFeature",
             dependencies: [
+                "CoreDataClient",
+                "CoreUI",
+                "DiagnosticClient",
                 "SharedViews",
                 "SharedModels",
                 "UserSettingsClient",
                 "UIApplicationClient",
-                "CoreUI",
-                "DiagnosticClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),

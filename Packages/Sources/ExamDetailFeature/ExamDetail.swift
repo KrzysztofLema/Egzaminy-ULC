@@ -17,25 +17,26 @@ public struct ExamDetail {
         public init(exam: Exam, destination: Destination.State? = nil) {
             self.exam = exam
             self.destination = destination
-            @Dependency(\.coreData) var coreData
-
-            do {
-                let subjects = try coreData.fetchAllSubjects()
-                self.subjects = IdentifiedArrayOf(uniqueElements: subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
-            } catch {}
         }
     }
+
+    @Dependency(\.uuid) var uuid
+    @Dependency(\.coreData) var coreData
 
     public enum Action: ViewAction {
         case alert(PresentationAction<Alert>)
         case destination(PresentationAction<Destination.Action>)
+        case udateSubjectProgress(Result<Subject, Error>)
+        case fetchSubjects(Result<[Subject], Error>)
         case subjects(IdentifiedActionOf<SubjectFeature>)
         case shouldPresentQuiz(Bool, Subject)
+        case resetAllSubjects
         case view(View)
 
         @CasePathable
         public enum View {
             case presentQuizSubjectButtonTapped(Subject)
+            case onViewAppear
         }
 
         @CasePathable
@@ -64,9 +65,6 @@ public struct ExamDetail {
         public init() {}
     }
 
-    @Dependency(\.uuid) var uuid
-    @Dependency(\.coreData) var coreData
-
     public var body: some ReducerOf<Self> {
         Reduce { state, action in
             switch action {
@@ -94,20 +92,49 @@ public struct ExamDetail {
             case .destination:
                 return .none
             case let .alert(.presented(.resetProgressInSubject(subject))):
-                // TODO: Reset subject progress
-                return .none
+                return .run { send in
+                    await send(.udateSubjectProgress(
+                        Result {
+                            try coreData.resetSubjectCurrentProgress(subject.id)
+                        }
+                    ))
+                }
             case .alert:
                 return .none
+            case let .udateSubjectProgress(.success(subject)):
+                if let index = state.subjects.firstIndex(where: { $0.subject.id == subject.id }) {
+                    state.subjects[index].subject.currentProgress = subject.currentProgress
+                }
+                return .none
+            case .udateSubjectProgress(.failure):
+                return .none
+            case .resetAllSubjects:
+                return fetchAllSubjects(state: &state)
+            case let .fetchSubjects(.success(subjects)):
+                state.subjects = IdentifiedArrayOf(uniqueElements: subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
+
+                return .none
+            case .fetchSubjects(.failure):
+                return .none
+            case .view(.onViewAppear):
+                return fetchAllSubjects(state: &state)
             }
         }
         .forEach(\.subjects, action: \.subjects) {
             SubjectFeature()
         }
-
         .ifLet(\.$destination, action: \.destination) {
             Destination()
         }
         .ifLet(\.$alert, action: \.alert)
+    }
+
+    func fetchAllSubjects(state: inout State) -> Effect<Action> {
+        .run { send in
+            await send(.fetchSubjects(Result {
+                try coreData.fetchAllSubjects()
+            }))
+        }
     }
 
     public init() {}

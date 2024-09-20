@@ -31,6 +31,7 @@ public struct ExamsList {
     public enum Action {
         case examDetailButtonTapped(Exam)
         case path(StackAction<Path.State, Path.Action>)
+        case resetAllSubjects
     }
 
     @Reducer(state: .equatable)
@@ -46,6 +47,16 @@ public struct ExamsList {
                 return .none
             case .path:
                 return .none
+            case .resetAllSubjects:
+                guard let examDetailIndex = state.path.firstIndex(where: { $0.is(\.examDetailView) }) else {
+                    return .none
+                }
+
+                let examIndex = state.path.ids[examDetailIndex]
+
+                return .run { send in
+                    await send(.path(.element(id: examIndex, action: .examDetailView(.resetAllSubjects))))
+                }
             }
         }
         .forEach(\.path, action: \.path)

@@ -8,6 +8,8 @@ public struct CoreDataClient: DependencyKey {
     public var fetchAllSubjects: @Sendable () throws -> [Subject]
     public var fetchQuestion: @Sendable (_ subjectID: Subject.ID, _ index: Int) throws -> Question
     public var fetchAllAnswers: @Sendable (_ index: Int) throws -> [Answer]
+    public var resetAllSubjectsCurrentProgress: @Sendable () throws -> Void
+    public var resetSubjectCurrentProgress: @Sendable (_ subjectID: Subject.ID) throws -> Subject
     public var saveExams: @Sendable () -> Void
     public var updateSubject: @Sendable (Subject) throws -> Void
 }
@@ -28,6 +30,9 @@ extension CoreDataClient: TestDependencyKey {
         .mock
     } fetchAllAnswers: { _ in
         []
-    } saveExams: {} updateSubject: { _ in
-    }
+    } resetAllSubjectsCurrentProgress: {}
+        resetSubjectCurrentProgress: { _ in
+            .mock
+        } saveExams: {} updateSubject: { _ in
+        }
 }
