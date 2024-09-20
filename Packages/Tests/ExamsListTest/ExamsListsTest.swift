@@ -12,7 +12,7 @@ final class ExamsListsTest: XCTestCase {
             $0.examsClient.exams = { [] }
         }
 
-        XCTAssertTrue(store.state.exams.count == 0)
+        XCTAssertTrue(store.state.exams.isEmpty)
     }
 
     func testGoToDetailExam() async {

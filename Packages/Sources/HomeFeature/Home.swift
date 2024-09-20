@@ -36,7 +36,7 @@ public struct Home {
             Settings()
         }
 
-        Reduce { state, action in
+        Reduce<State, Action> { state, action in
             switch action {
             case let .onTabSelection(tab):
                 state.selectedTab = tab

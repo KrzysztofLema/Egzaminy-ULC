@@ -66,7 +66,7 @@ public struct ExamDetail {
     }
 
     public var body: some ReducerOf<Self> {
-        Reduce { state, action in
+        Reduce<State, Action> { state, action in
             switch action {
             case let .destination(.presented(.presentQuiz(.delegate(action)))):
                 switch action {
@@ -112,7 +112,6 @@ public struct ExamDetail {
                 return fetchAllSubjects(state: &state)
             case let .fetchSubjects(.success(subjects)):
                 state.subjects = IdentifiedArrayOf(uniqueElements: subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
-
                 return .none
             case .fetchSubjects(.failure):
                 return .none

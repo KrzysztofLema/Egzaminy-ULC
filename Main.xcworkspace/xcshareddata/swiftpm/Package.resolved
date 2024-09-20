@@ -138,10 +138,19 @@
     {
       "identity" : "swift-syntax",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/swiftlang/swift-syntax",
+      "location" : "https://github.com/swiftlang/swift-syntax.git",
       "state" : {
         "revision" : "515f79b522918f83483068d99c68daeb5116342d",
-        "version" : "600.0.0-prerelease-2024-08-20"
+        "version" : "600.0.0-prerelease-2024-08-14"
+      }
+    },
+    {
+      "identity" : "swiftlintplugins",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SimplyDanny/SwiftLintPlugins",
+      "state" : {
+        "revision" : "7c80ce6f142164b0201871e580b021d1b2c69804",
+        "version" : "0.57.0"
       }
     },
     {
