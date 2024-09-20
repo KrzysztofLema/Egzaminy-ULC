@@ -22,7 +22,7 @@ public struct SubjectFeature {
     }
 
     public var body: some ReducerOf<Self> {
-        Reduce { state, action in
+        Reduce<State, Action> { state, action in
             switch action {
             case let .updateProgress(currentProgress):
                 state.subject.currentProgress = currentProgress

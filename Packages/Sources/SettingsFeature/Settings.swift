@@ -43,14 +43,14 @@ public struct Settings {
         CombineReducers {
             BindingReducer()
                 .onChange(of: \.userSettings.colorScheme) { _, colorScheme in
-                    Reduce { _, _ in
+                    Reduce<State, Action> { _, _ in
                         .run { _ in
                             await applicationClient.setUserInterfaceStyle(colorScheme.userInterfaceStyle)
                         }
                     }
                 }
 
-            Reduce { state, action in
+            Reduce<State, Action> { state, action in
                 switch action {
                 case .binding:
                     return .none
@@ -73,7 +73,7 @@ public struct Settings {
             }
         }
         .onChange(of: \.userSettings) { _, userSettings in
-            Reduce { _, _ in
+            Reduce<State, Action> { _, _ in
                 .run { _ in
                     self.userSettings.set(userSettings)
                 }

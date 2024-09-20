@@ -55,7 +55,7 @@ public struct Quiz {
     @Dependency(\.coreData) var coreData
 
     public var body: some ReducerOf<Self> {
-        Reduce { state, action in
+        Reduce<State, Action> { state, action in
             switch action {
             case .alert(.presented(.confirmCorrect)):
                 state.subject.currentProgress = (state.subject.currentProgress ?? 0) + 1
@@ -96,7 +96,7 @@ public struct Quiz {
                     await dismiss()
                 }
             case .updateCurrentQuestion(.failure):
-                return .run { send in
+                return .run { _ in
                     await dismiss()
                 }
             case let .answers(answerAction):
@@ -143,7 +143,7 @@ public struct Quiz {
         }
         .ifLet(\.$alert, action: \.alert)
         .onChange(of: \.subject.currentProgress) { _, newValue in
-            Reduce { state, _ in
+            Reduce<State, Action> { state, _ in
                 guard let subjectID = state.subject.id, let newValue else {
                     return .none
                 }

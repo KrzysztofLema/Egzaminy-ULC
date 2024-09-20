@@ -18,7 +18,8 @@ extension CoreDataPersistable where ManagedType: NSManagedObject {
     init(managedObject: ManagedType?) {
         self.init()
         guard let managedObject else { return }
-        for attribute in managedObject.entity.attributesByName { 
+
+        for attribute in managedObject.entity.attributesByName {
             if let keyP = keyMap.first(where: { $0.value == attribute.key })?.key {
                 let value = managedObject.value(forKey: attribute.key)
                 storeValue(value, toKeyPath: keyP)

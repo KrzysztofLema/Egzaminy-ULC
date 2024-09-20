@@ -18,7 +18,7 @@ public struct AppDelegateReducer {
     public init() {}
 
     public var body: some ReducerOf<Self> {
-        Reduce { _, action in
+        Reduce<State, Action> { _, action in
             switch action {
             case .didFinishLaunching:
                 return .run { _ in

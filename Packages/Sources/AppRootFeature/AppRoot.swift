@@ -39,7 +39,7 @@ public struct AppRoot {
             Home()
         }
 
-        Reduce { _, action in
+        Reduce<State, Action> { _, action in
             switch action {
             case .home:
                 return .none

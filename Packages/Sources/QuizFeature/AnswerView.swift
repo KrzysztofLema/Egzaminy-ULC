@@ -31,7 +31,7 @@ public struct AnswerFeature: Equatable {
     }
 
     public var body: some Reducer<State, Action> {
-        Reduce { state, action in
+        Reduce<State, Action> { state, action in
             switch action {
             case .view(.onAnswerButtonTapped):
                 return .send(.delegate(.didSelectionChanged(state)))

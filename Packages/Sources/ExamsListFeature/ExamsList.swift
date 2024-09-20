@@ -40,7 +40,7 @@ public struct ExamsList {
     }
 
     public var body: some ReducerOf<Self> {
-        Reduce { state, action in
+        Reduce<State, Action> { state, action in
             switch action {
             case let .examDetailButtonTapped(exam):
                 state.path.append(.examDetailView(.init(exam: exam)))

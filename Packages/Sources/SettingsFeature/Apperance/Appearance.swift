@@ -4,7 +4,7 @@ import UserSettingsClient
 
 struct Appearance: View {
     @ObserveInjection private var iO
-    @State private var selection: Int? = nil
+    @State private var selection: Int?
     @Binding var colorScheme: UserSettings.ColorScheme
 
     var body: some View {
@@ -18,7 +18,11 @@ struct Appearance: View {
                         .font(.callout.bold())
 
                     Text(
-                        "Wybierając kolor aplikacji system, kolorystyka będzie zgodna z ustawieniami Twojego telefonu. Istnieje też możliwość wyboru wyglądu \"Jasnego\" bądź \"Ciemnego\"."
+                        """
+                        Wybierając kolor aplikacji system, kolorystyka będzie
+                        zgodna z ustawieniami Twojego telefonu. Istnieje
+                        też możliwość wyboru wyglądu \"Jasnego\" bądź \"Ciemnego\".
+                        """
                     )
                 }
 

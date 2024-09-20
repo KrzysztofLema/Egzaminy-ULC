@@ -18,7 +18,7 @@ let package = Package(
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.0"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.0"),
-
+        .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", exact: "0.57.0"),
     ],
     targets: [
         .target(
@@ -138,7 +138,6 @@ let package = Package(
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
-
         .target(
             name: "UserSettingsClient",
             dependencies: [
@@ -179,6 +178,13 @@ let package = Package(
         ),
     ]
 )
+
+package.targets = package.targets.map { target in
+    var plugins = target.plugins ?? []
+    plugins.append(.plugin(name: "SwiftLintBuildToolPlugin", package: "SwiftLintPlugins"))
+    target.plugins = plugins
+    return target
+}
 
 extension Product {
     static func singleTargetLibrary(_ name: String) -> Product {
