@@ -60,7 +60,7 @@ public struct QuizView: View {
         }
         .frame(maxHeight: .infinity, alignment: .top)
         .onAppear(perform: {
-            send(.onViewLoad)
+            send(.onViewAppear)
         })
         .alert(store: store.scope(state: \.$alert, action: \.alert))
         .enableInjection()

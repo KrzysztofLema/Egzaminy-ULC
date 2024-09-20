@@ -21,7 +21,7 @@ final class QuizTests: XCTestCase {
         }
 
         await store.withExhaustivity(.off) {
-            await store.send(.view(.onViewLoad))
+            await store.send(.view(.onViewAppear))
 
             await store.receive(\.updateCurrentQuestion.success) {
                 $0.currentQuestion = .mock
@@ -49,7 +49,7 @@ final class QuizTests: XCTestCase {
         }
 
         await store.withExhaustivity(.off) {
-            await store.send(.view(.onViewLoad))
+            await store.send(.view(.onViewAppear))
 
             await store.send(.updateCurrentQuestion(.failure(CoreDataError.fetchError(NSError()))))
 

@@ -5,8 +5,6 @@ import SharedViews
 import SwiftUI
 
 public struct SettingsView: View {
-    @ObserveInjection private var iO
-
     @Bindable var store: StoreOf<Settings>
 
     var subscreen: Subscreen?
@@ -19,14 +17,32 @@ public struct SettingsView: View {
                         ForEach(Array(Subscreen.allCases)) { subscreen in
                             NavigationLink(subscreen.displayString, value: subscreen)
                         }
+
+                        Button {
+                            store.send(.resetAllSubjectsProgressButtonTapped)
+                        } label: {
+                            Label("Zacznij od nowa", systemImage: "exclamationmark.arrow.circlepath")
+                                .foregroundStyle(.white)
+                                .frame(maxWidth: .infinity)
+                                .padding()
+                                .background {
+                                    RoundedRectangle(cornerRadius: 10, style: .continuous)
+                                }
+                        }
+                        .padding()
+                        .tint(.red)
+
+                        Divider()
+
                         HStack {
                             Text("\(store.appVersion.title)")
                                 .font(.caption)
                             Text("\(store.appVersion.value)")
                                 .font(.caption.bold())
                         }
-                        .frame(maxWidth: .infinity, alignment: .bottom)
+                        .frame(maxWidth: .infinity, alignment: .center)
                     }
+                    .listRowSeparator(.hidden)
                     .listRowBackground(Color.primaryBackground)
                 }
                 .scrollContentBackground(.hidden)
@@ -38,8 +54,8 @@ public struct SettingsView: View {
                     Appearance(colorScheme: $store.userSettings.colorScheme)
                 }
             }
+            .alert(store: store.scope(state: \.$alert, action: \.alert))
         }
-        .enableInjection()
     }
 
     public init(store: StoreOf<Settings>) {
@@ -58,4 +74,10 @@ enum Subscreen: String, Identifiable, CaseIterable {
             "Appearance"
         }
     }
+}
+
+#Preview {
+    SettingsView(store: Store(initialState: Settings.State(), reducer: {
+        Settings()
+    }))
 }

@@ -43,6 +43,9 @@ public struct ExamDetailView: View {
                 }
             }
         }
+        .onAppear(perform: {
+            send(.onViewAppear)
+        })
         .tabViewStyle(.automatic)
         .fullScreenCover(store: store.scope(state: \.$destination.presentQuiz, action: \.destination.presentQuiz), content: { store in
             QuizView(store: store)

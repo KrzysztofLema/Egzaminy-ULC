@@ -43,9 +43,17 @@ public struct Home {
                 return .none
             case .examsList:
                 return .none
+            case .settings(.resetAllSubjects):
+                return examListReducer.reduce(into: &state, action: .examsList(.resetAllSubjects))
             case .settings:
                 return .none
             }
+        }
+    }
+
+    var examListReducer: some ReducerOf<Self> {
+        Scope(state: \.examsList, action: \.examsList) {
+            ExamsList()
         }
     }
 

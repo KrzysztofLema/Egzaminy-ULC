@@ -25,7 +25,7 @@ public struct Quiz {
     public enum Action: ViewAction {
         @CasePathable
         public enum View: Equatable {
-            case onViewLoad
+            case onViewAppear
             case nextQuestionButtonTapped
             case closeQuizButtonTapped
         }
@@ -116,7 +116,7 @@ public struct Quiz {
                 }
             case .selectedAnswer:
                 return .none
-            case .view(.onViewLoad):
+            case .view(.onViewAppear):
                 return .run { [subjectId = state.subject.id, currentProgress = state.subject.currentProgress] send in
                     await send(.updateCurrentQuestion(
                         Result { try coreData.fetchQuestion(subjectId, currentProgress ?? 0) }
