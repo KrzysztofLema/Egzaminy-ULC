@@ -18,19 +18,21 @@ public struct HomeView: View {
 
     public var body: some View {
         TabView(selection: $store.selectedTab.sending(\.onTabSelection)) {
-            ExamsListView(store: store.scope(state: \.examsList, action: \.examsList))
-                .tabItem {
-                    Label("Home", systemImage: "house")
-                }
-                .tag(Home.Tab.exams)
+            Group {
+                ExamsListView(store: store.scope(state: \.examsList, action: \.examsList))
+                    .tabItem {
+                        Label("Home", systemImage: "house")
+                    }
+                    .tag(Home.Tab.exams)
 
-            SettingsView(store: store.scope(state: \.settings, action: \.settings))
-                .tabItem {
-                    Label("Settings", systemImage: "gear")
-                }
-                .tag(Home.Tab.settings)
+                SettingsView(store: store.scope(state: \.settings, action: \.settings))
+                    .tabItem {
+                        Label("Settings", systemImage: "gear")
+                    }
+                    .tag(Home.Tab.settings)
+            }
+            .toolbarColorScheme(colorScheme, for: .tabBar)
         }
-
         .enableInjection()
     }
 }
