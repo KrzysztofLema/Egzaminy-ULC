@@ -38,7 +38,6 @@ public struct AppearanceFeature {
 
 @ViewAction(for: AppearanceFeature.self)
 struct Appearance: View {
-    @ObserveInjection private var iO
     var store: StoreOf<AppearanceFeature>
 
     var body: some View {
@@ -60,22 +59,16 @@ struct Appearance: View {
                     )
                 }
 
-                HStack(spacing: 25) {
+                HStack {
                     ForEach(Array([UserSettings.ColorScheme.light, .dark, .system])) { colorScheme in
                         Button {
                             send(.colorSchemeButtonTapped(colorScheme))
                         } label: {
                             VStack {
-                                if colorScheme != .system {
-                                    Color(.lightGray)
-                                        .mask(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                                } else {
-                                    HStack(spacing: 0) {
-                                        Color.gray
-                                        Color.black
-                                    }
+                                colorScheme.image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
                                     .mask(RoundedRectangle(cornerRadius: 15, style: .continuous))
-                                }
 
                                 Text(colorScheme.title)
                             }
@@ -89,12 +82,11 @@ struct Appearance: View {
                         }
                     }
                 }
-                .frame(height: 160)
+                .frame(maxWidth: .infinity)
             }
             .frame(maxHeight: .infinity, alignment: .top)
             .padding()
         }
-        .enableInjection()
     }
 }
 
@@ -107,6 +99,17 @@ extension UserSettings.ColorScheme {
             return "Light"
         case .system:
             return "System"
+        }
+    }
+
+    fileprivate var image: Image {
+        switch self {
+        case .dark:
+            return Image("DarkMode")
+        case .light:
+            return Image("LightMode")
+        case .system:
+            return Image("SystemMode")
         }
     }
 }
