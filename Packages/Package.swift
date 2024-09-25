@@ -141,7 +141,7 @@ let package = Package(
         .target(
             name: "UserSettingsClient",
             dependencies: [
-                .product(name: "Dependencies", package: "swift-dependencies"),
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
         .target(

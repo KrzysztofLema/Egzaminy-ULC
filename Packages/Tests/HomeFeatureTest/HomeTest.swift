@@ -8,7 +8,6 @@ final class HomeTests: XCTestCase {
             Home()
         } withDependencies: {
             $0.examsClient = .testValue
-            $0.userSettings = .testValue
             $0.diagnosticClient = .testValue
             $0.coreData = .testValue
         }

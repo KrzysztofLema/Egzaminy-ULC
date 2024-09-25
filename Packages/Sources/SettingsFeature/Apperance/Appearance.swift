@@ -1,11 +1,45 @@
+import ComposableArchitecture
 import Inject
 import SwiftUI
+import UIApplicationClient
 import UserSettingsClient
 
+@Reducer
+public struct AppearanceFeature {
+    @ObservableState
+    public struct State: Equatable {
+        @Shared(.userSettings) var userSettings
+    }
+
+    public enum Action: ViewAction {
+        @CasePathable
+        public enum View: Equatable {
+            case colorSchemeButtonTapped(UserSettings.ColorScheme)
+        }
+
+        case view(View)
+    }
+
+    @Dependency(\.applicationClient) var applicationClient
+
+    public var body: some ReducerOf<Self> {
+        Reduce<State, Action> { state, action in
+            switch action {
+            case let .view(.colorSchemeButtonTapped(colorScheme)):
+                state.userSettings.colorScheme = colorScheme
+
+                return .run { _ in
+                    await applicationClient.setUserInterfaceStyle(colorScheme.userInterfaceStyle)
+                }
+            }
+        }
+    }
+}
+
+@ViewAction(for: AppearanceFeature.self)
 struct Appearance: View {
     @ObserveInjection private var iO
-    @State private var selection: Int?
-    @Binding var colorScheme: UserSettings.ColorScheme
+    var store: StoreOf<AppearanceFeature>
 
     var body: some View {
         ZStack {
@@ -29,7 +63,7 @@ struct Appearance: View {
                 HStack(spacing: 25) {
                     ForEach(Array([UserSettings.ColorScheme.light, .dark, .system])) { colorScheme in
                         Button {
-                            self.colorScheme = colorScheme
+                            send(.colorSchemeButtonTapped(colorScheme))
                         } label: {
                             VStack {
                                 if colorScheme != .system {
@@ -47,7 +81,7 @@ struct Appearance: View {
                             }
                             .padding(5)
                             .overlay {
-                                if colorScheme == self.colorScheme {
+                                if store.userSettings.colorScheme == colorScheme {
                                     RoundedRectangle(cornerRadius: 15, style: .continuous)
                                         .stroke(.blue, lineWidth: 3)
                                 }

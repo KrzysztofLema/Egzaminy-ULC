@@ -12,7 +12,6 @@ public struct AppDelegateReducer {
         case didFinishLaunching
     }
 
-    @Dependency(\.userSettings) var userSettings
     @Dependency(\.applicationClient.setUserInterfaceStyle) var setUserInterfaceStyle
 
     public init() {}
@@ -24,6 +23,7 @@ public struct AppDelegateReducer {
                 return .run { _ in
                     await withThrowingTaskGroup(of: Void.self) { group in
                         group.addTask {
+                            @Shared(.userSettings) var userSettings
                             await setUserInterfaceStyle(userSettings.colorScheme.userInterfaceStyle)
                         }
                     }
