@@ -8,7 +8,6 @@ extension Subject: CoreDataPersistable {
         [
             \.image: "image",
             \.title: "title",
-            \.currentProgress: "currentProgress",
             \.questions: "questions",
         ]
     }
@@ -19,7 +18,6 @@ extension Subject: CoreDataPersistable {
         persistedValue.image = image
         persistedValue.title = title
         persistedValue.timestamp = Date()
-        persistedValue.currentProgress = Int64(currentProgress ?? 0)
         persistedValue.addToQuestions(NSSet(array: questions?.enumerated().map { index, question -> QuestionEntity in
             let mutableQuestion = question
             return mutableQuestion.toManagedObject(context: context, order: index)
@@ -35,7 +33,6 @@ extension Subject: CoreDataPersistable {
         id = managedObject.id
         image = managedObject.image
         title = managedObject.title
-        currentProgress = Int(managedObject.currentProgress)
 
         let questions = managedObject.questions?.allObjects as? [QuestionEntity]
 

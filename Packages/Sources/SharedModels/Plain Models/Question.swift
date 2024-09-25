@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Question: Identifiable, Equatable {
+public struct Question: Identifiable, Equatable, Hashable {
     public var id: String?
     public var order: Int?
     public var questionNumber: String?

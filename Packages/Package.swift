@@ -58,6 +58,13 @@ let package = Package(
             ]
         ),
         .target(
+            name: "CurrentQuizClient",
+            dependencies: [
+                "SharedModels",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
+        .target(
             name: "ExamDetailFeature",
             dependencies: [
                 "SharedViews",
@@ -130,6 +137,7 @@ let package = Package(
             dependencies: [
                 "CoreDataClient",
                 "CoreUI",
+                "CurrentQuizClient",
                 "DiagnosticClient",
                 "SharedViews",
                 "SharedModels",
@@ -160,10 +168,11 @@ let package = Package(
         .target(
             name: "QuizFeature",
             dependencies: [
+                "CoreDataClient",
+                "CurrentQuizClient",
                 "SharedViews",
                 "SharedModels",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-                "CoreDataClient",
             ]
         ),
         .testTarget(

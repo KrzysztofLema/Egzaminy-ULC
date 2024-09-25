@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import CoreDataClient
+import CurrentQuizClient
 import Foundation
 import SharedModels
 
@@ -14,6 +15,7 @@ public struct Quiz {
         var isNextButtonEnabled = false
         var selectedAnswer: AnswerFeature.State?
         var currentQuestion: Question?
+        @Shared(.currentQuizState) public var currentQuizState
 
         public init(id: UUID, subject: Subject, alert: AlertState<Action.Alert>? = nil) {
             self.id = id
@@ -36,12 +38,6 @@ public struct Quiz {
             case confirmNotCorrect
         }
 
-        @CasePathable
-        public enum Delegate: Equatable {
-            case updateCurrentProgress(String, Int)
-        }
-
-        case delegate(Delegate)
         case alert(PresentationAction<Alert>)
         case nextQuestion
         case selectedAnswer(AnswerFeature.Action)
@@ -58,10 +54,10 @@ public struct Quiz {
         Reduce<State, Action> { state, action in
             switch action {
             case .alert(.presented(.confirmCorrect)):
-                state.subject.currentProgress = (state.subject.currentProgress ?? 0) + 1
-                return .run { [subjectId = state.subject.id, currentProgress = state.subject.currentProgress] send in
+                state.currentQuizState.currentProgress[state.subject.id, default: 0] += 1
+                return .run { [subjectId = state.subject.id, currentProgress = state.currentQuizState.currentProgress] send in
                     await send(.updateCurrentQuestion(
-                        Result { try coreData.fetchQuestion(subjectId, currentProgress ?? 0) }
+                        Result { try coreData.fetchQuestion(subjectId, currentProgress[subjectId] ?? 0) }
                     ))
                 }
             case .alert(.presented(.confirmNotCorrect)):
@@ -88,11 +84,8 @@ public struct Quiz {
                 state.isNextButtonEnabled = state.selectedAnswer != nil
                 return .none
             case .updateCurrentQuestion(.failure(CoreDataError.questionNotFound)):
-                state.subject.currentProgress = state.subject.questions?.count
-                return .run { [subject = state.subject] _ in
-                    do {
-                        try coreData.updateSubject(subject)
-                    }
+                state.currentQuizState.currentProgress[state.subject.id] = state.subject.questions?.count ?? 0
+                return .run { _ in
                     await dismiss()
                 }
             case .updateCurrentQuestion(.failure):
@@ -117,9 +110,9 @@ public struct Quiz {
             case .selectedAnswer:
                 return .none
             case .view(.onViewAppear):
-                return .run { [subjectId = state.subject.id, currentProgress = state.subject.currentProgress] send in
+                return .run { [subjectId = state.subject.id, currentProgress = state.currentQuizState.currentProgress] send in
                     await send(.updateCurrentQuestion(
-                        Result { try coreData.fetchQuestion(subjectId, currentProgress ?? 0) }
+                        Result { try coreData.fetchQuestion(subjectId, currentProgress[subjectId] ?? 0) }
                     ))
                 }
             case .view(.nextQuestionButtonTapped):
@@ -127,29 +120,15 @@ public struct Quiz {
                     await send(.nextQuestion)
                 }
             case .view(.closeQuizButtonTapped):
-                return .run { [subject = state.subject] _ in
-                    do {
-                        try coreData.updateSubject(subject)
-                    } catch {}
-
+                return .run { _ in
                     await dismiss()
                 }
-            case .delegate:
-                return .none
             }
         }
         .forEach(\.answers, action: \.answers) {
             AnswerFeature()
         }
         .ifLet(\.$alert, action: \.alert)
-        .onChange(of: \.subject.currentProgress) { _, newValue in
-            Reduce<State, Action> { state, _ in
-                guard let subjectID = state.subject.id, let newValue else {
-                    return .none
-                }
-                return .send(.delegate(.updateCurrentProgress(subjectID, newValue)))
-            }
-        }
     }
 
     public init() {}

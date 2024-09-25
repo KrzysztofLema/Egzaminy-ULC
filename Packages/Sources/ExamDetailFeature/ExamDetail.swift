@@ -10,6 +10,7 @@ public struct ExamDetail {
     public struct State: Equatable {
         @Presents var destination: Destination.State?
         @Presents var alert: AlertState<Action.Alert>?
+        @Shared(.currentQuizState) public var currentQuizState
 
         let exam: Exam
         var subjects: IdentifiedArrayOf<SubjectFeature.State> = []
@@ -26,11 +27,9 @@ public struct ExamDetail {
     public enum Action: ViewAction {
         case alert(PresentationAction<Alert>)
         case destination(PresentationAction<Destination.Action>)
-        case udateSubjectProgress(Result<Subject, Error>)
         case fetchSubjects(Result<[Subject], Error>)
         case subjects(IdentifiedActionOf<SubjectFeature>)
         case shouldPresentQuiz(Bool, Subject)
-        case resetAllSubjects
         case view(View)
 
         @CasePathable
@@ -68,17 +67,9 @@ public struct ExamDetail {
     public var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
-            case let .destination(.presented(.presentQuiz(.delegate(action)))):
-                switch action {
-                case let .updateCurrentProgress(id, currentProgress):
-                    if let index = state.subjects.firstIndex(where: { $0.subject.id == id }) {
-                        state.subjects[index].subject.currentProgress = currentProgress
-                    }
-                    return .none
-                }
             case let .view(.presentQuizSubjectButtonTapped(subject)):
                 return .run { send in
-                    await send(.shouldPresentQuiz(subject.isLastQuestion, subject))
+                    await send(.shouldPresentQuiz(true, subject))
                 }
 
             case let .shouldPresentQuiz(false, subject):
@@ -92,24 +83,10 @@ public struct ExamDetail {
             case .destination:
                 return .none
             case let .alert(.presented(.resetProgressInSubject(subject))):
-                return .run { send in
-                    await send(.udateSubjectProgress(
-                        Result {
-                            try coreData.resetSubjectCurrentProgress(subject.id)
-                        }
-                    ))
-                }
+                state.currentQuizState.currentProgress[subject.id] = 0
+                return .none
             case .alert:
                 return .none
-            case let .udateSubjectProgress(.success(subject)):
-                if let index = state.subjects.firstIndex(where: { $0.subject.id == subject.id }) {
-                    state.subjects[index].subject.currentProgress = subject.currentProgress
-                }
-                return .none
-            case .udateSubjectProgress(.failure):
-                return .none
-            case .resetAllSubjects:
-                return fetchAllSubjects(state: &state)
             case let .fetchSubjects(.success(subjects)):
                 state.subjects = IdentifiedArrayOf(uniqueElements: subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
                 return .none

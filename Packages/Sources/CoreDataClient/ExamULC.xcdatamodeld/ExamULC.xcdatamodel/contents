@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22758" systemVersion="23G93" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23231" systemVersion="24A335" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
     <entity name="AnswerEntity" representedClassName="AnswerEntity" syncable="YES">
         <attribute name="answerID" optional="YES" attributeType="String"/>
         <attribute name="answerTitle" optional="YES" attributeType="String"/>
@@ -27,7 +27,6 @@
         <relationship name="subject" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SubjectEntity" inverseName="questions" inverseEntity="SubjectEntity"/>
     </entity>
     <entity name="SubjectEntity" representedClassName="SubjectEntity" syncable="YES">
-        <attribute name="currentProgress" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="id" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>

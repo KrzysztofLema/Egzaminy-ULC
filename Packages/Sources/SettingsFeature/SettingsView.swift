@@ -42,6 +42,7 @@ public struct SettingsView: View {
                                     RoundedRectangle(cornerRadius: 10, style: .continuous)
                                 }
                         }
+                        .disabled(store.currentQuizState.currentProgress.isEmpty)
                         .padding()
                         .tint(.red)
 
