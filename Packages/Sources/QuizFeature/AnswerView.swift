@@ -17,7 +17,7 @@ public struct AnswerFeature: Equatable {
         }
     }
 
-    public enum Action: ViewAction, Equatable {
+    public enum Action: ViewAction {
         public enum Delegate: Equatable {
             case didSelectionChanged(AnswerFeature.State)
         }

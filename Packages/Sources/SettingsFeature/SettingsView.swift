@@ -4,22 +4,35 @@ import SharedModels
 import SharedViews
 import SwiftUI
 
+@ViewAction(for: Settings.self)
 public struct SettingsView: View {
-    @Bindable var store: StoreOf<Settings>
-
-    var subscreen: Subscreen?
+    @Bindable public var store: StoreOf<Settings>
 
     public var body: some View {
-        NavigationStack {
+        NavigationStack(
+            path: $store.scope(
+                state: \.path,
+                action: \.path
+            )
+        ) {
             VStack {
                 List {
                     Group {
                         ForEach(Array(Subscreen.allCases)) { subscreen in
-                            NavigationLink(subscreen.displayString, value: subscreen)
+                            Button(action: {
+                                send(.settingsButtonTapped)
+                            }, label: {
+                                HStack {
+                                    Image(systemName: "paintpalette")
+                                    Text(subscreen.displayString)
+                                    Spacer()
+                                    Image(systemName: "chevron.right")
+                                }
+                            })
                         }
 
                         Button {
-                            store.send(.resetAllSubjectsProgressButtonTapped)
+                            send(.resetAllSubjectsProgressButtonTapped)
                         } label: {
                             Label("Zacznij od nowa", systemImage: "exclamationmark.arrow.circlepath")
                                 .foregroundStyle(.white)
@@ -48,13 +61,13 @@ public struct SettingsView: View {
                 .scrollContentBackground(.hidden)
                 .background(Color.primaryBackground)
             }
-            .navigationDestination(for: Subscreen.self) { subscreen in
-                switch subscreen {
-                case .appearance:
-                    Appearance(colorScheme: $store.userSettings.colorScheme)
-                }
-            }
+
             .alert(store: store.scope(state: \.$alert, action: \.alert))
+        } destination: { store in
+            switch store.case {
+            case let .appearance(store):
+                Appearance(store: store)
+            }
         }
     }
 
