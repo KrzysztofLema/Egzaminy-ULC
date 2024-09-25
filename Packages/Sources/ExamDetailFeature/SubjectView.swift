@@ -10,6 +10,7 @@ public struct SubjectFeature {
     public struct State: Identifiable, Equatable {
         public let id: UUID
         var subject: Subject
+        @Shared(.currentQuizState) public var currentQuizState
 
         public init(id: UUID, subject: Subject) {
             self.id = id
@@ -17,17 +18,11 @@ public struct SubjectFeature {
         }
     }
 
-    public enum Action: Equatable {
-        case updateProgress(Int)
-    }
+    public enum Action: Equatable {}
 
     public var body: some ReducerOf<Self> {
-        Reduce<State, Action> { state, action in
-            switch action {
-            case let .updateProgress(currentProgress):
-                state.subject.currentProgress = currentProgress
-                return .none
-            }
+        Reduce<State, Action> { _, _ in
+            .none
         }
     }
 
@@ -53,8 +48,8 @@ struct SubjectView: View {
                     .font(.headline)
 
                 HStack {
-                    Text("\(store.subject.currentProgress ?? 0)")
-                    ProgressView(value: Double(store.subject.currentProgress ?? 0), total: .init(store.subject.questions?.count ?? 0))
+                    Text("\(store.currentQuizState.currentProgress[store.subject.id] ?? 0)")
+                    ProgressView(value: Double(store.currentQuizState.currentProgress[store.subject.id] ?? 0), total: .init(store.subject.questions?.count ?? 0))
                     Text("\(store.subject.questions?.count ?? 0)")
                 }
                 .foregroundColor(.secondary)

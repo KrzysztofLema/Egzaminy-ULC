@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import CoreDataClient
+import CurrentQuizClient
 import DiagnosticClient
 import SharedModels
 import UserSettingsClient
@@ -11,7 +12,8 @@ public struct Settings {
         public var appVersion: DiagnosticItem
         @Presents var alert: AlertState<Action.Alert>?
         var path = StackState<Path.State>()
-        @Shared(.userSettings) var userSettings: UserSettings
+        @Shared(.userSettings) var userSettings
+        @Shared(.currentQuizState) var currentQuizState
 
         public init() {
             @Dependency(\.diagnosticClient) var diagnosticClient
@@ -21,7 +23,6 @@ public struct Settings {
 
     public enum Action: ViewAction {
         case alert(PresentationAction<Alert>)
-        case resetAllSubjects(Result<Void, Error>)
         case path(StackAction<Path.State, Path.Action>)
         case view(View)
 
@@ -53,14 +54,9 @@ public struct Settings {
                 state.alert = .resetProgressConfirmation
                 return .none
             case .alert(.presented(.resetProgressAllSubjects)):
-                return .run { send in
-                    await send(.resetAllSubjects(
-                        Result { try coreData.resetAllSubjectsCurrentProgress() }
-                    ))
-                }
-            case .alert(.dismiss):
+                state.currentQuizState.currentProgress.removeAll()
                 return .none
-            case .resetAllSubjects:
+            case .alert(.dismiss):
                 return .none
             case .view(.settingsButtonTapped):
                 state.path.append(.appearance(.init()))

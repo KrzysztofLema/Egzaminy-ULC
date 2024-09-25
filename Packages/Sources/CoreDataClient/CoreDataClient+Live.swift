@@ -84,37 +84,6 @@ extension CoreDataClient {
             } catch let error as NSError {
                 throw CoreDataError.fetchError(error)
             }
-        } resetAllSubjectsCurrentProgress: {
-            @Dependency(\.storageProvider) var storageProvider
-
-            let subjectsRequest: NSFetchRequest<SubjectEntity> = SubjectEntity.fetchRequest()
-
-            let fetchedSubjects = try storageProvider.context().fetch(subjectsRequest)
-
-            fetchedSubjects.forEach {
-                $0.currentProgress = 0
-            }
-
-            storageProvider.save()
-
-        } resetSubjectCurrentProgress: { subjectId in
-            @Dependency(\.storageProvider) var storageProvider
-
-            let subjectRequest: NSFetchRequest<SubjectEntity> = SubjectEntity.fetchRequest()
-            subjectRequest.predicate = NSPredicate(format: "id == %@", subjectId ?? "")
-
-            let fetchedSubject = try storageProvider.context().fetch(subjectRequest)
-
-            guard let fetchedSubject = fetchedSubject.first else {
-                throw CoreDataError.subjectNotFound
-            }
-
-            fetchedSubject.currentProgress = 0
-
-            storageProvider.save()
-
-            return Subject(managedObject: fetchedSubject)
-
         } saveExams: {
             @Dependency(\.storageProvider) var storageProvider
             @Dependency(\.examsClient) var examsClient
@@ -127,25 +96,6 @@ extension CoreDataClient {
                 }
 
             } catch {}
-
-            storageProvider.save()
-
-        } updateSubject: { subject in
-            @Dependency(\.storageProvider) var storageProvider
-
-            let fetchRequest: NSFetchRequest<SubjectEntity> = SubjectEntity.fetchRequest()
-            let subjectPredicate = NSPredicate(format: "id == %@", subject.id ?? "")
-
-            fetchRequest.predicate = subjectPredicate
-            fetchRequest.fetchLimit = 1
-
-            let fetchedSubject = try storageProvider.context().fetch(fetchRequest)
-
-            guard let subjectEntity = fetchedSubject.first else {
-                throw CoreDataError.questionNotFound
-            }
-
-            subjectEntity.currentProgress = Int64(subject.currentProgress ?? 0)
 
             storageProvider.save()
         }

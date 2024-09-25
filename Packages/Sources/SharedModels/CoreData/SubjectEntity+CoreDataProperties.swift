@@ -6,7 +6,6 @@ extension SubjectEntity {
         NSFetchRequest<SubjectEntity>(entityName: "SubjectEntity")
     }
 
-    @NSManaged public var currentProgress: Int64
     @NSManaged public var id: String?
     @NSManaged public var image: String?
     @NSManaged public var timestamp: Date?
