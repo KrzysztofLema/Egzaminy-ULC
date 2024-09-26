@@ -68,8 +68,10 @@ public struct ExamDetail {
         Reduce<State, Action> { state, action in
             switch action {
             case let .view(.presentQuizSubjectButtonTapped(subject)):
+                let lastIndex = (subject.questions?.count ?? 0) - 1
+                let isLastQuestion = state.currentQuizState.currentProgress[subject.id, default: 0] <= lastIndex
                 return .run { send in
-                    await send(.shouldPresentQuiz(true, subject))
+                    await send(.shouldPresentQuiz(isLastQuestion, subject))
                 }
 
             case let .shouldPresentQuiz(false, subject):
@@ -83,7 +85,7 @@ public struct ExamDetail {
             case .destination:
                 return .none
             case let .alert(.presented(.resetProgressInSubject(subject))):
-                state.currentQuizState.currentProgress[subject.id] = 0
+                state.currentQuizState.currentProgress.removeValue(forKey: subject.id)
                 return .none
             case .alert:
                 return .none
