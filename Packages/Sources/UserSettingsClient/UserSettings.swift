@@ -1,7 +1,9 @@
+import ComposableArchitecture
 import UIKit
 
 public struct UserSettings: Equatable, Codable {
     public var colorScheme: ColorScheme
+    public var didFinishOnboarding: Bool
 
     public enum ColorScheme: String, Codable, CaseIterable, Equatable, Identifiable {
         case light
@@ -22,13 +24,18 @@ public struct UserSettings: Equatable, Codable {
         }
     }
 
-    public init(colorScheme: UserSettings.ColorScheme = .system) {
+    public init(
+        colorScheme: UserSettings.ColorScheme = .system,
+        didFinishOnboarding: Bool = false
+    ) {
         self.colorScheme = colorScheme
+        self.didFinishOnboarding = didFinishOnboarding
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         colorScheme = (try? container.decode(ColorScheme.self, forKey: .colorScheme)) ?? .system
+        didFinishOnboarding = (try? container.decode(Bool.self, forKey: .didFinishOnboarding)) ?? false
     }
 }
 

@@ -10,6 +10,7 @@ let package = Package(
     ],
     products: [
         .singleTargetLibrary("AppRootFeature"),
+        .singleTargetLibrary("OnboardingFeature"),
     ],
     dependencies: [
         .package(url: "https://github.com/krzysztofzablocki/Inject.git", exact: "1.2.3"),
@@ -27,6 +28,8 @@ let package = Package(
                 "HomeFeature",
                 "ExamDetailFeature",
                 "ExamsListFeature",
+                "OnboardingFeature",
+                "UserSettingsClient",
                 "QuizFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
@@ -116,6 +119,15 @@ let package = Package(
             dependencies: [
                 "HomeFeature",
                 "TestExtensions",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
+        .target(
+            name: "OnboardingFeature",
+            dependencies: [
+                "CoreUI",
+                "SharedViews",
+                "UserSettingsClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
