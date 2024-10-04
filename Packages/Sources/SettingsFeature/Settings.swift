@@ -33,7 +33,8 @@ public struct Settings {
 
         @CasePathable
         public enum View: Equatable {
-            case settingsButtonTapped
+            case appearanceButtonTapped
+            case chooseSubjectButtonTapped
             case resetAllSubjectsProgressButtonTapped
         }
     }
@@ -58,10 +59,13 @@ public struct Settings {
                 return .none
             case .alert(.dismiss):
                 return .none
-            case .view(.settingsButtonTapped):
+            case .view(.appearanceButtonTapped):
                 state.path.append(.appearance(.init()))
                 return .none
             case .path:
+                return .none
+            case .view(.chooseSubjectButtonTapped):
+                state.userSettings.didFinishOnboarding = .onboarding
                 return .none
             }
         }

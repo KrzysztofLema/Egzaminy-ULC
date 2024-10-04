@@ -15,7 +15,7 @@ extension ExamClient: DependencyKey {
             let data = try Data(contentsOf: url)
             exams = try JSONDecoder().decode([ExamDto].self, from: data)
         } catch {
-            print(error)
+            // TODO: Error Handling
             exams = []
         }
 

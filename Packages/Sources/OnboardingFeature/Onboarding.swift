@@ -27,7 +27,8 @@ public struct Onboarding {
             switch action {
             case .view(.nextButtonTapped):
                 if state.onboardingSteps.isLast() {
-                    state.userSettings.didFinishOnboarding = true
+                    state.userSettings.didFinishOnboarding = .home
+                    state.onboardingSteps = .welcome
                     return .none
                 }
                 state.onboardingSteps.next()

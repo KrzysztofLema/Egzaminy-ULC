@@ -20,10 +20,10 @@ public struct SettingsView: View {
                     Group {
                         ForEach(Array(Subscreen.allCases)) { subscreen in
                             Button(action: {
-                                send(.settingsButtonTapped)
+                                send(subscreen.action)
                             }, label: {
                                 HStack {
-                                    Image(systemName: "paintpalette")
+                                    Image(systemName: subscreen.iconSystemName)
                                     Text(subscreen.displayString)
                                     Spacer()
                                     Image(systemName: "chevron.right")
@@ -79,6 +79,7 @@ public struct SettingsView: View {
 
 enum Subscreen: String, Identifiable, CaseIterable {
     case appearance
+    case chooseSubject
 
     var id: String { rawValue }
 
@@ -86,6 +87,26 @@ enum Subscreen: String, Identifiable, CaseIterable {
         switch self {
         case .appearance:
             "Appearance"
+        case .chooseSubject:
+            "Wybierz przedmiot ponownie"
+        }
+    }
+
+    var action: Settings.Action.View {
+        switch self {
+        case .appearance:
+            return .appearanceButtonTapped
+        case .chooseSubject:
+            return .chooseSubjectButtonTapped
+        }
+    }
+
+    var iconSystemName: String {
+        switch self {
+        case .appearance:
+            return "paintpalette"
+        case .chooseSubject:
+            return "arrow.2.circlepath.circle.fill"
         }
     }
 }
