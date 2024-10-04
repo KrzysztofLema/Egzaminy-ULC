@@ -3,39 +3,38 @@ import ExamDetailFeature
 import Foundation
 import HomeFeature
 import OnboardingFeature
+import UserSettingsClient
 
 @Reducer
 public struct AppRoot {
-    @Reducer(state: .equatable)
-    public enum Destination {
-        case onboarding(Onboarding)
-    }
-
     @ObservableState
     public struct State {
         public var appDelegate: AppDelegateReducer.State
-        @Presents public var destination: Destination.State?
         @Shared(.userSettings) public var userSettings
         var home: Home.State
+        var onboarding: Onboarding.State
 
         public init(
             appDelegate: AppDelegateReducer.State = AppDelegateReducer.State(),
-            destination: Destination.State? = nil,
-            home: Home.State = Home.State()
+            home: Home.State = Home.State(),
+            onboarding: Onboarding.State = Onboarding.State(onboardingSteps: .welcome)
         ) {
             self.appDelegate = appDelegate
-            self.destination = destination
             self.home = home
+            self.onboarding = onboarding
         }
     }
 
-    public enum Action {
+    public enum Action: BindableAction {
         case appDelegate(AppDelegateReducer.Action)
-        case destination(PresentationAction<Destination.Action>)
+        case binding(BindingAction<State>)
         case home(Home.Action)
+        case onboarding(Onboarding.Action)
     }
 
     public var body: some ReducerOf<Self> {
+        BindingReducer()
+
         Scope(
             state: \.appDelegate,
             action: \.appDelegate
@@ -50,24 +49,11 @@ public struct AppRoot {
             Home()
         }
 
-        Reduce<State, Action> { state, action in
-            switch action {
-            case .home:
-                return .none
-            case .appDelegate(.didFinishLaunching):
-                if !state.userSettings.didFinishOnboarding {
-                    state.destination = .onboarding(.init(onboardingSteps: .welcome))
-                }
-
-                return .none
-            case .appDelegate:
-                return .none
-            case .destination:
-                return .none
-            }
-        }
-        .ifLet(\.$destination, action: \.destination) {
-            Destination.body
+        Scope(
+            state: \.onboarding,
+            action: \.onboarding
+        ) {
+            Onboarding()
         }
     }
 

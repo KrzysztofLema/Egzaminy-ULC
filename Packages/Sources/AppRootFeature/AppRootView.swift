@@ -5,15 +5,15 @@ import OnboardingFeature
 import SwiftUI
 
 public struct AppRootView: View {
-    var store: StoreOf<AppRoot>
+    @Bindable var store: StoreOf<AppRoot>
 
     public var body: some View {
-        if store.userSettings.didFinishOnboarding {
+        switch $store.userSettings.didFinishOnboarding.wrappedValue {
+        case .onboarding:
+            OnboardingFeatureView(store: store.scope(state: \.onboarding, action: \.onboarding))
+                .zIndex(1)
+        case .home:
             HomeView(store: store.scope(state: \.home, action: \.home))
-        } else {
-            if let store = store.scope(state: \.destination?.onboarding, action: \.destination.onboarding) {
-                OnboardingFeatureView(store: store)
-            }
         }
     }
 
