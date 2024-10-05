@@ -62,7 +62,6 @@ public struct SettingsView: View {
                 .scrollContentBackground(.hidden)
                 .background(Color.primaryBackground)
             }
-
             .alert(store: store.scope(state: \.$alert, action: \.alert))
         } destination: { store in
             switch store.case {

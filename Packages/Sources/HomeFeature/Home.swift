@@ -1,7 +1,6 @@
 import ComposableArchitecture
-import ExamDetailFeature
-import ExamsListFeature
 import Foundation
+import MainMenuFeature
 import SettingsFeature
 
 @Reducer
@@ -9,27 +8,27 @@ public struct Home {
     @ObservableState
     public struct State: Equatable {
         var selectedTab: Tab = .exams
-        public var examsList: ExamsList.State
+        public var mainMenu: MainMenu.State
         public var settings: Settings.State
 
         public init(
-            examsList: ExamsList.State = ExamsList.State(),
+            mainMenu: MainMenu.State = MainMenu.State(),
             settings: Settings.State = Settings.State()
         ) {
-            self.examsList = examsList
+            self.mainMenu = mainMenu
             self.settings = settings
         }
     }
 
     public enum Action {
         case onTabSelection(Tab)
-        case examsList(ExamsList.Action)
+        case mainMenu(MainMenu.Action)
         case settings(Settings.Action)
     }
 
     public var body: some ReducerOf<Self> {
-        Scope(state: \.examsList, action: \.examsList) {
-            ExamsList()
+        Scope(state: \.mainMenu, action: \.mainMenu) {
+            MainMenu()
         }
 
         Scope(state: \.settings, action: \.settings) {
@@ -39,19 +38,14 @@ public struct Home {
         Reduce<State, Action> { state, action in
             switch action {
             case let .onTabSelection(tab):
+                state.mainMenu = MainMenu.State()
                 state.selectedTab = tab
                 return .none
-            case .examsList:
+            case .mainMenu:
                 return .none
             case .settings:
                 return .none
             }
-        }
-    }
-
-    var examListReducer: some ReducerOf<Self> {
-        Scope(state: \.examsList, action: \.examsList) {
-            ExamsList()
         }
     }
 
@@ -61,12 +55,5 @@ public struct Home {
 extension Home {
     public enum Tab: Equatable {
         case exams, settings
-
-        var title: String {
-            switch self {
-            case .exams: "Exams"
-            case .settings: "Settins"
-            }
-        }
     }
 }

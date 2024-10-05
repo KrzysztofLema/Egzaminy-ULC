@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import CoreUI
+import ExamsListFeature
 import SharedViews
 import SwiftUI
 
@@ -20,17 +21,20 @@ public struct OnboardingFeatureView: View {
 
                 Spacer()
 
-                Button(action: {
-                    send(.nextButtonTapped, animation: .default)
-                }, label: {
-                    Text("Następne")
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(RoundedRectangle(cornerRadius: 10))
-                        .padding()
-                })
-                .padding()
+                if store.isNextButtonVisible {
+                    Button(action: {
+                        send(.nextButtonTapped, animation: .default)
+                    }, label: {
+                        Text("Następne")
+                            .foregroundColor(.white)
+                            .padding()
+                            .frame(maxWidth: .infinity)
+                            .background(RoundedRectangle(cornerRadius: 10))
+                            .padding()
+                    })
+                    .padding()
+                    .transition(.move(edge: .bottom).combined(with: .opacity))
+                }
             }
         }
         .enableInjection()
@@ -48,8 +52,14 @@ public struct OnboardingFeatureView: View {
             case .welcome2:
                 LabelView(text: Text("Z nami uda Ci się zdać egzaminy w\n") + Text("Urzędzie Lotnictwa Cywilnego").bold())
             case .choseSubject:
-                LabelView(text: Text("Wybierz egzamin który Cię interesuje: "))
-                    .frame(maxHeight: .infinity, alignment: .top)
+                ScrollView(showsIndicators: false) {
+                    VStack(spacing: 10) {
+                        LabelView(text: Text("Wybierz egzamin który Cię interesuje:"))
+                            .frame(maxHeight: .infinity, alignment: .top)
+
+                        ExamsListView(store: store.scope(state: \.examsList, action: \.examsList))
+                    }
+                }
             }
         }
         .transition(.opacity)

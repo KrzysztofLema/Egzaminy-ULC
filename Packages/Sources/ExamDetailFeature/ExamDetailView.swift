@@ -17,7 +17,7 @@ public struct ExamDetailView: View {
 
             ScrollView(showsIndicators: false) {
                 VStack {
-                    Image(store.exam.image ?? "")
+                    Image(store.exam?.image ?? "")
                         .resizable()
                         .scaledToFill()
                         .shadow(radius: 20)

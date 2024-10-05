@@ -2,6 +2,7 @@ import Foundation
 
 public enum CoreDataError: Error, Equatable {
     case saveError(NSError)
+    case examNotFound
     case fetchError(NSError)
     case invalidObject
     case questionNotFound
@@ -19,6 +20,8 @@ public enum CoreDataError: Error, Equatable {
             return "The question with specific ID was not found"
         case .subjectNotFound:
             return "The subject with specific ID was not found"
+        case .examNotFound:
+            return "Exam with specific ID was not found"
         }
     }
 }

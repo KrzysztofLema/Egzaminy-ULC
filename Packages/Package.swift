@@ -28,6 +28,7 @@ let package = Package(
                 "HomeFeature",
                 "ExamDetailFeature",
                 "ExamsListFeature",
+                "MainMenuFeature",
                 "OnboardingFeature",
                 "UserSettingsClient",
                 "QuizFeature",
@@ -94,21 +95,12 @@ let package = Package(
                 "SharedViews",
             ]
         ),
-        .testTarget(
-            name: "ExamsListTest",
-            dependencies: [
-                "ExamsListFeature",
-                "TestExtensions",
-                "SharedModels",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-            ]
-        ),
         .target(
             name: "HomeFeature",
             dependencies: [
                 "SharedViews",
                 "SharedModels",
-                "ExamsListFeature",
+                "MainMenuFeature",
                 "SettingsFeature",
                 .product(name: "LifetimeTracker", package: "LifetimeTracker"),
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
@@ -122,11 +114,22 @@ let package = Package(
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
+
+        .target(
+            name: "MainMenuFeature",
+            dependencies: [
+                "SharedViews",
+                "SharedModels",
+                "ExamDetailFeature",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
         .target(
             name: "OnboardingFeature",
             dependencies: [
                 "CoreUI",
                 "SharedViews",
+                "ExamsListFeature",
                 "UserSettingsClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]

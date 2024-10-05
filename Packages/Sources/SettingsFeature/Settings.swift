@@ -12,6 +12,7 @@ public struct Settings {
         public var appVersion: DiagnosticItem
         @Presents var alert: AlertState<Action.Alert>?
         var path = StackState<Path.State>()
+
         @Shared(.userSettings) var userSettings
         @Shared(.currentQuizState) var currentQuizState
 
@@ -65,7 +66,7 @@ public struct Settings {
             case .path:
                 return .none
             case .view(.chooseSubjectButtonTapped):
-                state.userSettings.didFinishOnboarding = .onboarding
+                state.userSettings.applicationState = .onboarding
                 return .none
             }
         }

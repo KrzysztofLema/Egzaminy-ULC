@@ -1,7 +1,6 @@
 import ComposableArchitecture
-import ExamDetailFeature
-import ExamsListFeature
 import LifetimeTracker
+import MainMenuFeature
 import SettingsFeature
 import SharedModels
 import SharedViews
@@ -19,7 +18,7 @@ public struct HomeView: View {
     public var body: some View {
         TabView(selection: $store.selectedTab.sending(\.onTabSelection)) {
             Group {
-                ExamsListView(store: store.scope(state: \.examsList, action: \.examsList))
+                MainMenuView(store: store.scope(state: \.mainMenu, action: \.mainMenu))
                     .tabItem {
                         Label("Home", systemImage: "house")
                     }

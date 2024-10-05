@@ -5,7 +5,7 @@ import SharedModels
 
 public struct CoreDataClient: DependencyKey {
     public var fetchAllExams: @Sendable () throws -> [Exam]
-    public var fetchAllSubjects: @Sendable () throws -> [Subject]
+    public var fetchExamByID: @Sendable (Exam.ID) throws -> Exam
     public var fetchQuestion: @Sendable (_ subjectID: Subject.ID, _ index: Int) throws -> Question
     public var fetchAllAnswers: @Sendable (_ index: Int) throws -> [Answer]
     public var saveExams: @Sendable () -> Void
@@ -21,8 +21,8 @@ extension DependencyValues {
 extension CoreDataClient: TestDependencyKey {
     public static var testValue: CoreDataClient = Self {
         []
-    } fetchAllSubjects: {
-        []
+    } fetchExamByID: { _ in
+        .mock1
     } fetchQuestion: { _, _ in
         .mock
     } fetchAllAnswers: { _ in

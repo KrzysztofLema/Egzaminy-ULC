@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import CoreDataClient
+import CurrentQuizClient
 import Foundation
 import QuizFeature
 import SharedModels
@@ -12,11 +13,12 @@ public struct ExamDetail {
         @Presents var alert: AlertState<Action.Alert>?
         @Shared(.currentQuizState) public var currentQuizState
 
-        let exam: Exam
+        let examID: Exam.ID
+        var exam: Exam?
         var subjects: IdentifiedArrayOf<SubjectFeature.State> = []
 
-        public init(exam: Exam, destination: Destination.State? = nil) {
-            self.exam = exam
+        public init(examID: Exam.ID, destination: Destination.State? = nil) {
+            self.examID = examID
             self.destination = destination
         }
     }
@@ -27,7 +29,7 @@ public struct ExamDetail {
     public enum Action: ViewAction {
         case alert(PresentationAction<Alert>)
         case destination(PresentationAction<Destination.Action>)
-        case fetchSubjects(Result<[Subject], Error>)
+        case fetchExam(Result<Exam, Error>)
         case subjects(IdentifiedActionOf<SubjectFeature>)
         case shouldPresentQuiz(Bool, Subject)
         case view(View)
@@ -89,10 +91,11 @@ public struct ExamDetail {
                 return .none
             case .alert:
                 return .none
-            case let .fetchSubjects(.success(subjects)):
-                state.subjects = IdentifiedArrayOf(uniqueElements: subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
+            case let .fetchExam(.success(exam)):
+                state.exam = exam
+                state.subjects = IdentifiedArrayOf(uniqueElements: exam.subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
                 return .none
-            case .fetchSubjects(.failure):
+            case let .fetchExam(.failure):
                 return .none
             case .view(.onViewAppear):
                 return fetchAllSubjects(state: &state)
@@ -108,9 +111,9 @@ public struct ExamDetail {
     }
 
     func fetchAllSubjects(state: inout State) -> Effect<Action> {
-        .run { send in
-            await send(.fetchSubjects(Result {
-                try coreData.fetchAllSubjects()
+        .run { [examID = state.examID] send in
+            await send(.fetchExam(Result {
+                try coreData.fetchExamByID(examID)
             }))
         }
     }

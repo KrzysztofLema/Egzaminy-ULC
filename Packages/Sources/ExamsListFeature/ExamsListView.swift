@@ -14,26 +14,13 @@ public struct ExamsListView: View {
     }
 
     public var body: some View {
-        NavigationStack(path: $store.scope(state: \.path, action: \.path)) {
-            ZStack {
-                Color.primaryBackground.ignoresSafeArea()
-
-                ScrollView(showsIndicators: false) {
-                    VStack {
-                        ForEach(store.exams) { exam in
-                            Button(action: {
-                                store.send(.examDetailButtonTapped(exam))
-                            }, label: {
-                                ExamView(exam: exam)
-                            })
-                        }
-                    }
-                }
-            }
-        } destination: { store in
-            switch store.case {
-            case let .examDetailView(store):
-                ExamDetailView(store: store)
+        VStack {
+            ForEach(store.exams) { exam in
+                Button(action: {
+                    store.send(.examDetailButtonTapped(exam), animation: .default)
+                }, label: {
+                    ExamView(exam: exam)
+                })
             }
         }
     }
