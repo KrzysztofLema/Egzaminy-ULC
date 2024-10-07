@@ -8,7 +8,7 @@ public struct AppRootView: View {
     @Bindable var store: StoreOf<AppRoot>
 
     public var body: some View {
-        switch $store.userSettings.didFinishOnboarding.wrappedValue {
+        switch $store.userSettings.applicationState.wrappedValue {
         case .onboarding:
             OnboardingFeatureView(store: store.scope(state: \.onboarding, action: \.onboarding))
                 .zIndex(1)

@@ -21,20 +21,21 @@ extension CoreDataClient {
             } catch let error as NSError {
                 throw CoreDataError.fetchError(error)
             }
-        } fetchAllSubjects: {
+        } fetchExamByID: { examId in
             @Dependency(\.storageProvider.context) var context
+            let fetchRequest: NSFetchRequest<ExamEntity> = ExamEntity.fetchRequest()
 
-            let fetchRequest: NSFetchRequest<SubjectEntity> = SubjectEntity.fetchRequest()
+            fetchRequest.predicate = NSPredicate(format: "id == %@", examId ?? "")
+            fetchRequest.fetchLimit = 1
 
             do {
-                let fetchedSubjects = try context().fetch(fetchRequest)
-                let sortDescriptor = NSSortDescriptor(keyPath: \SubjectEntity.timestamp, ascending: true)
+                let fetchedExam = try context().fetch(fetchRequest)
 
-                fetchRequest.sortDescriptors = [sortDescriptor]
-
-                return fetchedSubjects.map {
-                    Subject(managedObject: $0)
+                guard let fetchedExam = fetchedExam.first else {
+                    throw CoreDataError.questionNotFound
                 }
+
+                return Exam(managedObject: fetchedExam)
 
             } catch let error as NSError {
                 throw CoreDataError.fetchError(error)

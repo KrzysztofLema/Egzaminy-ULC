@@ -1,14 +1,15 @@
 import ComposableArchitecture
+import SharedModels
 import UIKit
 
-public enum ApplicationState: Codable {
+public enum ApplicationState: Codable, Equatable {
     case onboarding
-    case home
+    case home(Exam.ID)
 }
 
 public struct UserSettings: Equatable, Codable {
     public var colorScheme: ColorScheme
-    public var didFinishOnboarding: ApplicationState
+    public var applicationState: ApplicationState
 
     public enum ColorScheme: String, Codable, CaseIterable, Equatable, Identifiable {
         case light
@@ -31,16 +32,16 @@ public struct UserSettings: Equatable, Codable {
 
     public init(
         colorScheme: UserSettings.ColorScheme = .system,
-        didFinishOnboarding: ApplicationState = .onboarding
+        applicationState: ApplicationState = .onboarding
     ) {
         self.colorScheme = colorScheme
-        self.didFinishOnboarding = didFinishOnboarding
+        self.applicationState = applicationState
     }
 
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         colorScheme = (try? container.decode(ColorScheme.self, forKey: .colorScheme)) ?? .system
-        didFinishOnboarding = (try? container.decode(ApplicationState.self, forKey: .didFinishOnboarding)) ?? .onboarding
+        applicationState = (try? container.decode(ApplicationState.self, forKey: .applicationState)) ?? .onboarding
     }
 }
 
