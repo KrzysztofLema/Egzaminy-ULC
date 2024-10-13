@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import CoreUI
+import Providers
 import QuizFeature
 import SharedModels
 import SharedViews
@@ -28,7 +29,7 @@ public struct ExamDetailView: View {
                         }
                         .strokeStyle(cornerRadius: 30)
 
-                    Text("Wybierz przedmiot:".uppercased())
+                    Text("\(LocalizationProvider.ExamDetails.selectSubject):".uppercased())
                         .font(.footnote.weight(.semibold))
                         .foregroundColor(.secondary)
                         .frame(maxWidth: .infinity, alignment: .leading)

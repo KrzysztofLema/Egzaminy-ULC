@@ -1,5 +1,6 @@
 import Dependencies
 import Foundation
+import Providers
 import SharedModels
 
 public struct DiagnosticClient {
@@ -10,7 +11,7 @@ extension DiagnosticClient: DependencyKey {
     public static var liveValue: DiagnosticClient {
         Self {
             let version = DiagnosticItem(
-                title: "App Version: ",
+                title: "\(LocalizationProvider.Settings.appVersion): ",
                 value: Configuration.App.versionWithBuild
             )
             return version
@@ -20,7 +21,7 @@ extension DiagnosticClient: DependencyKey {
 
 extension DiagnosticClient: TestDependencyKey {
     public static let testValue = Self {
-        DiagnosticItem(title: "App Version", value: "1.0")
+        DiagnosticItem(title: "\(LocalizationProvider.Settings.appVersion)", value: "1.0")
     }
 }
 

@@ -57,6 +57,7 @@ let package = Package(
         .target(
             name: "DiagnosticClient",
             dependencies: [
+                "Providers",
                 "SharedModels",
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ]
@@ -74,6 +75,7 @@ let package = Package(
                 "SharedViews",
                 "SharedModels",
                 "CoreUI",
+                "Providers",
                 "QuizFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
@@ -110,6 +112,7 @@ let package = Package(
             name: "HomeFeatureTest",
             dependencies: [
                 "HomeFeature",
+                "Providers",
                 "TestExtensions",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
@@ -121,6 +124,7 @@ let package = Package(
                 "SharedViews",
                 "SharedModels",
                 "ExamDetailFeature",
+                "Providers",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
@@ -130,9 +134,14 @@ let package = Package(
                 "CoreUI",
                 "SharedViews",
                 "ExamsListFeature",
+                "Providers",
                 "UserSettingsClient",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
+        ),
+        .target(
+            name: "Providers",
+            dependencies: []
         ),
         .target(
             name: "SharedModels",
@@ -154,6 +163,7 @@ let package = Package(
                 "CoreUI",
                 "CurrentQuizClient",
                 "DiagnosticClient",
+                "Providers",
                 "SharedViews",
                 "SharedModels",
                 "UserSettingsClient",
@@ -185,6 +195,7 @@ let package = Package(
             dependencies: [
                 "CoreDataClient",
                 "CurrentQuizClient",
+                "Providers",
                 "SharedViews",
                 "SharedModels",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),

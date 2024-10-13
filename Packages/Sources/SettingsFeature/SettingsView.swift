@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import CoreUI
+import Providers
 import SharedModels
 import SharedViews
 import SwiftUI
@@ -34,7 +35,7 @@ public struct SettingsView: View {
                         Button {
                             send(.resetAllSubjectsProgressButtonTapped)
                         } label: {
-                            Label("Zacznij od nowa", systemImage: "exclamationmark.arrow.circlepath")
+                            Label("\(LocalizationProvider.Settings.startOver)", systemImage: "exclamationmark.arrow.circlepath")
                                 .foregroundStyle(.white)
                                 .frame(maxWidth: .infinity)
                                 .padding()
@@ -85,9 +86,9 @@ enum Subscreen: String, Identifiable, CaseIterable {
     var displayString: String {
         switch self {
         case .appearance:
-            "Appearance"
+            "\(LocalizationProvider.Settings.appearance)"
         case .chooseSubject:
-            "Wybierz przedmiot ponownie"
+            "\(LocalizationProvider.Settings.chooseSubjectAgain)"
         }
     }
 
