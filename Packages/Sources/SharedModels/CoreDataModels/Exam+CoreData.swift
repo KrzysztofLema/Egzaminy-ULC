@@ -11,7 +11,9 @@ extension Exam {
         background = managedObject.background
         logo = managedObject.logo
 
-        let subjects = managedObject.subjects?.allObjects as? [SubjectEntity]
+        let subjects = (managedObject.subjects?.allObjects as? [SubjectEntity])?.sorted {
+            ($0.title ?? "") < ($1.title ?? "")
+        }
         self.subjects = subjects?.map { Subject(managedObject: $0) } ?? []
     }
 
