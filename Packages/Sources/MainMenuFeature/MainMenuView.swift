@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import CoreUI
 import ExamDetailFeature
+import Providers
 import SwiftUI
 
 @ViewAction(for: MainMenu.self)
@@ -27,7 +28,7 @@ public struct MainMenuView: View {
                                 .padding(5)
 
                             VStack(alignment: .leading, spacing: 12) {
-                                Text("Quiz")
+                                Text("\(LocalizationProvider.MainMenu.quiz)")
                                     .foregroundColor(.primary)
                                     .font(.headline)
                             }
@@ -43,7 +44,7 @@ public struct MainMenuView: View {
                                 .padding(5)
 
                             VStack(alignment: .leading, spacing: 12) {
-                                Text("Ulubione (WIP)")
+                                Text("\(LocalizationProvider.MainMenu.favoritesQuestions)")
                                     .foregroundColor(.primary)
                                     .font(.headline)
                             }

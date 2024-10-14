@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import CoreUI
+import Providers
 import SharedModels
 import SharedViews
 import SwiftUI
@@ -47,7 +48,7 @@ public struct QuizView: View {
                 Button(action: {
                     send(.nextQuestionButtonTapped)
                 }, label: {
-                    Text("Następne")
+                    Text("\(LocalizationProvider.Quiz.nextQuestion)")
                         .foregroundColor(store.isNextButtonEnabled ? .white : .gray)
                         .padding()
                         .frame(maxWidth: .infinity)

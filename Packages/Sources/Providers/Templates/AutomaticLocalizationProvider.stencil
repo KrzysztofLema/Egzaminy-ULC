@@ -1,0 +1,10 @@
+import SwiftUI
+
+public enum LocalizationProvider {
+    
+    {% for key, value in translations.strings %}
+    public static var {{ key | camelCase }}: String {
+        String(localized: "{{ key }}")
+    }
+    {% endfor %}
+}

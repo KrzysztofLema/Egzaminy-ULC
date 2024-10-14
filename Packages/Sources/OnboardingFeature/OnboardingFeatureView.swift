@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import CoreUI
 import ExamsListFeature
+import Providers
 import SharedViews
 import SwiftUI
 
@@ -25,7 +26,7 @@ public struct OnboardingFeatureView: View {
                     Button(action: {
                         send(.nextButtonTapped, animation: .default)
                     }, label: {
-                        Text("Następne")
+                        Text("\(LocalizationProvider.Onboarding.nextOnboardingButton)")
                             .foregroundColor(.white)
                             .padding()
                             .frame(maxWidth: .infinity)
@@ -48,13 +49,13 @@ public struct OnboardingFeatureView: View {
         Group {
             switch store.onboardingSteps {
             case .welcome:
-                LabelView(text: Text("Witamy w aplikacji\n") + Text("Egzaminy ULC").bold())
+                LabelView(text: Text("\(LocalizationProvider.Onboarding.welcomeToApp)\n") + Text("\(LocalizationProvider.Onboarding.applicationTitle)").bold())
             case .welcome2:
-                LabelView(text: Text("Z nami uda Ci się zdać egzaminy w\n") + Text("Urzędzie Lotnictwa Cywilnego").bold())
+                LabelView(text: Text("\(LocalizationProvider.Onboarding.withUsYouWillPass)\n") + Text("\(LocalizationProvider.Onboarding.civilAviationAuthority)").bold())
             case .choseSubject:
                 ScrollView(showsIndicators: false) {
                     VStack(spacing: 10) {
-                        LabelView(text: Text("Wybierz egzamin który Cię interesuje:"))
+                        LabelView(text: Text("\(LocalizationProvider.Onboarding.chooseExam)"))
                             .frame(maxHeight: .infinity, alignment: .top)
 
                         ExamsListView(store: store.scope(state: \.examsList, action: \.examsList))

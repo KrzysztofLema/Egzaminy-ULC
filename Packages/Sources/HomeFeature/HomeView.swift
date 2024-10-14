@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import LifetimeTracker
 import MainMenuFeature
+import Providers
 import SettingsFeature
 import SharedModels
 import SharedViews
@@ -20,13 +21,13 @@ public struct HomeView: View {
             Group {
                 MainMenuView(store: store.scope(state: \.mainMenu, action: \.mainMenu))
                     .tabItem {
-                        Label("Home", systemImage: "house")
+                        Label("\(LocalizationProvider.Tab.homeTab)", systemImage: "house")
                     }
                     .tag(Home.Tab.exams)
 
                 SettingsView(store: store.scope(state: \.settings, action: \.settings))
                     .tabItem {
-                        Label("Settings", systemImage: "gear")
+                        Label("\(LocalizationProvider.Tab.settingsTab)", systemImage: "gear")
                     }
                     .tag(Home.Tab.settings)
             }

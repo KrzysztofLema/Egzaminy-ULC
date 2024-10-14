@@ -2,6 +2,7 @@ import ComposableArchitecture
 import CoreDataClient
 import CurrentQuizClient
 import DiagnosticClient
+import Providers
 import SharedModels
 import UserSettingsClient
 
@@ -79,16 +80,16 @@ public struct Settings {
 
 extension AlertState where Action == Settings.Action.Alert {
     static let resetProgressConfirmation = AlertState {
-        TextState("Czy napewno chcesz zresetować postęp we wszystkich Tematach?")
+        TextState("\(LocalizationProvider.SettingsResetAlert.resetAreYouSure)")
     } actions: {
         ButtonState(role: .destructive, action: .resetProgressAllSubjects) {
-            TextState("Resetuj postęp")
+            TextState("\(LocalizationProvider.SettingsResetAlert.resetProgress)")
         }
 
         ButtonState(role: .cancel) {
-            TextState("Anuluj reset")
+            TextState("\(LocalizationProvider.SettingsResetAlert.cancelResetProgress)")
         }
     } message: {
-        TextState("Tej operacji nie da się odwrócić.")
+        TextState("\(LocalizationProvider.SettingsResetAlert.cannotReversedInfo)")
     }
 }
