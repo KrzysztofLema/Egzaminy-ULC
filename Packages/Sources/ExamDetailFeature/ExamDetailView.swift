@@ -17,18 +17,13 @@ public struct ExamDetailView: View {
             Color.primaryBackground.ignoresSafeArea()
 
             ScrollView(showsIndicators: false) {
-                VStack {
-                    Image(store.exam?.image ?? "")
-                        .resizable()
-                        .scaledToFill()
-                        .shadow(radius: 20)
-                        .cornerRadius(30.0)
-                        .overlay {
-                            RoundedRectangle(cornerRadius: 30)
-                                .fill(.black.opacity(0.2))
-                        }
-                        .strokeStyle(cornerRadius: 30)
-
+                VStack {   
+                    StretchyHeaderView {
+                        Image(store.exam?.image ?? "")
+                            .resizable()
+                            .aspectRatio(contentMode: .fill)
+                    }
+                    
                     Text("\(LocalizationProvider.ExamDetails.selectSubject):".uppercased())
                         .font(.footnote.weight(.semibold))
                         .foregroundColor(.secondary)
@@ -44,6 +39,9 @@ public struct ExamDetailView: View {
                 }
             }
         }
+        .coordinateSpace(name: "ExamDetails.ScrollView")
+        .navigationTitle(store.exam?.title ?? "")
+        .navigationBarTitleDisplayMode(.inline)
         .onAppear(perform: {
             send(.onViewAppear)
         })
