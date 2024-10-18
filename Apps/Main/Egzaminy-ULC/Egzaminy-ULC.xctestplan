@@ -22,13 +22,6 @@
     {
       "target" : {
         "containerPath" : "container:..\/..\/Packages",
-        "identifier" : "ExamsListTest",
-        "name" : "ExamsListTest"
-      }
-    },
-    {
-      "target" : {
-        "containerPath" : "container:..\/..\/Packages",
         "identifier" : "QuizFeatureTest",
         "name" : "QuizFeatureTest"
       }

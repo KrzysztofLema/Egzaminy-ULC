@@ -47,6 +47,7 @@ let package = Package(
             dependencies: [
                 "SharedModels",
                 "ExamsClient",
+                "Helpers",
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ]
         ),
@@ -55,18 +56,18 @@ let package = Package(
             dependencies: []
         ),
         .target(
+            name: "CurrentQuizClient",
+            dependencies: [
+                "SharedModels",
+                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+            ]
+        ),
+        .target(
             name: "DiagnosticClient",
             dependencies: [
                 "Providers",
                 "SharedModels",
                 .product(name: "Dependencies", package: "swift-dependencies"),
-            ]
-        ),
-        .target(
-            name: "CurrentQuizClient",
-            dependencies: [
-                "SharedModels",
-                .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
         .target(
@@ -84,6 +85,7 @@ let package = Package(
             name: "ExamsClient",
             dependencies: [
                 "SharedModels",
+                "Helpers",
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ]
         ),
@@ -96,6 +98,10 @@ let package = Package(
                 "SharedModels",
                 "SharedViews",
             ]
+        ),
+        .target(
+            name: "Extensions",
+            dependencies: []
         ),
         .target(
             name: "HomeFeature",
@@ -117,7 +123,12 @@ let package = Package(
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
-
+        .target(
+            name: "Helpers",
+            dependencies: [
+                "Extensions",
+            ]
+        ),
         .target(
             name: "MainMenuFeature",
             dependencies: [
