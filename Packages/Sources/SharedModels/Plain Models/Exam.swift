@@ -44,7 +44,6 @@ extension Exam {
     }
 }
 
-#if DEBUG
 extension Exam {
     public static let mock1 = Exam(
         id: "1",
@@ -68,4 +67,3 @@ extension Exam {
         subjects: []
     )
 }
-#endif

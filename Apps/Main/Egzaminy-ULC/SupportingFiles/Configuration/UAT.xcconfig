@@ -1,0 +1,15 @@
+#include "./Secrets.xcconfig"
+
+PRODUCT_NAME = $(inherited) UAT
+PRODUCT_BUNDLE_IDENTIFIER = $(inherited).uat
+ASSETCATALOG_COMPILER_APPICON_NAME = $(inherited).uat
+
+CURRENT_PROJECT_VERSION = 5
+MARKETING_VERSION = 0.5
+
+CURRENT_SCHEME_NAME = UAT
+
+API_HOST = worker-egzaminy-ulc.krzysztoflema.workers.dev
+API_SCHEME = https
+
+USE_MOCK_DATA = NO
