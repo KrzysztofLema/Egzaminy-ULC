@@ -1,5 +1,6 @@
 import CoreData
 import Dependencies
+import Helpers
 
 extension DependencyValues {
     var storageProvider: StorageProvider {
@@ -22,6 +23,13 @@ private let persistentContainer: NSPersistentContainer = {
         .flatMap { NSManagedObjectModel(contentsOf: $0) }!
 
     let persistentContainer = NSPersistentContainer(name: "ExamULC", managedObjectModel: model)
+
+    let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+    let storeName = "DataStore-\(PlistConfiguration.App.currentSchemeName).sqlite"
+    let storeDescription = NSPersistentStoreDescription(url: storeURL.appendingPathComponent(storeName))
+    
+    persistentContainer.persistentStoreDescriptions = [storeDescription]
+
     persistentContainer.loadPersistentStores(completionHandler: { _, error in
         if let error = error as NSError? {
             fatalError("Unresolved error \(error), \(error.userInfo)")

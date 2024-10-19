@@ -33,8 +33,6 @@ extension Subject {
     }
 }
 
-#if DEBUG
 extension Subject {
     public static let mock = Subject(title: "Zasady Lotu", image: "paperplane.fill", questions: [.mock, .mock2])
 }
-#endif
