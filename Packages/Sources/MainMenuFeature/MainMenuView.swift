@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import CoreUI
 import ExamDetailFeature
+import LaunchDarkly
 import Providers
 import SwiftUI
 
@@ -35,18 +36,20 @@ public struct MainMenuView: View {
                         }
                     }
 
-                    CustomMenuButton {} content: {
-                        HStack(spacing: 20) {
-                            Image(systemName: "bookmark.circle")
-                                .resizable()
-                                .foregroundColor(.primary)
-                                .frame(width: 32.0, height: 32.0)
-                                .padding(5)
-
-                            VStack(alignment: .leading, spacing: 12) {
-                                Text("\(LocalizationProvider.MainMenu.favoritesQuestions)")
+                    if store.showBookmarksFeature {
+                        CustomMenuButton {} content: {
+                            HStack(spacing: 20) {
+                                Image(systemName: store.bookMarkIconTitle)
+                                    .resizable()
                                     .foregroundColor(.primary)
-                                    .font(.headline)
+                                    .frame(width: 32.0, height: 32.0)
+                                    .padding(5)
+
+                                VStack(alignment: .leading, spacing: 12) {
+                                    Text("\(LocalizationProvider.MainMenu.favoritesQuestions)")
+                                        .foregroundColor(.primary)
+                                        .font(.headline)
+                                }
                             }
                         }
                     }
@@ -58,6 +61,9 @@ public struct MainMenuView: View {
             case let .examDetail(store):
                 ExamDetailView(store: store)
             }
+        }
+        .onAppear {
+            send(.checkFeatureFlags)
         }
     }
 

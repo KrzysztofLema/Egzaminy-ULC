@@ -20,6 +20,7 @@ let package = Package(
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.1"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.0"),
         .package(url: "https://github.com/SimplyDanny/SwiftLintPlugins", exact: "0.57.0"),
+        .package(url: "https://github.com/launchdarkly/ios-client-sdk.git", exact: "9.12.0"),
     ],
     targets: [
         .target(
@@ -33,6 +34,7 @@ let package = Package(
                 "UserSettingsClient",
                 "QuizFeature",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+                .product(name: "LaunchDarkly", package: "ios-client-sdk"),
             ]
         ),
         .testTarget(
@@ -104,8 +106,17 @@ let package = Package(
             dependencies: []
         ),
         .target(
+            name: "FeatureFlagClient",
+            dependencies: [
+                .product(name: "Dependencies", package: "swift-dependencies"),
+                .product(name: "LaunchDarkly", package: "ios-client-sdk"),
+            ]
+
+        ),
+        .target(
             name: "HomeFeature",
             dependencies: [
+                "FeatureFlagClient",
                 "SharedViews",
                 "SharedModels",
                 "MainMenuFeature",
@@ -135,6 +146,7 @@ let package = Package(
                 "SharedViews",
                 "SharedModels",
                 "ExamDetailFeature",
+                "FeatureFlagClient",
                 "Providers",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]

@@ -702,6 +702,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LAUNCH_DARKLY_CONTEXT_KEY = "$(LAUNCH_DARKLY_CONTEXT_KEY)";
+				LAUNCH_DARKLY_MOB_KEY = "$(LAUNCH_DARKLY_MOB_KEY)";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -750,6 +752,8 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LAUNCH_DARKLY_CONTEXT_KEY = "$(LAUNCH_DARKLY_CONTEXT_KEY)";
+				LAUNCH_DARKLY_MOB_KEY = "$(LAUNCH_DARKLY_MOB_KEY_UAT)";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
@@ -928,6 +932,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LAUNCH_DARKLY_CONTEXT_KEY = "$(LAUNCH_DARKLY_CONTEXT_KEY)";
+				LAUNCH_DARKLY_MOB_KEY = "$(LAUNCH_DARKLY_MOB_KEY)";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -999,6 +1005,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				INFOPLIST_FILE = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LAUNCH_DARKLY_CONTEXT_KEY = "$(LAUNCH_DARKLY_CONTEXT_KEY)";
+				LAUNCH_DARKLY_MOB_KEY = "$(LAUNCH_DARKLY_MOB_KEY)";
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				MTL_ENABLE_DEBUG_INFO = NO;
@@ -1027,6 +1035,7 @@
 				DEVELOPMENT_TEAM = 74925668M8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "";
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -1041,6 +1050,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LAUNCH_DARKLY_MOB_KEY = "$(LAUNCH_DARKLY_MOB_KEY)";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;
@@ -1087,6 +1097,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
+				LAUNCH_DARKLY_MOB_KEY = "$(LAUNCH_DARKLY_MOB_KEY)";
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
 				"LD_RUNPATH_SEARCH_PATHS[sdk=macosx*]" = "@executable_path/../Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 12.0;

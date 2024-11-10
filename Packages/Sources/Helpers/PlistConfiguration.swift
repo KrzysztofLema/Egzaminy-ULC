@@ -43,5 +43,13 @@ public enum PlistConfiguration {
         public static var useMockData: Bool {
             Bundle.main.string(for: "USE_MOCK_DATA") == "YES"
         }
+
+        public static var launchDarklyMobKey: String {
+            Bundle.main.string(for: "LAUNCH_DARKLY_MOB_KEY")
+        }
+
+        public static var launchDarklyContextKey: String {
+            Bundle.main.string(for: "LAUNCH_DARKLY_CONTEXT_KEY")
+        }
     }
 }
