@@ -1,5 +1,6 @@
 import ComposableArchitecture
 import ExamDetailFeature
+import FeatureFlagClient
 import UserSettingsClient
 
 @Reducer
@@ -7,9 +8,16 @@ public struct MainMenu {
     @ObservableState
     public struct State: Equatable {
         var path = StackState<Path.State>()
+        var showBookmarksFeature: Bool
+        var bookMarkIconTitle: String
 
-        public init() {}
+        public init() {
+            showBookmarksFeature = false
+            bookMarkIconTitle = ""
+        }
     }
+
+    @Dependency(\.featureFlags) var featureFlags
 
     public enum Action: ViewAction {
         case path(StackAction<Path.State, Path.Action>)
@@ -18,6 +26,7 @@ public struct MainMenu {
         @CasePathable
         public enum View: Equatable {
             case didTapQuizButton
+            case checkFeatureFlags
         }
     }
 
@@ -35,6 +44,11 @@ public struct MainMenu {
                     state.path.append(.examDetail(.init(examID: examID)))
                 }
                 return .none
+            case .view(.checkFeatureFlags):
+                state.showBookmarksFeature = featureFlags.boolFlag(FeatureFlagProvider.bookmarksFeature, false)
+                state.bookMarkIconTitle = featureFlags.stringFlag(FeatureFlagProvider.bookmarkIconFlag, "")
+                return .none
+
             case .path:
                 return .none
             }

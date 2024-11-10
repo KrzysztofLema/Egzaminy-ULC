@@ -10,6 +10,15 @@
       }
     },
     {
+      "identity" : "datacompression",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/mw99/DataCompression",
+      "state" : {
+        "revision" : "5ab15951321b08b74511601cbd0497667649d70b",
+        "version" : "3.8.0"
+      }
+    },
+    {
       "identity" : "difference",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/krzysztofzablocki/Difference.git",
@@ -25,6 +34,15 @@
       "state" : {
         "revision" : "abcc4b091fd384cfd09b149a60298b75dc87c5b9",
         "version" : "1.2.3"
+      }
+    },
+    {
+      "identity" : "ios-client-sdk",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/launchdarkly/ios-client-sdk.git",
+      "state" : {
+        "revision" : "8c09801a6df799cfae7bee130749c0e4d47a3eff",
+        "version" : "9.12.0"
       }
     },
     {
@@ -97,6 +115,15 @@
       "state" : {
         "revision" : "fd1fb25b68fdb9756cd61d23dbd9e2614b340085",
         "version" : "1.4.0"
+      }
+    },
+    {
+      "identity" : "swift-eventsource",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/LaunchDarkly/swift-eventsource.git",
+      "state" : {
+        "revision" : "57051701c58a93603ffa2051f8e9cf0c8cff7814",
+        "version" : "3.3.0"
       }
     },
     {
