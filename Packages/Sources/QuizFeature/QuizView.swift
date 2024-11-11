@@ -67,27 +67,20 @@ public struct QuizView: View {
         .enableInjection()
     }
 
-    var closeButton: some View {
-        Button {
+    private var closeButton: some View {
+        CircleButton(iconImage: Image(systemName: "xmark")) {
             send(.closeQuizButtonTapped)
-        } label: {
-            Image(systemName: "xmark")
-                .asQuizIcon()
-                .background(.ultraThinMaterial, in: Circle())
         }
     }
 
-    var bookmarkButton: some View {
-        Button {
+    private var bookmarkButton: some View {
+        CircleButton(iconImage: Image(systemName: isBookmarkSelected ? "bookmark" : "bookmark.fill")) {
             isBookmarkSelected.toggle()
-        } label: {
-            Image(systemName: isBookmarkSelected ? "bookmark" : "bookmark.fill")
-                .asQuizIcon()
-                .animation(.easeInOut(duration: 0.1), value: isBookmarkSelected)
         }
+        .animation(.easeInOut(duration: 0.1), value: isBookmarkSelected)
     }
 
-    var titleText: some View {
+    private var titleText: some View {
         Text(store.subject.title ?? "")
             .font(.headline)
             .multilineTextAlignment(.center)

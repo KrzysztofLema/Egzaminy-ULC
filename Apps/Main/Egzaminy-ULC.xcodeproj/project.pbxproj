@@ -34,6 +34,7 @@
 		95D102362C68B67B00DE31E5 /* AppRootFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 95D102352C68B67B00DE31E5 /* AppRootFeature */; };
 		95DC31D32CB7F72B00617BD8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 95DC31D22CB7F72B00617BD8 /* Localizable.xcstrings */; };
 		95FA826B2C5E6A33000058B3 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 952B25502C42CB4500DB5168 /* Package.resolved */; };
+		95FB7C002CE1EF4000B9F016 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 95FB7BFF2CE1EF4000B9F016 /* CoreUI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		959582172C4185A10036F76B /* Egzaminy_ULCUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egzaminy_ULCUnitTests.swift; sourceTree = "<group>"; };
 		95B18E772C5E6F600038518D /* ci_post_clone.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		95DC31D22CB7F72B00617BD8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		95FB7BF02CE1EF0400B9F016 /* CoreUIPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreUIPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FE54B62CC10CE700304546 /* UAT.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UAT.xcconfig; sourceTree = "<group>"; };
 		95FE54BA2CC120EF00304546 /* DEV.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DEV.xcconfig; sourceTree = "<group>"; };
 		CDC244042A52DB400051EE1C /* Egzaminy-ULC DEV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Egzaminy-ULC DEV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -85,6 +87,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9527D38D2CAC160F005A66C2 /* OnboardingFeaturePreview */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = OnboardingFeaturePreview; sourceTree = "<group>"; };
+		95FB7BF12CE1EF0400B9F016 /* CoreUIPreview */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CoreUIPreview; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +110,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95FB7BED2CE1EF0400B9F016 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95FB7C002CE1EF4000B9F016 /* CoreUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -228,6 +239,7 @@
 				959582072C4185200036F76B /* Egzaminy-ULCUITests */,
 				959582162C4185A10036F76B /* Egzaminy-ULCUnitTests */,
 				9527D38D2CAC160F005A66C2 /* OnboardingFeaturePreview */,
+				95FB7BF12CE1EF0400B9F016 /* CoreUIPreview */,
 				CDC244052A52DB400051EE1C /* Products */,
 				CDD451062A52E257003EBCDC /* Frameworks */,
 			);
@@ -240,6 +252,7 @@
 				959582062C4185200036F76B /* Egzaminy-ULCUITests.xctest */,
 				959582152C4185A10036F76B /* Egzaminy-ULCUnitTests.xctest */,
 				9527D38C2CAC160F005A66C2 /* OnboardingFeaturePreview.app */,
+				95FB7BF02CE1EF0400B9F016 /* CoreUIPreview.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -317,6 +330,29 @@
 			productReference = 959582152C4185A10036F76B /* Egzaminy-ULCUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		95FB7BEF2CE1EF0400B9F016 /* CoreUIPreview */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95FB7BFE2CE1EF0700B9F016 /* Build configuration list for PBXNativeTarget "CoreUIPreview" */;
+			buildPhases = (
+				95FB7BEC2CE1EF0400B9F016 /* Sources */,
+				95FB7BED2CE1EF0400B9F016 /* Frameworks */,
+				95FB7BEE2CE1EF0400B9F016 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				95FB7BF12CE1EF0400B9F016 /* CoreUIPreview */,
+			);
+			name = CoreUIPreview;
+			packageProductDependencies = (
+				95FB7BFF2CE1EF4000B9F016 /* CoreUI */,
+			);
+			productName = CoreUIPreview;
+			productReference = 95FB7BF02CE1EF0400B9F016 /* CoreUIPreview.app */;
+			productType = "com.apple.product-type.application";
+		};
 		CDC244032A52DB400051EE1C /* Egzaminy-ULC */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CDC244292A52DB410051EE1C /* Build configuration list for PBXNativeTarget "Egzaminy-ULC" */;
@@ -344,7 +380,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1600;
+				LastSwiftUpdateCheck = 1610;
 				LastUpgradeCheck = 1600;
 				TargetAttributes = {
 					9527D38B2CAC160F005A66C2 = {
@@ -357,6 +393,9 @@
 					959582142C4185A10036F76B = {
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = CDC244032A52DB400051EE1C;
+					};
+					95FB7BEF2CE1EF0400B9F016 = {
+						CreatedOnToolsVersion = 16.1;
 					};
 					CDBF336F2B112DF400BDCC91 = {
 						CreatedOnToolsVersion = 15.0.1;
@@ -388,6 +427,7 @@
 				959582052C4185200036F76B /* Egzaminy-ULCUITests */,
 				959582142C4185A10036F76B /* Egzaminy-ULCUnitTests */,
 				9527D38B2CAC160F005A66C2 /* OnboardingFeaturePreview */,
+				95FB7BEF2CE1EF0400B9F016 /* CoreUIPreview */,
 			);
 		};
 /* End PBXProject section */
@@ -408,6 +448,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		959582132C4185A10036F76B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95FB7BEE2CE1EF0400B9F016 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -474,6 +521,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				959582182C4185A10036F76B /* Egzaminy_ULCUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95FB7BEC2CE1EF0400B9F016 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -640,6 +694,101 @@
 				SWIFT_VERSION = 6.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Egzaminy-ULC DEV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Egzaminy-ULC DEV";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		95FB7BFB2CE1EF0700B9F016 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CoreUIPreview/Preview Content\"";
+				DEVELOPMENT_TEAM = 74925668M8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.krzysztoflema.CoreUIPreview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		95FB7BFC2CE1EF0700B9F016 /* UAT */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CoreUIPreview/Preview Content\"";
+				DEVELOPMENT_TEAM = 74925668M8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.krzysztoflema.CoreUIPreview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = UAT;
+		};
+		95FB7BFD2CE1EF0700B9F016 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"CoreUIPreview/Preview Content\"";
+				DEVELOPMENT_TEAM = 74925668M8;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 18.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.krzysztoflema.CoreUIPreview;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1149,6 +1298,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		95FB7BFE2CE1EF0700B9F016 /* Build configuration list for PBXNativeTarget "CoreUIPreview" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95FB7BFB2CE1EF0700B9F016 /* Debug */,
+				95FB7BFC2CE1EF0700B9F016 /* UAT */,
+				95FB7BFD2CE1EF0700B9F016 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CDBF33722B112DF400BDCC91 /* Build configuration list for PBXAggregateTarget "Periphery" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1196,6 +1355,10 @@
 		95D102352C68B67B00DE31E5 /* AppRootFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppRootFeature;
+		};
+		95FB7BFF2CE1EF4000B9F016 /* CoreUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = CoreUI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

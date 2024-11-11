@@ -188,6 +188,9 @@
         }
       }
     },
+    "Hello, world!" : {
+
+    },
     "homeTab" : {
       "extractionState" : "manual",
       "localizations" : {

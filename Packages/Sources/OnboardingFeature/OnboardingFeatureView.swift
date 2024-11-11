@@ -7,22 +7,25 @@ import SwiftUI
 
 @ViewAction(for: Onboarding.self)
 public struct OnboardingFeatureView: View {
-    public var store: StoreOf<Onboarding>
+    @Bindable public var store: StoreOf<Onboarding>
 
     @ObserveInjection private var iO
 
     public var body: some View {
-        ZStack {
-            Color.primaryBackground.ignoresSafeArea()
+        NavigationStack(path: $store.scope(
+            state: \.path,
+            action: \.path
+        )) {
+            ZStack {
+                Color.primaryBackground.ignoresSafeArea()
 
-            VStack {
-                Spacer()
+                VStack {
+                    Spacer()
 
-                stepsView
+                    stepsView
 
-                Spacer()
+                    Spacer()
 
-                if store.isNextButtonVisible {
                     Button(action: {
                         send(.nextButtonTapped, animation: .default)
                     }, label: {
@@ -34,8 +37,12 @@ public struct OnboardingFeatureView: View {
                             .padding()
                     })
                     .padding()
-                    .transition(.move(edge: .bottom).combined(with: .opacity))
                 }
+            }
+        } destination: { store in
+            switch store.case {
+            case let .examList(store):
+                ExamsListView(store: store)
             }
         }
         .enableInjection()
@@ -53,14 +60,7 @@ public struct OnboardingFeatureView: View {
             case .welcome2:
                 LabelView(text: Text("\(LocalizationProvider.Onboarding.withUsYouWillPass)\n") + Text("\(LocalizationProvider.Onboarding.civilAviationAuthority)").bold())
             case .choseSubject:
-                ScrollView(showsIndicators: false) {
-                    VStack(spacing: 10) {
-                        LabelView(text: Text("\(LocalizationProvider.Onboarding.chooseExam)"))
-                            .frame(maxHeight: .infinity, alignment: .top)
-
-                        ExamsListView(store: store.scope(state: \.examsList, action: \.examsList))
-                    }
-                }
+                LabelView(text: Text("\(LocalizationProvider.Onboarding.chooseExam)"))
             }
         }
         .transition(.opacity)
