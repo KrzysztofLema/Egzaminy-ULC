@@ -14,14 +14,42 @@ public struct ExamsListView: View {
     }
 
     public var body: some View {
-        VStack {
-            ForEach(store.exams) { exam in
-                Button(action: {
-                    store.send(.examDetailButtonTapped(exam), animation: .default)
-                }, label: {
-                    ExamView(exam: exam)
-                })
+        Group {
+            switch store.examsListViewState {
+            case let .success(exams: exams):
+                examsList(exams: exams)
+            case .failure:
+                fullScreenErrorView
+            case .inProgress:
+                ProgressView()
+            case .initial:
+                EmptyView()
             }
+        }.onAppear {
+            store.send(.onViewDidLoad)
+        }.navigationBarBackButtonHidden()
+    }
+
+    private func examsList(exams: IdentifiedArrayOf<Exam>) -> some View {
+        ZStack {
+            Color.primaryBackground.ignoresSafeArea()
+            ScrollView {
+                VStack {
+                    ForEach(exams) { exam in
+                        Button(action: {
+                            store.send(.examDetailButtonTapped(exam), animation: .default)
+                        }, label: {
+                            ExamView(exam: exam)
+                        })
+                    }
+                }
+            }
+        }
+    }
+
+    private var fullScreenErrorView: some View {
+        FullScreenErrorView {
+            store.send(.closeButtonTapped)
         }
     }
 }

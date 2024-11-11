@@ -6,6 +6,7 @@ import UserSettingsClient
 public struct Onboarding {
     @ObservableState
     public struct State: Equatable {
+        var path = StackState<Path.State>()
         public var onboardingSteps: OnboardingSteps = .welcome
         public var examsList: ExamsList.State
 
@@ -19,29 +20,36 @@ public struct Onboarding {
     }
 
     public enum Action: ViewAction {
+        case path(StackAction<Path.State, Path.Action>)
+
         @CasePathable
         public enum View {
             case nextButtonTapped
         }
 
-        case examsList(ExamsList.Action)
         case view(View)
     }
 
-    public var body: some ReducerOf<Self> {
-        Scope(state: \.examsList, action: \.examsList) {
-            ExamsList()
-        }
+    @Reducer(state: .equatable)
+    public enum Path {
+        case examList(ExamsList)
+    }
 
+    public var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
             case .view(.nextButtonTapped):
-                state.onboardingSteps.next()
+                if state.onboardingSteps.isLast() {
+                    state.path.append(.examList(.init()))
+                } else {
+                    state.onboardingSteps.next()
+                }
                 return .none
-            case .examsList:
+            case .path:
                 return .none
             }
         }
+        .forEach(\.path, action: \.path)
     }
 
     public init() {}

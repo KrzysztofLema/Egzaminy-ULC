@@ -11,6 +11,7 @@ let package = Package(
     products: [
         .singleTargetLibrary("AppRootFeature"),
         .singleTargetLibrary("OnboardingFeature"),
+        .singleTargetLibrary("CoreUI"),
     ],
     dependencies: [
         .package(url: "https://github.com/krzysztofzablocki/Inject.git", exact: "1.2.3"),
@@ -55,7 +56,10 @@ let package = Package(
         ),
         .target(
             name: "CoreUI",
-            dependencies: []
+            dependencies: [
+                "Providers",
+                "SharedViews",
+            ]
         ),
         .target(
             name: "CurrentQuizClient",
@@ -218,6 +222,7 @@ let package = Package(
             dependencies: [
                 "CoreDataClient",
                 "CurrentQuizClient",
+                "CoreUI",
                 "Providers",
                 "SharedViews",
                 "SharedModels",

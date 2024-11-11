@@ -94,4 +94,14 @@ public enum LocalizationProvider {
             String(localized: "settingsTab")
         }
     }
+
+    public enum Error {
+        public static var fullScreenTitle: String {
+            String(localized: "errorTitle")
+        }
+
+        public static var fullScreenDescription: String {
+            String(localized: "errorDescription")
+        }
+    }
 }
