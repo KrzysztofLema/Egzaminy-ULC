@@ -40,7 +40,7 @@ extension Exam {
         image = dto.image
         background = dto.background
         logo = dto.logo
-        subjects = dto.subjects.map { Subject(dto: $0) }
+        subjects = dto.subjects?.compactMap { Subject(dto: $0) } ?? []
     }
 }
 

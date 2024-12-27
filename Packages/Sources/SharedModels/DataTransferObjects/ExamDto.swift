@@ -8,7 +8,7 @@ public struct ExamDto: Codable {
     public var image: String
     public var background: String
     public var logo: String
-    public var subjects: [SubjectDto]
+    public var subjects: [SubjectDto]?
 
     enum CodingKeys: CodingKey {
         case id

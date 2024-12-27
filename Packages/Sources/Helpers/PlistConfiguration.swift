@@ -11,10 +11,19 @@ public enum PlistConfiguration {
             Bundle.main.string(for: "API_HOST")
         }
 
+        public static var path: String {
+            Bundle.main.string(for: "API_PATH")
+        }
+
+        public static var auth_secret: String {
+            Bundle.main.string(for: "AUTH_SECRET")
+        }
+
         public static var currentApiURL: URL? {
             var components = URLComponents()
             components.scheme = scheme
             components.host = host
+            components.path = path
             return components.url
         }
     }

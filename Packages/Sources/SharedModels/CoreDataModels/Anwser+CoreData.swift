@@ -7,7 +7,6 @@ extension Answer: CoreDataPersistable {
         [
             \.id: "id",
             \.answerTitle: "answerTitle",
-            \.answerID: "answerID",
             \.isCorrect: "isCorrect",
         ]
     }
@@ -15,7 +14,6 @@ extension Answer: CoreDataPersistable {
     func toManagedObject(context: NSManagedObjectContext) -> ManagedType {
         let persistedValue = AnswerEntity(context: context)
         persistedValue.id = id
-        persistedValue.answerID = answerID
         persistedValue.answerTitle = answerTitle
         persistedValue.isCorrect = isCorrect ?? false
 
@@ -27,7 +25,6 @@ extension Answer: CoreDataPersistable {
     public init(managedObject: AnswerEntity?) {
         guard let managedObject else { return }
         id = managedObject.id
-        answerID = managedObject.answerID
         answerTitle = managedObject.answerTitle
         isCorrect = managedObject.isCorrect
     }
