@@ -28,6 +28,7 @@ let package = Package(
             name: "AppRootFeature",
             dependencies: [
                 "HomeFeature",
+                "ExamsApiClient",
                 "ExamDetailFeature",
                 "ExamsListFeature",
                 "MainMenuFeature",
@@ -42,6 +43,7 @@ let package = Package(
             name: "AppRootFeatureTest",
             dependencies: [
                 "AppRootFeature",
+                "ExamsApiClient",
                 "TestExtensions",
             ]
         ),
@@ -50,6 +52,7 @@ let package = Package(
             dependencies: [
                 "SharedModels",
                 "ExamsClient",
+                "ExamsApiClient",
                 "Helpers",
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ]
@@ -89,6 +92,14 @@ let package = Package(
         ),
         .target(
             name: "ExamsClient",
+            dependencies: [
+                "SharedModels",
+                "Helpers",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]
+        ),
+        .target(
+            name: "ExamsApiClient",
             dependencies: [
                 "SharedModels",
                 "Helpers",
