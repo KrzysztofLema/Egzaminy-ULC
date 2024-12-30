@@ -6,19 +6,19 @@ public struct Answer: Identifiable, Equatable, Hashable {
     public var isCorrect: Bool?
 
     public init(
-        id: UUID? = UUID(),
+        id: String = "",
         answerTitle: String?,
         isCorrect: Bool?
     ) {
-        self.id = id?.uuidString
+        self.id = id
         self.answerTitle = answerTitle
         self.isCorrect = isCorrect
     }
 }
 
 extension Answer {
-    public init(id: UUID = UUID(), dto: AnswerDto) {
-        self.id = id.uuidString
+    public init(dto: AnswerDto) {
+        id = dto.id
         answerTitle = dto.answerText
         isCorrect = dto.isCorrect
     }

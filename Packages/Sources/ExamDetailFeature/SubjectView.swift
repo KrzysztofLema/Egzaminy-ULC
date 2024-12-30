@@ -63,7 +63,6 @@ struct SubjectView: View {
         .background(
             Rectangle().fill(.ultraThinMaterial).mask(RoundedRectangle(cornerRadius: 30, style: .continuous))
         )
-
         .enableInjection()
     }
 }

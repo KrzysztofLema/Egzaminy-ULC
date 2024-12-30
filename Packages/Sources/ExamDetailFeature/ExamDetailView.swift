@@ -13,28 +13,37 @@ public struct ExamDetailView: View {
     public var store: StoreOf<ExamDetail>
 
     public var body: some View {
-        ZStack {
-            Color.primaryBackground.ignoresSafeArea()
+        Group {
+            switch (store.isLoading, store.isErrorOccurred, store.exam) {
+            case (true, false, _):
+                ProgressView()
+            case (false, true, _):
+                FullScreenErrorView()
+            case let (_, _, exam):
+                ZStack {
+                    Color.primaryBackground.ignoresSafeArea()
 
-            ScrollView(showsIndicators: false) {
-                VStack {   
-                    StretchyHeaderView {
-                        Image(store.exam?.image ?? "")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                    }
-                    
-                    Text("\(LocalizationProvider.ExamDetails.selectSubject):".uppercased())
-                        .font(.footnote.weight(.semibold))
-                        .foregroundColor(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 20)
-
-                    ForEachStore(store.scope(state: \.subjects, action: \.subjects)) { store in
-                        SubjectView(store: store)
-                            .onTapGesture {
-                                send(.presentQuizSubjectButtonTapped(store.subject))
+                    ScrollView(showsIndicators: false) {
+                        VStack {
+                            StretchyHeaderView {
+                                Image(exam?.image ?? "")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
                             }
+
+                            Text("\(LocalizationProvider.ExamDetails.selectSubject):".uppercased())
+                                .font(.footnote.weight(.semibold))
+                                .foregroundColor(.secondary)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding(.horizontal, 20)
+
+                            ForEachStore(store.scope(state: \.subjects, action: \.subjects)) { store in
+                                SubjectView(store: store)
+                                    .onTapGesture {
+                                        send(.presentQuizSubjectButtonTapped(store.subject))
+                                    }
+                            }
+                        }
                     }
                 }
             }

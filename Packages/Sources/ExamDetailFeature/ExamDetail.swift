@@ -3,6 +3,7 @@ import CoreDataClient
 import CurrentQuizClient
 import Foundation
 import QuizFeature
+import Services
 import SharedModels
 
 @Reducer
@@ -16,15 +17,23 @@ public struct ExamDetail {
         let examID: Exam.ID
         var exam: Exam?
         var subjects: IdentifiedArrayOf<SubjectFeature.State> = []
+        var isLoading: Bool
+        var isErrorOccurred: Bool
 
-        public init(examID: Exam.ID, destination: Destination.State? = nil) {
+        public init(
+            examID: Exam.ID,
+            destination: Destination.State? = nil
+        ) {
             self.examID = examID
             self.destination = destination
+            exam = nil
+            isLoading = false
+            isErrorOccurred = false
         }
     }
 
     @Dependency(\.uuid) var uuid
-    @Dependency(\.coreData) var coreData
+    @Dependency(\.examsApiClient) var examApiClient
 
     public enum Action: ViewAction {
         case alert(PresentationAction<Alert>)
@@ -75,7 +84,6 @@ public struct ExamDetail {
                 return .run { send in
                     await send(.shouldPresentQuiz(isLastQuestion, subject))
                 }
-
             case let .shouldPresentQuiz(false, subject):
                 state.alert = .lastQuestionAlert(in: subject)
                 return .none
@@ -94,10 +102,14 @@ public struct ExamDetail {
             case let .fetchExam(.success(exam)):
                 state.exam = exam
                 state.subjects = IdentifiedArrayOf(uniqueElements: exam.subjects.map { SubjectFeature.State(id: UUID(), subject: $0) })
+                state.isLoading = false
                 return .none
-            case let .fetchExam(.failure):
+            case .fetchExam(.failure):
+                state.isLoading = false
+                state.isErrorOccurred = true
                 return .none
             case .view(.onViewAppear):
+                state.isLoading = true
                 return fetchAllSubjects(state: &state)
             }
         }
@@ -110,11 +122,9 @@ public struct ExamDetail {
         .ifLet(\.$alert, action: \.alert)
     }
 
-    func fetchAllSubjects(state: inout State) -> Effect<Action> {
+    private func fetchAllSubjects(state: inout State) -> Effect<Action> {
         .run { [examID = state.examID] send in
-            await send(.fetchExam(Result {
-                try coreData.fetchExamByID(examID)
-            }))
+            await send(.fetchExam(Result { try await examApiClient.fetchExam(examID) }))
         }
     }
 

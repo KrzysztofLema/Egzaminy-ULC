@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_HOST</key>
+	<string>$(API_HOST)</string>
+	<key>API_PATH</key>
+	<string>$(API_PATH)</string>
+	<key>API_SCHEME</key>
+	<string>$(API_SCHEME)</string>
+	<key>AUTH_SECRET</key>
+	<string>$(AUTH_SECRET)</string>
+	<key>LAUNCH_DARKLY_MOB_KEY</key>
+	<string>$(LAUNCH_DARKLY_MOB_KEY)</string>
+	<key>LAUNCH_DARKLY_CONTEXT_KEY</key>
+	<string>$(LAUNCH_DARKLY_CONTEXT_KEY)</string>
+	<key>LAUNCH_DARKLY_MOB_KEY_UAT</key>
+	<string>$(LAUNCH_DARKLY_MOB_KEY_UAT)</string>
+	<key>LAUNCH_DARKLY_CONTEXT_KEY_UAT</key>
+	<string>$(LAUNCH_DARKLY_CONTEXT_KEY_UAT)</string>
+</dict>
+</plist>

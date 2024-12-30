@@ -9,7 +9,8 @@ MARKETING_VERSION = 0.5
 
 CURRENT_SCHEME_NAME = DEV
 
-API_HOST = mock
-API_SCHEME = local
+API_HOST = egzaminy-ulc-backend.fly.dev
+API_PATH = /api
+API_SCHEME = https
 
-USE_MOCK_DATA = YES
+USE_MOCK_DATA = NO

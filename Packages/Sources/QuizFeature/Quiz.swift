@@ -2,6 +2,7 @@ import ComposableArchitecture
 import CoreDataClient
 import CurrentQuizClient
 import Foundation
+import Services
 import SharedModels
 
 @Reducer
@@ -14,6 +15,7 @@ public struct Quiz {
         var answers: IdentifiedArrayOf<AnswerFeature.State> = []
         var isNextButtonEnabled = false
         var selectedAnswer: AnswerFeature.State?
+        var questions: [Question]?
         var currentQuestion: Question?
         @Shared(.currentQuizState) public var currentQuizState
 
@@ -43,22 +45,23 @@ public struct Quiz {
         case selectedAnswer(AnswerFeature.Action)
         case view(View)
         case answers(IdentifiedActionOf<AnswerFeature>)
-        case updateCurrentQuestion(Result<Question, Error>)
+        case updateCurrentQuestion(Question)
+        case getQuestions(Result<[Question], Error>)
     }
 
     @Dependency(\.dismiss) var dismiss
     @Dependency(\.uuid) var uuid
-    @Dependency(\.coreData) var coreData
+    @Dependency(\.questionsAPIClient) var questionsApiClient
 
     public var body: some ReducerOf<Self> {
         Reduce<State, Action> { state, action in
             switch action {
             case .alert(.presented(.confirmCorrect)):
                 state.currentQuizState.currentProgress[state.subject.id, default: 0] += 1
-                return .run { [subjectId = state.subject.id, currentProgress = state.currentQuizState.currentProgress] send in
-                    await send(.updateCurrentQuestion(
-                        Result { try coreData.fetchQuestion(subjectId, currentProgress[subjectId] ?? 0) }
-                    ))
+                return .run { [subject = state.subject, questions = state.questions, currentProgress = state.currentQuizState.currentProgress] send in
+                    let currentProgress = currentProgress[subject.id]
+                    let currentQuestion = questions?[currentProgress ?? 0]
+                    await send(.updateCurrentQuestion(currentQuestion!))
                 }
             case .alert(.presented(.confirmNotCorrect)):
                 return .none
@@ -67,7 +70,7 @@ public struct Quiz {
             case .nextQuestion:
                 state.alert = .nextQuestion(isAnswerCorrect: state.selectedAnswer?.answer.isCorrect ?? false)
                 return .none
-            case let .updateCurrentQuestion(.success(question)):
+            case let .updateCurrentQuestion(question):
                 state.currentQuestion = question
                 state.selectedAnswer = nil
 
@@ -83,15 +86,6 @@ public struct Quiz {
 
                 state.isNextButtonEnabled = state.selectedAnswer != nil
                 return .none
-            case .updateCurrentQuestion(.failure(CoreDataError.questionNotFound)):
-                state.currentQuizState.currentProgress[state.subject.id] = state.subject.questions?.count ?? 0
-                return .run { _ in
-                    await dismiss()
-                }
-            case .updateCurrentQuestion(.failure):
-                return .run { _ in
-                    await dismiss()
-                }
             case let .answers(answerAction):
                 switch answerAction {
                 case let .element(id: _, action: .delegate(.didSelectionChanged(answer))):
@@ -110,10 +104,9 @@ public struct Quiz {
             case .selectedAnswer:
                 return .none
             case .view(.onViewAppear):
-                return .run { [subjectId = state.subject.id, currentProgress = state.currentQuizState.currentProgress] send in
-                    await send(.updateCurrentQuestion(
-                        Result { try coreData.fetchQuestion(subjectId, currentProgress[subjectId] ?? 0) }
-                    ))
+                return .run { [subject = state.subject] send in
+                    guard let id = subject.id else { return }
+                    await send(.getQuestions(Result { try await questionsApiClient.fetchQuestions(id) }))
                 }
             case .view(.nextQuestionButtonTapped):
                 return .run { send in
@@ -123,6 +116,15 @@ public struct Quiz {
                 return .run { _ in
                     await dismiss()
                 }
+            case let .getQuestions(.success(questions)):
+                state.questions = questions
+                return .run { [questions = state.questions, subject = state.subject, currentProgressState = state.currentQuizState.currentProgress] send in
+                    let currentProgress = currentProgressState[subject.id]
+                    let currentQuestion = questions?[currentProgress ?? 0]
+                    await send(.updateCurrentQuestion(currentQuestion!))
+                }
+            case .getQuestions(.failure):
+                return .none
             }
         }
         .forEach(\.answers, action: \.answers) {

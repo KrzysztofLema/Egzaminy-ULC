@@ -79,6 +79,7 @@
 		959582172C4185A10036F76B /* Egzaminy_ULCUnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Egzaminy_ULCUnitTests.swift; sourceTree = "<group>"; };
 		95B18E772C5E6F600038518D /* ci_post_clone.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		95DC31D22CB7F72B00617BD8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		95E554492D2319BB00FE454C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		95FB7BF02CE1EF0400B9F016 /* CoreUIPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreUIPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FE54B62CC10CE700304546 /* UAT.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UAT.xcconfig; sourceTree = "<group>"; };
 		95FE54BA2CC120EF00304546 /* DEV.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DEV.xcconfig; sourceTree = "<group>"; };
@@ -173,6 +174,7 @@
 		959581FE2C4182DC0036F76B /* Egzaminy-ULC */ = {
 			isa = PBXGroup;
 			children = (
+				95E554492D2319BB00FE454C /* Info.plist */,
 				959581FC2C4182DC0036F76B /* Assets.xcassets */,
 				95A9B6DD2C884E6F0038C07B /* SupportingFiles */,
 				95B18E782C5E6F600038518D /* ci_scripts */,
@@ -795,6 +797,7 @@
 		};
 		95FE54C32CC12AF100304546 /* UAT */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 957920592CC2D32E0062D9E6 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -849,7 +852,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Egzaminy-ULC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LAUNCH_DARKLY_CONTEXT_KEY = "$(LAUNCH_DARKLY_CONTEXT_KEY)";
 				LAUNCH_DARKLY_MOB_KEY = "$(LAUNCH_DARKLY_MOB_KEY)";
@@ -887,7 +891,7 @@
 				DEVELOPMENT_TEAM = 74925668M8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = "$(SRCROOT)/Egzaminy-ULC/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -1026,8 +1030,10 @@
 		};
 		CDC244272A52DB400051EE1C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 957920592CC2D32E0062D9E6 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				API_HOST = "$(API_HOST)";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
@@ -1080,7 +1086,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Egzaminy-ULC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LAUNCH_DARKLY_CONTEXT_KEY = "$(LAUNCH_DARKLY_CONTEXT_KEY)";
 				LAUNCH_DARKLY_MOB_KEY = "$(LAUNCH_DARKLY_MOB_KEY)";
@@ -1153,7 +1160,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				INFOPLIST_FILE = "";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "$(SRCROOT)/Egzaminy-ULC/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 18.0;
 				LAUNCH_DARKLY_CONTEXT_KEY = "$(LAUNCH_DARKLY_CONTEXT_KEY)";
 				LAUNCH_DARKLY_MOB_KEY = "$(LAUNCH_DARKLY_MOB_KEY)";
@@ -1185,7 +1193,7 @@
 				DEVELOPMENT_TEAM = 74925668M8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = "$(SRCROOT)/Egzaminy-ULC/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -1233,7 +1241,7 @@
 				DEVELOPMENT_TEAM = 74925668M8;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = "$(SRCROOT)/Egzaminy-ULC/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.education";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;

@@ -1,6 +1,7 @@
 import ComposableArchitecture
 import CoreDataClient
 import Foundation
+import Services
 import SharedModels
 import UserSettingsClient
 
@@ -19,21 +20,17 @@ public struct ExamsList {
 
         @Shared(.userSettings) public var userSettings: UserSettings
 
-        public init() {
-            @Dependency(\.coreData) var coreData
-
-            coreData.saveExams()
-        }
+        public init() {}
     }
 
     public enum Action {
         case examDetailButtonTapped(Exam)
-        case didFetchExams(Result<[Exam], Error>)
+        case fetchExams(Result<[Exam], Error>)
         case onViewDidLoad
         case closeButtonTapped
     }
 
-    @Dependency(\.coreData) var coreData
+    @Dependency(\.examsApiClient) var examsApiClient
     @Dependency(\.dismiss) var dismiss
 
     public var body: some ReducerOf<Self> {
@@ -46,13 +43,19 @@ public struct ExamsList {
                 state.examsListViewState = .inProgress
 
                 return .run { send in
-                    await send(.didFetchExams(Result { try coreData.fetchAllExams() }))
+                    do {
+                        let exams = try await examsApiClient.fetchExams()
+                        await send(.fetchExams(.success(exams)))
+                    } catch {
+                        print(error.localizedDescription)
+                        await send(.fetchExams(.failure(error)))
+                    }
                 }
-            case let .didFetchExams(.success(exams)):
+            case let .fetchExams(.success(exams)):
                 state.examsListViewState = .success(exams: IdentifiedArray(uniqueElements: exams))
                 return .none
 
-            case .didFetchExams(.failure):
+            case .fetchExams(.failure):
                 state.examsListViewState = .failure
                 return .none
             case .closeButtonTapped:
