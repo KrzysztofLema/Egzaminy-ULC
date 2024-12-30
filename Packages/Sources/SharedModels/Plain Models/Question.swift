@@ -8,13 +8,13 @@ public struct Question: Identifiable, Equatable, Hashable {
     public var answers: [Answer]?
 
     public init(
-        id: UUID = UUID(),
+        id: String = "",
         order: Int?,
         questionNumber: String?,
         title: String?,
         answers: [Answer]?
     ) {
-        self.id = id.uuidString
+        self.id = id
         self.order = order
         self.questionNumber = questionNumber
         self.title = title
@@ -24,21 +24,19 @@ public struct Question: Identifiable, Equatable, Hashable {
 
 extension Question {
     public init(
-        id: UUID = UUID(),
         order: Int,
         dto: QuestionDto
     ) {
-        self.id = id.uuidString
         self.order = order
+        id = dto.id
         questionNumber = dto.questionNumber
         title = dto.title
-        answers = dto.answers.map { Answer(dto: $0) }
+        answers = dto.answers?.compactMap { Answer(dto: $0) }
     }
 }
 
 extension Question {
     public static let mock = Question(
-        id: UUID(),
         order: 0,
         questionNumber: "PL080-0001",
         title: "Czy profile klasyczne są dużo bardziej \"wrażliwe\" na zabrudzenia od profili laminarnych?",
@@ -46,7 +44,6 @@ extension Question {
     )
 
     public static let mock2 = Question(
-        id: UUID(),
         order: 1,
         questionNumber: "PL080-0003",
         title: "Aby zapobiec zjawisku flateru giętno-lotkowemu należy:",

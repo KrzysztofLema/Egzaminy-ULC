@@ -7,12 +7,12 @@ public struct Subject: Equatable, Hashable {
     public var questions: [Question]?
 
     public init(
-        id: UUID? = UUID(),
+        id: String? = "",
         title: String?,
         image: String?,
         questions: [Question] = []
     ) {
-        self.id = id?.uuidString
+        self.id = id
         self.title = title
         self.image = image
         self.questions = questions
@@ -21,14 +21,13 @@ public struct Subject: Equatable, Hashable {
 
 extension Subject {
     public init(
-        id: UUID = UUID(),
         dto: SubjectDto
     ) {
-        self.id = id.uuidString
+        id = dto.id
         title = dto.title
         image = dto.image
-        questions = dto.questions.enumerated().map { index, questionDTO in
-            Question(order: index, dto: questionDTO)
+        questions = dto.questions?.enumerated().map { index, questionDto in
+            Question(order: index, dto: questionDto)
         }
     }
 }

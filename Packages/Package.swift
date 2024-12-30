@@ -28,7 +28,7 @@ let package = Package(
             name: "AppRootFeature",
             dependencies: [
                 "HomeFeature",
-                "ExamsApiClient",
+                "Services",
                 "ExamDetailFeature",
                 "ExamsListFeature",
                 "MainMenuFeature",
@@ -43,7 +43,7 @@ let package = Package(
             name: "AppRootFeatureTest",
             dependencies: [
                 "AppRootFeature",
-                "ExamsApiClient",
+                "Services",
                 "TestExtensions",
             ]
         ),
@@ -52,7 +52,7 @@ let package = Package(
             dependencies: [
                 "SharedModels",
                 "ExamsClient",
-                "ExamsApiClient",
+                "Services",
                 "Helpers",
                 .product(name: "Dependencies", package: "swift-dependencies"),
             ]
@@ -99,7 +99,7 @@ let package = Package(
             ]
         ),
         .target(
-            name: "ExamsApiClient",
+            name: "Services",
             dependencies: [
                 "SharedModels",
                 "Helpers",
@@ -113,6 +113,8 @@ let package = Package(
                 "CoreUI",
                 "ExamDetailFeature",
                 "SharedModels",
+                "Services",
+                "UserSettingsClient",
                 "SharedViews",
             ]
         ),
@@ -237,6 +239,7 @@ let package = Package(
                 "Providers",
                 "SharedViews",
                 "SharedModels",
+                "Services",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),

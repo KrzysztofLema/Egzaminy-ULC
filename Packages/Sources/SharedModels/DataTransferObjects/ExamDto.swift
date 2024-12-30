@@ -9,15 +9,4 @@ public struct ExamDto: Codable {
     public var background: String
     public var logo: String
     public var subjects: [SubjectDto]?
-
-    enum CodingKeys: CodingKey {
-        case id
-        case title
-        case subtitle
-        case text
-        case image
-        case background
-        case logo
-        case subjects
-    }
 }
