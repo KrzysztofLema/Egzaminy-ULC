@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Exam: Identifiable, Equatable {
+public struct Exam: Identifiable, Hashable {
     public var id: String?
     public var title: String?
     public var subtitle: String?

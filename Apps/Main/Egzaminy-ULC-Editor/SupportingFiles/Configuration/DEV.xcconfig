@@ -1,0 +1,10 @@
+#include "./Secrets.xcconfig"
+
+CURRENT_PROJECT_VERSION = 0.1
+MARKETING_VERSION = 0.1
+
+CURRENT_SCHEME_NAME = DEV
+
+API_HOST = egzaminy-ulc-backend.fly.dev
+API_PATH = /api
+API_SCHEME = https

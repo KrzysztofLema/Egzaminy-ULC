@@ -1,14 +1,32 @@
 import SwiftUI
 
 extension Color {
-    public static let primaryBackground = Color(uiColor: UIColor.dynamicColor(light: .init(hex: 0xc7dfff), dark: .init(hex: 0x1b202c)))
-    public static let buttonBackgroundColor = Color(uiColor: .init(hex: 0xb3b3b3))
-    public static let buttonDisabledBackgroundColor = Color(uiColor: .init(hex: 0x86888f00))
+    public static let primaryBackground = Color(PlatformColor.dynamicColor(
+        light: PlatformColor(hex: 0xc7dfff),
+        dark: PlatformColor(hex: 0x1b202c)
+    ))
+    public static let buttonBackgroundColor = Color(PlatformColor(hex: 0xb3b3b3))
+    public static let buttonDisabledBackgroundColor = Color(PlatformColor(hex: 0x86888f00))
 }
 
-extension UIColor {
-    static func dynamicColor(light: UIColor, dark: UIColor) -> UIColor {
-        UIColor { $0.userInterfaceStyle == .dark ? dark : light }
+#if canImport(UIKit)
+typealias PlatformColor = UIColor
+#elseif canImport(AppKit)
+typealias PlatformColor = NSColor
+#endif
+
+extension PlatformColor {
+    static func dynamicColor(light: PlatformColor, dark: PlatformColor) -> PlatformColor {
+        #if canImport(UIKit)
+        return PlatformColor { $0.userInterfaceStyle == .dark ? dark : light }
+        #elseif canImport(AppKit)
+        return NSColor(name: nil) { appearance in
+            switch appearance.bestMatch(from: [.darkAqua, .aqua]) {
+            case .darkAqua: return dark
+            default: return light
+            }
+        }
+        #endif
     }
 
     convenience init(hex: Int) {

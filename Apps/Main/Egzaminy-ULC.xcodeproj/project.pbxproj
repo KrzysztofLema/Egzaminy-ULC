@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 70;
+	objectVersion = 71;
 	objects = {
 
 /* Begin PBXAggregateTarget section */
@@ -33,6 +33,7 @@
 		95B18E792C5E6F600038518D /* ci_post_clone.sh in Resources */ = {isa = PBXBuildFile; fileRef = 95B18E772C5E6F600038518D /* ci_post_clone.sh */; };
 		95D102362C68B67B00DE31E5 /* AppRootFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 95D102352C68B67B00DE31E5 /* AppRootFeature */; };
 		95DC31D32CB7F72B00617BD8 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 95DC31D22CB7F72B00617BD8 /* Localizable.xcstrings */; };
+		95E555672D26FA5600FE454C /* EgzaminyULCEditorFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 95E555662D26FA5600FE454C /* EgzaminyULCEditorFeature */; };
 		95FA826B2C5E6A33000058B3 /* Package.resolved in Resources */ = {isa = PBXBuildFile; fileRef = 952B25502C42CB4500DB5168 /* Package.resolved */; };
 		95FB7C002CE1EF4000B9F016 /* CoreUI in Frameworks */ = {isa = PBXBuildFile; productRef = 95FB7BFF2CE1EF4000B9F016 /* CoreUI */; };
 /* End PBXBuildFile section */
@@ -80,6 +81,7 @@
 		95B18E772C5E6F600038518D /* ci_post_clone.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = ci_post_clone.sh; sourceTree = "<group>"; };
 		95DC31D22CB7F72B00617BD8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		95E554492D2319BB00FE454C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		95E5552B2D26C8EC00FE454C /* Egzaminy-ULC-Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Egzaminy-ULC-Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FB7BF02CE1EF0400B9F016 /* CoreUIPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreUIPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FE54B62CC10CE700304546 /* UAT.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UAT.xcconfig; sourceTree = "<group>"; };
 		95FE54BA2CC120EF00304546 /* DEV.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DEV.xcconfig; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9527D38D2CAC160F005A66C2 /* OnboardingFeaturePreview */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = OnboardingFeaturePreview; sourceTree = "<group>"; };
+		95E5552C2D26C8EC00FE454C /* Egzaminy-ULC-Editor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Egzaminy-ULC-Editor"; sourceTree = "<group>"; };
 		95FB7BF12CE1EF0400B9F016 /* CoreUIPreview */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CoreUIPreview; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -111,6 +114,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95E555282D26C8EC00FE454C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				95E555672D26FA5600FE454C /* EgzaminyULCEditorFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +253,7 @@
 				959582162C4185A10036F76B /* Egzaminy-ULCUnitTests */,
 				9527D38D2CAC160F005A66C2 /* OnboardingFeaturePreview */,
 				95FB7BF12CE1EF0400B9F016 /* CoreUIPreview */,
+				95E5552C2D26C8EC00FE454C /* Egzaminy-ULC-Editor */,
 				CDC244052A52DB400051EE1C /* Products */,
 				CDD451062A52E257003EBCDC /* Frameworks */,
 			);
@@ -255,6 +267,7 @@
 				959582152C4185A10036F76B /* Egzaminy-ULCUnitTests.xctest */,
 				9527D38C2CAC160F005A66C2 /* OnboardingFeaturePreview.app */,
 				95FB7BF02CE1EF0400B9F016 /* CoreUIPreview.app */,
+				95E5552B2D26C8EC00FE454C /* Egzaminy-ULC-Editor.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -332,6 +345,29 @@
 			productReference = 959582152C4185A10036F76B /* Egzaminy-ULCUnitTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		95E5552A2D26C8EC00FE454C /* Egzaminy-ULC-Editor */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 95E5553A2D26C8ED00FE454C /* Build configuration list for PBXNativeTarget "Egzaminy-ULC-Editor" */;
+			buildPhases = (
+				95E555272D26C8EC00FE454C /* Sources */,
+				95E555282D26C8EC00FE454C /* Frameworks */,
+				95E555292D26C8EC00FE454C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				95E5552C2D26C8EC00FE454C /* Egzaminy-ULC-Editor */,
+			);
+			name = "Egzaminy-ULC-Editor";
+			packageProductDependencies = (
+				95E555662D26FA5600FE454C /* EgzaminyULCEditorFeature */,
+			);
+			productName = "Egzaminy-ULC-Editor";
+			productReference = 95E5552B2D26C8EC00FE454C /* Egzaminy-ULC-Editor.app */;
+			productType = "com.apple.product-type.application";
+		};
 		95FB7BEF2CE1EF0400B9F016 /* CoreUIPreview */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 95FB7BFE2CE1EF0700B9F016 /* Build configuration list for PBXNativeTarget "CoreUIPreview" */;
@@ -396,6 +432,9 @@
 						CreatedOnToolsVersion = 15.4;
 						TestTargetID = CDC244032A52DB400051EE1C;
 					};
+					95E5552A2D26C8EC00FE454C = {
+						CreatedOnToolsVersion = 16.1;
+					};
 					95FB7BEF2CE1EF0400B9F016 = {
 						CreatedOnToolsVersion = 16.1;
 					};
@@ -430,6 +469,7 @@
 				959582142C4185A10036F76B /* Egzaminy-ULCUnitTests */,
 				9527D38B2CAC160F005A66C2 /* OnboardingFeaturePreview */,
 				95FB7BEF2CE1EF0400B9F016 /* CoreUIPreview */,
+				95E5552A2D26C8EC00FE454C /* Egzaminy-ULC-Editor */,
 			);
 		};
 /* End PBXProject section */
@@ -450,6 +490,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		959582132C4185A10036F76B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95E555292D26C8EC00FE454C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -523,6 +570,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				959582182C4185A10036F76B /* Egzaminy_ULCUnitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		95E555272D26C8EC00FE454C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -697,6 +751,95 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Egzaminy-ULC DEV.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Egzaminy-ULC DEV";
 				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		95E555372D26C8ED00FE454C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReferenceAnchor = 95E5552C2D26C8EC00FE454C /* Egzaminy-ULC-Editor */;
+			baseConfigurationReferenceRelativePath = SupportingFiles/Configuration/DEV.xcconfig;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Egzaminy-ULC-Editor/Egzaminy_ULC_Editor.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Egzaminy-ULC-Editor/Preview Content\"";
+				DEVELOPMENT_TEAM = 74925668M8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.krzysztoflema.Egzaminy-ULC-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		95E555382D26C8ED00FE454C /* UAT */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Egzaminy-ULC-Editor/Egzaminy_ULC_Editor.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Egzaminy-ULC-Editor/Preview Content\"";
+				DEVELOPMENT_TEAM = 74925668M8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.krzysztoflema.Egzaminy-ULC-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+			};
+			name = UAT;
+		};
+		95E555392D26C8ED00FE454C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "Egzaminy-ULC-Editor/Egzaminy_ULC_Editor.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"Egzaminy-ULC-Editor/Preview Content\"";
+				DEVELOPMENT_TEAM = 74925668M8;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 15.1;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.krzysztoflema.Egzaminy-ULC-Editor";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
@@ -1308,6 +1451,16 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		95E5553A2D26C8ED00FE454C /* Build configuration list for PBXNativeTarget "Egzaminy-ULC-Editor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				95E555372D26C8ED00FE454C /* Debug */,
+				95E555382D26C8ED00FE454C /* UAT */,
+				95E555392D26C8ED00FE454C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		95FB7BFE2CE1EF0700B9F016 /* Build configuration list for PBXNativeTarget "CoreUIPreview" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -1365,6 +1518,10 @@
 		95D102352C68B67B00DE31E5 /* AppRootFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppRootFeature;
+		};
+		95E555662D26FA5600FE454C /* EgzaminyULCEditorFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = EgzaminyULCEditorFeature;
 		};
 		95FB7BFF2CE1EF4000B9F016 /* CoreUI */ = {
 			isa = XCSwiftPackageProductDependency;
