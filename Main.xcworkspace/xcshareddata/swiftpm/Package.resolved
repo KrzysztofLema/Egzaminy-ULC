@@ -46,15 +46,6 @@
       }
     },
     {
-      "identity" : "lifetimetracker",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/krzysztofzablocki/LifetimeTracker.git",
-      "state" : {
-        "revision" : "0f62a7bcf15168517e4b7e3bf61c1a5e45cab56b",
-        "version" : "1.8.2"
-      }
-    },
-    {
       "identity" : "swift-case-paths",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/pointfreeco/swift-case-paths",

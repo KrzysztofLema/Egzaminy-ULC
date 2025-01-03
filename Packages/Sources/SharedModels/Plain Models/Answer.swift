@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Answer: Identifiable, Equatable, Hashable {
+public struct Answer: Identifiable, Hashable {
     public var id: String?
     public var answerTitle: String?
     public var isCorrect: Bool?

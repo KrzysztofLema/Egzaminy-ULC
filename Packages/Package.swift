@@ -7,16 +7,17 @@ let package = Package(
     name: "Main",
     platforms: [
         .iOS(.v17),
+        .macOS(.v14),
     ],
     products: [
         .singleTargetLibrary("AppRootFeature"),
         .singleTargetLibrary("OnboardingFeature"),
         .singleTargetLibrary("CoreUI"),
+        .singleTargetLibrary("EgzaminyULCEditorFeature"),
     ],
     dependencies: [
         .package(url: "https://github.com/krzysztofzablocki/Inject.git", exact: "1.2.3"),
         .package(url: "https://github.com/krzysztofzablocki/Difference.git", exact: "1.0.2"),
-        .package(url: "https://github.com/krzysztofzablocki/LifetimeTracker.git", exact: "1.8.2"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.1"),
         .package(url: "https://github.com/pointfreeco/swift-dependencies", from: "1.1.0"),
@@ -99,6 +100,15 @@ let package = Package(
             ]
         ),
         .target(
+            name: "EgzaminyULCEditorFeature",
+            dependencies: [
+                "Services",
+                "SharedModels",
+                "CoreUI",
+                .product(name: "Dependencies", package: "swift-dependencies"),
+            ]
+        ),
+        .target(
             name: "Services",
             dependencies: [
                 "SharedModels",
@@ -138,7 +148,6 @@ let package = Package(
                 "SharedModels",
                 "MainMenuFeature",
                 "SettingsFeature",
-                .product(name: "LifetimeTracker", package: "LifetimeTracker"),
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
             ]
         ),
@@ -187,7 +196,6 @@ let package = Package(
             name: "SharedModels",
             dependencies: [
                 .product(name: "Difference", package: "Difference"),
-                .product(name: "LifetimeTracker", package: "LifetimeTracker"),
             ]
         ),
         .target(

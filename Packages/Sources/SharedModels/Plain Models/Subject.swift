@@ -1,6 +1,6 @@
 import Foundation
 
-public struct Subject: Equatable, Hashable {
+public struct Subject: Hashable {
     public var id: String?
     public var title: String?
     public var image: String?
