@@ -67,7 +67,6 @@
 		952D94192C418D3E006163B5 /* TestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestModel.swift; sourceTree = "<group>"; };
 		952D941B2C418D49006163B5 /* Package.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Package.swift; path = ../../Packages/Package.swift; sourceTree = "<group>"; };
 		957920492CC2C5A00062D9E6 /* PROD.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = PROD.xcconfig; sourceTree = "<group>"; };
-		957920592CC2D32E0062D9E6 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		9579205B2CC2DC470062D9E6 /* ci_pre_xcodebuild.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = ci_pre_xcodebuild.sh; sourceTree = "<group>"; };
 		958674E62C74BEB200AF3D52 /* Egzaminy-ULC.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Egzaminy-ULC.xctestplan"; sourceTree = "<group>"; };
 		959581FA2C4182DC0036F76B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -82,6 +81,7 @@
 		95DC31D22CB7F72B00617BD8 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		95E554492D2319BB00FE454C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		95E5552B2D26C8EC00FE454C /* Egzaminy-ULC-Editor.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Egzaminy-ULC-Editor.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		95E555D52D27FF4F00FE454C /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 		95FB7BF02CE1EF0400B9F016 /* CoreUIPreview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CoreUIPreview.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95FE54B62CC10CE700304546 /* UAT.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = UAT.xcconfig; sourceTree = "<group>"; };
 		95FE54BA2CC120EF00304546 /* DEV.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DEV.xcconfig; sourceTree = "<group>"; };
@@ -237,10 +237,10 @@
 		95FE54B52CC10CCC00304546 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
+				95E555D52D27FF4F00FE454C /* Secrets.xcconfig */,
 				95FE54B62CC10CE700304546 /* UAT.xcconfig */,
 				95FE54BA2CC120EF00304546 /* DEV.xcconfig */,
 				957920492CC2C5A00062D9E6 /* PROD.xcconfig */,
-				957920592CC2D32E0062D9E6 /* Secrets.xcconfig */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -940,7 +940,6 @@
 		};
 		95FE54C32CC12AF100304546 /* UAT */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 957920592CC2D32E0062D9E6 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -1173,7 +1172,6 @@
 		};
 		CDC244272A52DB400051EE1C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 957920592CC2D32E0062D9E6 /* Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				API_HOST = "$(API_HOST)";
