@@ -1,29 +1,59 @@
+import SharedModels
 import SwiftUI
 
 struct SidebarView: View {
-    @Bindable private var viewModel = SidebarViewModel()
+    @Environment(ExamDataSource.self) private var examsDataSource
+    @Environment(SceneState.self) private var scene
+
+    @State var exams: [Exam] = []
+    @State var isLoading = true
+    @State var isEditing = false
+    @State var selectedExam: Exam?
+    @State var editedExam: Exam?
 
     var body: some View {
-        List(viewModel.exams) { exam in
-            ExamItem(exam: exam, editingExam: $viewModel.editedExam)
-        }
-        .sheet(item: $viewModel.editedExam) { exam in
-            EditExamView(
-                viewModel: EditExamViewModel(
-                    editExamForm: .init(
-                        title: exam.title!,
-                        subtitle: exam.subtitle!,
-                        text: exam.text!,
-                        image: exam.image!,
-                        background: exam.background!,
-                        logo: exam.logo!
+        @Bindable var scene = scene
+        Group {
+            switch (isLoading, exams) {
+            case (true, _):
+                ProgressView()
+                    .frame(
+                        width: 40,
+                        height: 40
                     )
-                )
-            )
+            case let (false, exams):
+                List(
+                    exams,
+                    selection: $selectedExam
+                ) { exam in
+                    ExamItem(exam: exam, editingExam: $editedExam)
+                }
+            }
+        }
+        .listStyle(.sidebar)
+        .sheet(item: $editedExam) { exam in
+            EditExamView(editExamForm: .init(exam: exam))
+        }
+        .onChange(of: selectedExam) { _, newValue in
+            guard let exam = newValue else {
+                return
+            }
+
+            scene.mainSelection = .subjects(exam)
+        }
+        .task {
+            await fetchExams()
         }
     }
 
-    init() {}
+    private func fetchExams() async {
+        do {
+            exams = try await examsDataSource.fetchExams()
+            isLoading = false
+        } catch {
+            
+        }
+    }
 }
 
 #Preview {
