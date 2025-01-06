@@ -27,7 +27,8 @@ public struct ExamsListView: View {
             }
         }.onAppear {
             store.send(.onViewDidLoad)
-        }.navigationBarBackButtonHidden()
+        }
+        .navigationBarBackButtonHidden()
     }
 
     private func examsList(exams: IdentifiedArrayOf<Exam>) -> some View {
@@ -37,13 +38,14 @@ public struct ExamsListView: View {
                 VStack {
                     ForEach(exams) { exam in
                         Button(action: {
-                            store.send(.examDetailButtonTapped(exam), animation: .default)
+                            store.send(.examDetailButtonTapped(exam))
                         }, label: {
                             ExamView(exam: exam)
                         })
                     }
                 }
             }
+            .scrollIndicators(.hidden)
         }
     }
 

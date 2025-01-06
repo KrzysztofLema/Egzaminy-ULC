@@ -8,13 +8,17 @@ public struct AppRootView: View {
     @Bindable var store: StoreOf<AppRoot>
 
     public var body: some View {
-        switch $store.userSettings.applicationState.wrappedValue {
-        case .onboarding:
-            OnboardingFeatureView(store: store.scope(state: \.onboarding, action: \.onboarding))
-                .zIndex(1)
-        case .home:
-            HomeView(store: store.scope(state: \.home, action: \.home))
+        ZStack {
+            switch $store.userSettings.applicationState.wrappedValue {
+            case .onboarding:
+                OnboardingFeatureView(store: store.scope(state: \.onboarding, action: \.onboarding))
+                    .transition(.move(edge: .leading))
+            case .home:
+                HomeView(store: store.scope(state: \.home, action: \.home))
+                    .transition(.move(edge: .trailing))
+            }
         }
+        .animation(.smooth, value: store.userSettings.applicationState)
     }
 
     public init(store: StoreOf<AppRoot>) {
