@@ -7,6 +7,22 @@ extension Color {
     ))
     public static let buttonBackgroundColor = Color(PlatformColor(hex: 0xb3b3b3))
     public static let buttonDisabledBackgroundColor = Color(PlatformColor(hex: 0x86888f00))
+    
+    public static let loaderAnimationIconForegroundColor =  Color(uiColor: UIColor.dynamicColor(light: .init(hex: 0x6699ff), dark: .init(hex: 0x4d88ff)))
+    public static let loaderAnimationCircleGradient =  Gradient(colors: [
+        Color(uiColor: UIColor.dynamicColor(
+            light: .init(hex: 0x6699ff),
+            dark: .init(hex: 0x4d88ff)
+        )),
+        Color(uiColor: UIColor.dynamicColor(
+            light: .init(hex: 0x66d9ff),
+            dark: .init(hex: 0x33bbff)
+        )),
+        Color(uiColor: UIColor.dynamicColor(
+            light: .init(hex: 0x66ffcc),
+            dark: .init(hex: 0x33ffcc)
+        ))])
+
 }
 
 #if canImport(UIKit)

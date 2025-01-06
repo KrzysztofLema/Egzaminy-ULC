@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct StrokeStyle: ViewModifier {
+struct GradientStrokeModifier: ViewModifier {
     @Environment(\.colorScheme) var colorScheme
     var cornerRadius: CGFloat
 
@@ -25,7 +25,7 @@ struct StrokeStyle: ViewModifier {
 }
 
 extension View {
-    public func strokeStyle(cornerRadius: CGFloat = 0.0) -> some View {
-        modifier(StrokeStyle(cornerRadius: cornerRadius))
+    public func applyGradientStroke(cornerRadius: CGFloat = 0.0) -> some View {
+        modifier(GradientStrokeModifier(cornerRadius: cornerRadius))
     }
 }

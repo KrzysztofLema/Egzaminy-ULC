@@ -14,19 +14,18 @@ public struct ExamsListView: View {
     }
 
     public var body: some View {
-        Group {
-            switch store.examsListViewState {
-            case let .success(exams: exams):
-                examsList(exams: exams)
-            case .failure:
+        ZStack {
+            switch (store.isLoading, store.errorOccured, store.exams) {
+            case (true,_,_):
+                fullScreenLoaderView
+            case (false, true, _):
                 fullScreenErrorView
-            case .inProgress:
-                ProgressView()
-            case .initial:
-                EmptyView()
+            case (false, false, let exams):
+                examsList(exams: exams)
             }
-        }.onAppear {
-            store.send(.onViewDidLoad)
+        }
+        .task {
+            await store.send(.task).finish()
         }
         .navigationBarBackButtonHidden()
     }
@@ -51,6 +50,12 @@ public struct ExamsListView: View {
 
     private var fullScreenErrorView: some View {
         FullScreenErrorView {
+            store.send(.closeButtonTapped)
+        }
+    }
+    
+    private var fullScreenLoaderView: some View {
+        FullScreenLoaderView {
             store.send(.closeButtonTapped)
         }
     }

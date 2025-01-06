@@ -205,6 +205,23 @@
         }
       }
     },
+    "loadingDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We’re loading your data. Please wait a moment."
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ładujemy Twoje dane. Proszę chwilę poczekać"
+          }
+        }
+      }
+    },
     "nextOnboardingButton" : {
       "extractionState" : "manual",
       "localizations" : {
