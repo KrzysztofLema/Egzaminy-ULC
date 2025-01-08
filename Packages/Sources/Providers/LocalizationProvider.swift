@@ -104,4 +104,15 @@ public enum LocalizationProvider {
             String(localized: "errorDescription")
         }
     }
+    
+    public enum Loading {
+        public static var fullScreenLoadingTitle: String {
+            String(localized: "loadingTitle")
+        }
+
+        public static var fullScreenLoadingDescription: String {
+            String(localized: "loadingDescription")
+        }
+    }
+
 }

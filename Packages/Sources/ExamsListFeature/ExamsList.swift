@@ -5,19 +5,13 @@ import Services
 import SharedModels
 import UserSettingsClient
 
-public enum ExamsListViewState: Equatable {
-    case failure
-    case success(exams: IdentifiedArrayOf<Exam>)
-    case inProgress
-    case initial
-}
-
 @Reducer
 public struct ExamsList {
     @ObservableState
     public struct State: Equatable {
-        public var examsListViewState: ExamsListViewState = .initial
-
+        public var isLoading: Bool = true
+        public var errorOccured: Bool = false
+        public var exams: IdentifiedArrayOf<Exam> = []
         @Shared(.userSettings) public var userSettings: UserSettings
 
         public init() {}
@@ -26,7 +20,7 @@ public struct ExamsList {
     public enum Action {
         case examDetailButtonTapped(Exam)
         case fetchExams(Result<[Exam], Error>)
-        case onViewDidLoad
+        case task
         case closeButtonTapped
     }
 
@@ -39,24 +33,24 @@ public struct ExamsList {
             case let .examDetailButtonTapped(exam):
                 state.userSettings.applicationState = .home(exam.id)
                 return .none
-            case .onViewDidLoad:
-                state.examsListViewState = .inProgress
-
+            case .task:
                 return .run { send in
-                    do {
-                        let exams = try await examsApiClient.fetchExams()
-                        await send(.fetchExams(.success(exams)))
-                    } catch {
-                        print(error.localizedDescription)
-                        await send(.fetchExams(.failure(error)))
+                    await withTaskGroup(of: Void.self) { group in
+                        group.addTask {
+                            await send(.fetchExams(Result {
+                                try await examsApiClient.fetchExams()
+                            }))
+                        }
                     }
                 }
             case let .fetchExams(.success(exams)):
-                state.examsListViewState = .success(exams: IdentifiedArray(uniqueElements: exams))
-                return .none
+                state.exams = IdentifiedArray(uniqueElements: exams)
 
+                state.isLoading = false
+                return .none
             case .fetchExams(.failure):
-                state.examsListViewState = .failure
+                state.isLoading = false
+                state.errorOccured = true
                 return .none
             case .closeButtonTapped:
                 return .run { _ in

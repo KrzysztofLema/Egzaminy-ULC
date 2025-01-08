@@ -14,19 +14,25 @@ public struct ExamsListView: View {
     }
 
     public var body: some View {
-        Group {
-            switch store.examsListViewState {
-            case let .success(exams: exams):
-                examsList(exams: exams)
-            case .failure:
+        ZStack {
+            switch (store.isLoading, store.errorOccured, store.exams) {
+            case (true, _, _):
+                fullScreenLoaderView
+                    .transition(.opacity)
+                    .zIndex(2)
+            case (false, true, _):
                 fullScreenErrorView
-            case .inProgress:
-                ProgressView()
-            case .initial:
-                EmptyView()
+                    .transition(.opacity)
+                    .zIndex(1)
+            case (false, false, let exams):
+                examsList(exams: exams)
+                    .transition(.opacity)
+                    .zIndex(0)
             }
-        }.onAppear {
-            store.send(.onViewDidLoad)
+        }
+        .animation(.default, value: store.isLoading)
+        .task {
+            await store.send(.task).finish()
         }
         .navigationBarBackButtonHidden()
     }
@@ -51,6 +57,12 @@ public struct ExamsListView: View {
 
     private var fullScreenErrorView: some View {
         FullScreenErrorView {
+            store.send(.closeButtonTapped)
+        }
+    }
+
+    private var fullScreenLoaderView: some View {
+        FullScreenLoaderView {
             store.send(.closeButtonTapped)
         }
     }
