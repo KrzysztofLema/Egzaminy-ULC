@@ -16,14 +16,21 @@ public struct ExamsListView: View {
     public var body: some View {
         ZStack {
             switch (store.isLoading, store.errorOccured, store.exams) {
-            case (true,_,_):
+            case (true, _, _):
                 fullScreenLoaderView
+                    .transition(.opacity)
+                    .zIndex(2)
             case (false, true, _):
                 fullScreenErrorView
+                    .transition(.opacity)
+                    .zIndex(1)
             case (false, false, let exams):
                 examsList(exams: exams)
+                    .transition(.opacity)
+                    .zIndex(0)
             }
         }
+        .animation(.default, value: store.isLoading)
         .task {
             await store.send(.task).finish()
         }
@@ -53,7 +60,7 @@ public struct ExamsListView: View {
             store.send(.closeButtonTapped)
         }
     }
-    
+
     private var fullScreenLoaderView: some View {
         FullScreenLoaderView {
             store.send(.closeButtonTapped)

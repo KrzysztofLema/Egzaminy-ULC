@@ -3,16 +3,15 @@ import Providers
 import SwiftUI
 
 public struct FullScreenLoaderView: View {
-    
     @Environment(\.colorScheme) var colorScheme
-    
-    @State private var isLoading: Bool = false
+
+    @State private var rotation: Double = 0
     @State private var dashPhase: CGFloat = 0
 
     private var title: String = "Loading"
     private var subtitle: String? = "We’re loading your data. Please wait a moment."
     private var closeButtonAction: (() -> Void)?
-    
+
     public var body: some View {
         ZStack {
             backgroundColor
@@ -23,20 +22,11 @@ public struct FullScreenLoaderView: View {
                 Spacer()
             }
         }
-        .onAppear(
-            perform: {
-                withAnimation(
-                    .linear(
-                        duration: 3
-                    ).repeatForever(
-                        autoreverses: false
-                    )
-                ) {
-                    startLoadingAnimation()
-                }
-            })
+        .onAppear {
+            startLoadingAnimation()
+        }
     }
-    
+
     public init(
         title: String = LocalizationProvider.Loading.fullScreenLoadingTitle,
         subtitle: String? = LocalizationProvider.Loading.fullScreenLoadingDescription,
@@ -46,18 +36,18 @@ public struct FullScreenLoaderView: View {
         self.subtitle = subtitle
         self.closeButtonAction = closeButtonAction
     }
-    
+
     private var backgroundColor: some View {
         Color.primaryBackground.ignoresSafeArea()
     }
-    
+
     private var content: some View {
         VStack(spacing: 25) {
             animatedIconImage
             labels
         }
     }
-    
+
     private var closeButton: some View {
         CircleButton(
             iconImage: Image(systemName: "xmark"),
@@ -66,14 +56,14 @@ public struct FullScreenLoaderView: View {
         .frame(maxWidth: .infinity, alignment: .trailing)
         .padding()
     }
-    
+
     private var animatedIconImage: some View {
         ZStack {
             paperPlaneicon
             cicleIconWithAnimation
         }
     }
-    
+
     private var paperPlaneicon: some View {
         Image(systemName: "paperplane")
             .resizable()
@@ -82,7 +72,7 @@ public struct FullScreenLoaderView: View {
                 Color.loaderAnimationIconForegroundColor
             )
     }
-    
+
     private var cicleIconWithAnimation: some View {
         Circle()
             .stroke(
@@ -96,20 +86,20 @@ public struct FullScreenLoaderView: View {
                     lineJoin: .round,
                     miterLimit: 0,
                     dash: [120, 20, 50, 220],
-                    dashPhase: 320
+                    dashPhase: dashPhase
                 )
             )
-            .rotationEffect(Angle(degrees: isLoading ? 360 : 0))
+            .rotationEffect(.degrees(rotation))
             .frame(width: 100, height: 100)
     }
-    
+
     private var labels: some View {
         VStack(spacing: 15) {
             Text(title)
                 .font(.title2)
                 .bold()
                 .foregroundColor(.primary)
-            
+
             if let subtitle {
                 HStack(spacing: 0) {
                     Text(subtitle)
@@ -121,16 +111,15 @@ public struct FullScreenLoaderView: View {
         }
         .multilineTextAlignment(.center)
     }
-    
-    @MainActor
+
     private func startLoadingAnimation() {
-        isLoading = true
-        dashPhase = 320
+        withAnimation(.linear(duration: 2).repeatForever(autoreverses: false)) {
+            dashPhase = 0
+            rotation = 360
+        }
     }
 }
 
 #Preview {
-    FullScreenLoaderView {
-        
-    }
+    FullScreenLoaderView {}
 }

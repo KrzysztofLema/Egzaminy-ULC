@@ -5,9 +5,8 @@ import SharedViews
 import SwiftUI
 
 struct ExamView: View {
-    
     @ObserveInjection var iO
-    
+
     var exam: Exam
 
     var body: some View {
@@ -49,15 +48,20 @@ struct ExamView: View {
         .frame(height: 300)
         .enableInjection()
     }
-    
+
     @ViewBuilder
     private var backgroundImage: some View {
-        if let image = exam.image {
-            Image(image)
-                .resizable()
-                .aspectRatio(contentMode: .fill)
+        if let imageName = exam.image {
+            #warning("Bug: https://krzysztoflema.atlassian.net/browse/ULC-57")
+//            Color.clear.overlay {
+//                Image(imageName)
+//                    .resizable()
+//                    .aspectRatio(contentMode: .fill)
+//                    .transition(.opacity)
+//            }
         } else {
-            Rectangle().fill(.secondary.opacity(0.5))
+            Rectangle()
+                .fill(.blue)
         }
     }
 }
