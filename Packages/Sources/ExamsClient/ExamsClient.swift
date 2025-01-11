@@ -8,6 +8,7 @@ public struct ExamClient {
 
 extension ExamClient: DependencyKey {
     public static var liveValue: ExamClient {
+        // swiftlint:disable:next force_unwrapping
         let url = Bundle.main.url(forResource: "ExamsMock", withExtension: "json")!
         let exams: [ExamDto]
 

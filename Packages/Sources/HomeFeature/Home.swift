@@ -7,14 +7,16 @@ import SettingsFeature
 public struct Home {
     @ObservableState
     public struct State: Equatable {
-        var selectedTab: Tab = .exams
+        public var selectedTab: Tab = .exams
         public var mainMenu: MainMenu.State
         public var settings: Settings.State
 
         public init(
+            selectedTab: Tab = .exams,
             mainMenu: MainMenu.State = MainMenu.State(),
             settings: Settings.State = Settings.State()
         ) {
+            self.selectedTab = selectedTab
             self.mainMenu = mainMenu
             self.settings = settings
         }

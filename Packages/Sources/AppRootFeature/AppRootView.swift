@@ -3,6 +3,7 @@ import ExamsListFeature
 import HomeFeature
 import OnboardingFeature
 import SwiftUI
+import UserSettingsClient
 
 public struct AppRootView: View {
     @Bindable var store: StoreOf<AppRoot>

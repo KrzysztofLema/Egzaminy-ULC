@@ -9,17 +9,23 @@ import SharedModels
 public struct Quiz {
     @ObservableState
     public struct State: Identifiable, Equatable {
+        @Presents var alert: AlertState<Action.Alert>?
+
+        @Shared(.currentQuizState) public var currentQuizState
+
         public let id: UUID
         var subject: Subject
-        @Presents var alert: AlertState<Action.Alert>?
         var answers: IdentifiedArrayOf<AnswerFeature.State> = []
         var isNextButtonEnabled = false
         var selectedAnswer: AnswerFeature.State?
         var questions: [Question]?
         var currentQuestion: Question?
-        @Shared(.currentQuizState) public var currentQuizState
 
-        public init(id: UUID, subject: Subject, alert: AlertState<Action.Alert>? = nil) {
+        public init(
+            id: UUID,
+            subject: Subject,
+            alert: AlertState<Action.Alert>? = nil
+        ) {
             self.id = id
             self.subject = subject
             self.alert = alert
@@ -60,8 +66,9 @@ public struct Quiz {
                 state.currentQuizState.currentProgress[state.subject.id, default: 0] += 1
                 return .run { [subject = state.subject, questions = state.questions, currentProgress = state.currentQuizState.currentProgress] send in
                     let currentProgress = currentProgress[subject.id]
-                    let currentQuestion = questions?[currentProgress ?? 0]
-                    await send(.updateCurrentQuestion(currentQuestion!))
+                    if let currentQuestion = questions?[currentProgress ?? 0] {
+                        await send(.updateCurrentQuestion(currentQuestion))
+                    }
                 }
             case .alert(.presented(.confirmNotCorrect)):
                 return .none
@@ -118,10 +125,13 @@ public struct Quiz {
                 }
             case let .getQuestions(.success(questions)):
                 state.questions = questions
+
                 return .run { [questions = state.questions, subject = state.subject, currentProgressState = state.currentQuizState.currentProgress] send in
+
                     let currentProgress = currentProgressState[subject.id]
-                    let currentQuestion = questions?[currentProgress ?? 0]
-                    await send(.updateCurrentQuestion(currentQuestion!))
+                    if let currentQuestion = questions?[currentProgress ?? 0] {
+                        await send(.updateCurrentQuestion(currentQuestion))
+                    }
                 }
             case .getQuestions(.failure):
                 return .none

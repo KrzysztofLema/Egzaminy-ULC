@@ -2,8 +2,6 @@ import ComposableArchitecture
 import CoreUI
 import Providers
 import SharedModels
-import SharedViews
-import SwiftUI
 
 @ViewAction(for: Quiz.self)
 public struct QuizView: View {

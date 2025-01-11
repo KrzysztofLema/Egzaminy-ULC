@@ -97,7 +97,7 @@ public enum LayoutConstants {
         public static let px800: CGFloat = 800
         public static let px1200: CGFloat = 1200
     }
-    
+
     public enum Height {
         public static let px300: CGFloat = 300
         public static let px420: CGFloat = 420

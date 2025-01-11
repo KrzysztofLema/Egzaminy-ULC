@@ -1,8 +1,6 @@
 import ComposableArchitecture
 import CoreUI
 import SharedModels
-import SharedViews
-import SwiftUI
 
 struct ExamView: View {
     @ObserveInjection var iO

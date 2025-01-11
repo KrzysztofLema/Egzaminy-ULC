@@ -1,5 +1,4 @@
 import Providers
-import SharedViews
 import SwiftUI
 
 public struct FullScreenErrorView: View {
