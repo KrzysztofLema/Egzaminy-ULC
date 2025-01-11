@@ -16,7 +16,7 @@ let package = Package(
         .singleTargetLibrary("EgzaminyULCEditorFeature"),
     ],
     dependencies: [
-        .package(url: "https://github.com/krzysztofzablocki/Inject.git", exact: "1.2.3"),
+        .package(url: "https://github.com/krzysztofzablocki/Inject.git", exact: "1.5.2"),
         .package(url: "https://github.com/krzysztofzablocki/Difference.git", exact: "1.0.2"),
         .package(url: "https://github.com/pointfreeco/swift-snapshot-testing", from: "1.12.0"),
         .package(url: "https://github.com/pointfreeco/swift-composable-architecture", from: "1.15.1"),
