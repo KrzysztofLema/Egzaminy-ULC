@@ -9,10 +9,11 @@ import UserSettingsClient
 public struct AppRoot {
     @ObservableState
     public struct State {
-        public var appDelegate: AppDelegateReducer.State
         @Shared(.userSettings) public var userSettings
-        var home: Home.State
-        var onboarding: Onboarding.State
+
+        public var appDelegate: AppDelegateReducer.State
+        public var home: Home.State
+        public var onboarding: Onboarding.State
 
         public init(
             appDelegate: AppDelegateReducer.State = AppDelegateReducer.State(),

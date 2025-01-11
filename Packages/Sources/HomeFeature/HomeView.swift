@@ -1,10 +1,9 @@
 import ComposableArchitecture
+import CoreUI
 import MainMenuFeature
 import Providers
 import SettingsFeature
 import SharedModels
-import SharedViews
-import SwiftUI
 
 public struct HomeView: View {
     @Bindable var store: StoreOf<Home>

@@ -62,7 +62,7 @@ let package = Package(
             name: "CoreUI",
             dependencies: [
                 "Providers",
-                "SharedViews",
+                .product(name: "Inject", package: "Inject"),
             ]
         ),
         .target(
@@ -83,7 +83,6 @@ let package = Package(
         .target(
             name: "ExamDetailFeature",
             dependencies: [
-                "SharedViews",
                 "SharedModels",
                 "CoreUI",
                 "Providers",
@@ -125,7 +124,6 @@ let package = Package(
                 "SharedModels",
                 "Services",
                 "UserSettingsClient",
-                "SharedViews",
             ]
         ),
         .target(
@@ -144,7 +142,6 @@ let package = Package(
             name: "HomeFeature",
             dependencies: [
                 "FeatureFlagClient",
-                "SharedViews",
                 "SharedModels",
                 "MainMenuFeature",
                 "SettingsFeature",
@@ -169,7 +166,6 @@ let package = Package(
         .target(
             name: "MainMenuFeature",
             dependencies: [
-                "SharedViews",
                 "SharedModels",
                 "ExamDetailFeature",
                 "FeatureFlagClient",
@@ -181,7 +177,6 @@ let package = Package(
             name: "OnboardingFeature",
             dependencies: [
                 "CoreUI",
-                "SharedViews",
                 "ExamsListFeature",
                 "Providers",
                 "UserSettingsClient",
@@ -199,12 +194,6 @@ let package = Package(
             ]
         ),
         .target(
-            name: "SharedViews",
-            dependencies: [
-                .product(name: "Inject", package: "Inject"),
-            ]
-        ),
-        .target(
             name: "SettingsFeature",
             dependencies: [
                 "CoreDataClient",
@@ -212,7 +201,6 @@ let package = Package(
                 "CurrentQuizClient",
                 "DiagnosticClient",
                 "Providers",
-                "SharedViews",
                 "SharedModels",
                 "UserSettingsClient",
                 "UIApplicationClient",
@@ -245,7 +233,6 @@ let package = Package(
                 "CurrentQuizClient",
                 "CoreUI",
                 "Providers",
-                "SharedViews",
                 "SharedModels",
                 "Services",
                 .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),

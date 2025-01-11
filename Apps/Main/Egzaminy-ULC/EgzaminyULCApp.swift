@@ -6,7 +6,6 @@ import Helpers
 import HomeFeature
 import LaunchDarkly
 import SharedModels
-import SharedViews
 import SwiftUI
 
 final class AppDelegate: NSObject, UIApplicationDelegate {
@@ -30,10 +29,10 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
 
         var config = LDConfig(mobileKey: launchDarklyMobKey, autoEnvAttributes: .enabled)
         config.logger = .disabled
-        
+
         let contextBuilder = LDContextBuilder(key: launchDarklyContextKey)
 
-        guard case .success(let context) = contextBuilder.build() else { return }
+        guard case .success = contextBuilder.build() else { return }
         LDClient.start(config: config, startWaitSeconds: 10)
     }
 }

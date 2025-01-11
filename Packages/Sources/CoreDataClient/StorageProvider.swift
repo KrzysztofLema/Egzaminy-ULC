@@ -20,14 +20,15 @@ private let persistentContainer: NSPersistentContainer = {
     let bundle = Bundle.module
     let model = bundle
         .url(forResource: "ExamULC", withExtension: "momd")
+        // swiftlint:disable:next force_unwrapping
         .flatMap { NSManagedObjectModel(contentsOf: $0) }!
 
     let persistentContainer = NSPersistentContainer(name: "ExamULC", managedObjectModel: model)
-
+    // swiftlint:disable:next force_unwrapping
     let storeURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
     let storeName = "DataStore-\(PlistConfiguration.App.currentSchemeName).sqlite"
     let storeDescription = NSPersistentStoreDescription(url: storeURL.appendingPathComponent(storeName))
-    
+
     persistentContainer.persistentStoreDescriptions = [storeDescription]
 
     persistentContainer.loadPersistentStores(completionHandler: { _, error in

@@ -1,9 +1,8 @@
 import ComposableArchitecture
 import CoreDataClient
+import CoreUI
 import CurrentQuizClient
 import SharedModels
-import SharedViews
-import SwiftUI
 
 @Reducer
 public struct SubjectFeature {

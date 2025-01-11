@@ -2,8 +2,6 @@ import ComposableArchitecture
 import CoreUI
 import ExamDetailFeature
 import SharedModels
-import SharedViews
-import SwiftUI
 
 public struct ExamsListView: View {
     @ObserveInjection private var iO

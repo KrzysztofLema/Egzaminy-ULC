@@ -9,10 +9,11 @@ import UserSettingsClient
 public struct ExamsList {
     @ObservableState
     public struct State: Equatable {
+        @Shared(.userSettings) public var userSettings: UserSettings
+
         public var isLoading: Bool = true
         public var errorOccured: Bool = false
         public var exams: IdentifiedArrayOf<Exam> = []
-        @Shared(.userSettings) public var userSettings: UserSettings
 
         public init() {}
     }

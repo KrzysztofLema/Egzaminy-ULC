@@ -2,8 +2,6 @@ import ComposableArchitecture
 import CoreUI
 import ExamsListFeature
 import Providers
-import SharedViews
-import SwiftUI
 
 @ViewAction(for: Onboarding.self)
 public struct OnboardingFeatureView: View {
@@ -18,14 +16,10 @@ public struct OnboardingFeatureView: View {
         )) {
             ZStack {
                 Color.primaryBackground.ignoresSafeArea()
-
                 VStack {
                     Spacer()
-
                     stepsView
-
                     Spacer()
-
                     Button(action: {
                         send(.nextButtonTapped, animation: .default)
                     }, label: {
@@ -56,9 +50,15 @@ public struct OnboardingFeatureView: View {
         Group {
             switch store.onboardingSteps {
             case .welcome:
-                LabelView(text: Text("\(LocalizationProvider.Onboarding.welcomeToApp)\n") + Text("\(LocalizationProvider.Onboarding.applicationTitle)").bold())
+                LabelView(
+                    text: Text("\(LocalizationProvider.Onboarding.welcomeToApp)\n") +
+                        Text("\(LocalizationProvider.Onboarding.applicationTitle)").bold()
+                )
             case .welcome2:
-                LabelView(text: Text("\(LocalizationProvider.Onboarding.withUsYouWillPass)\n") + Text("\(LocalizationProvider.Onboarding.civilAviationAuthority)").bold())
+                LabelView(
+                    text: Text("\(LocalizationProvider.Onboarding.withUsYouWillPass)\n") +
+                        Text("\(LocalizationProvider.Onboarding.civilAviationAuthority)").bold()
+                )
             case .choseSubject:
                 LabelView(text: Text("\(LocalizationProvider.Onboarding.chooseExam)"))
             }
@@ -80,23 +80,5 @@ struct LabelView: View {
         text
             .padding(10)
             .font(.title)
-    }
-}
-
-public enum OnboardingSteps: Int, CaseIterable {
-    case welcome
-    case welcome2
-    case choseSubject
-
-    mutating func next() {
-        let allCases = OnboardingSteps.allCases
-        if let currentIndex = allCases.firstIndex(of: self),
-           currentIndex + 1 < allCases.count {
-            self = allCases[currentIndex + 1]
-        }
-    }
-
-    func isLast() -> Bool {
-        self == OnboardingSteps.allCases.last
     }
 }
