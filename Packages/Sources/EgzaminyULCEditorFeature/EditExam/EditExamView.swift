@@ -1,15 +1,14 @@
-import CoreUI
 import SharedModels
 import SwiftUI
 
-internal struct EditExamView: View {
-    @Bindable internal var viewModel: EditExamViewModel
+struct EditExamView: View {
+    @Bindable var viewModel: EditExamViewModel
     @Environment(\.dismiss) private var dismiss
 
-    internal var body: some View {
+    var body: some View {
         VStack(
             alignment: .leading,
-            spacing: LayoutConstants.Spacing.px16
+            spacing: 16
         ) {
             title
             editTitle
@@ -21,8 +20,8 @@ internal struct EditExamView: View {
             buttons
         }
         .frame(
-            minWidth: LayoutConstants.Widht.px640,
-            minHeight: LayoutConstants.Height.px480
+            minWidth: 640,
+            minHeight: 480
         )
         .padding()
     }
