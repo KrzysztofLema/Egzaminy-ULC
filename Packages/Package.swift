@@ -103,8 +103,8 @@ let package = Package(
             dependencies: [
                 "Services",
                 "SharedModels",
-                "CoreUI",
                 .product(name: "Dependencies", package: "swift-dependencies"),
+                .product(name: "Inject", package: "Inject"),
             ]
         ),
         .target(

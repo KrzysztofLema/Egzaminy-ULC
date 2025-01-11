@@ -88,9 +88,20 @@
 		CDC244042A52DB400051EE1C /* Egzaminy-ULC DEV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Egzaminy-ULC DEV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		959321802D32884F00CF2DD0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				SupportingFiles/Configuration/DEV.xcconfig,
+				SupportingFiles/Configuration/Secrets.xcconfig,
+			);
+			target = 95E5552A2D26C8EC00FE454C /* Egzaminy-ULC-Editor */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		9527D38D2CAC160F005A66C2 /* OnboardingFeaturePreview */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = OnboardingFeaturePreview; sourceTree = "<group>"; };
-		95E5552C2D26C8EC00FE454C /* Egzaminy-ULC-Editor */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = "Egzaminy-ULC-Editor"; sourceTree = "<group>"; };
+		95E5552C2D26C8EC00FE454C /* Egzaminy-ULC-Editor */ = {isa = PBXFileSystemSynchronizedRootGroup; exceptions = (959321802D32884F00CF2DD0 /* PBXFileSystemSynchronizedBuildFileExceptionSet */, ); explicitFileTypes = {}; explicitFolders = (); path = "Egzaminy-ULC-Editor"; sourceTree = "<group>"; };
 		95FB7BF12CE1EF0400B9F016 /* CoreUIPreview */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = CoreUIPreview; sourceTree = "<group>"; };
 /* End PBXFileSystemSynchronizedRootGroup section */
 
@@ -419,7 +430,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1610;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1610;
 				TargetAttributes = {
 					9527D38B2CAC160F005A66C2 = {
 						CreatedOnToolsVersion = 16.0;

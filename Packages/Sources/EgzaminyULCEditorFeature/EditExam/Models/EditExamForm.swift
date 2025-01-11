@@ -1,10 +1,10 @@
 import Foundation
 
 struct EditExamForm: Equatable, Sendable {
-    let title: String
-    let subtitle: String
-    let text: String
-    let image: String
-    let background: String
-    let logo: String
+    var title: String
+    var subtitle: String
+    var text: String
+    var image: String
+    var background: String
+    var logo: String
 }
