@@ -31,6 +31,10 @@ This app was created as a learning project. While it has bugs and some imperfect
 - 🛠️ **Feature Flags**:  
    Controlled feature rollouts powered by LaunchDarkly.  
 
+## 🚨 Repository Status  
+
+🚨 **Important Notice** 🚨  
+This project has been moved to a **private repository** for further development and maintenance.  
 
 ## 🖥️ Supporting Ecosystem  
 
