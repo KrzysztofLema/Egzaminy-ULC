@@ -2,8 +2,9 @@ import SharedModels
 import SwiftUI
 
 struct EditExamView: View {
-    @Bindable var viewModel: EditExamViewModel
     @Environment(\.dismiss) private var dismiss
+
+    @State var editExamForm: EditExamForm
 
     var body: some View {
         VStack(
@@ -36,7 +37,7 @@ struct EditExamView: View {
             Text("Title")
                 .font(.subheadline)
                 .bold()
-            TextField("Exam title", text: $viewModel.editExamForm.title)
+            TextField("Exam title", text: $editExamForm.title)
         }
     }
 
@@ -45,7 +46,7 @@ struct EditExamView: View {
             Text("Subtitle")
                 .font(.subheadline)
                 .bold()
-            TextField("Exam subtitle", text: $viewModel.editExamForm.subtitle)
+            TextField("Exam subtitle", text: $editExamForm.subtitle)
         }
     }
 
@@ -54,7 +55,7 @@ struct EditExamView: View {
             Text("Text")
                 .font(.subheadline)
                 .bold()
-            TextEditor(text: $viewModel.editExamForm.text)
+            TextEditor(text: $editExamForm.text)
         }
     }
 
@@ -63,7 +64,7 @@ struct EditExamView: View {
             Text("Image")
                 .font(.subheadline)
                 .bold()
-            TextField("Exam image", text: $viewModel.editExamForm.image)
+            TextField("Exam image", text: $editExamForm.image)
         }
     }
 
@@ -72,7 +73,7 @@ struct EditExamView: View {
             Text("Background")
                 .font(.subheadline)
                 .bold()
-            TextField("Exam background", text: $viewModel.editExamForm.background)
+            TextField("Exam background", text: $editExamForm.background)
         }
     }
 
@@ -81,7 +82,7 @@ struct EditExamView: View {
             Text("Logo")
                 .font(.subheadline)
                 .bold()
-            TextField("Exam logo", text: $viewModel.editExamForm.logo)
+            TextField("Exam logo", text: $editExamForm.logo)
         }
     }
 

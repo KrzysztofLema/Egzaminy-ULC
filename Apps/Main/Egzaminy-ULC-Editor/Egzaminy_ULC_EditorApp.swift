@@ -5,6 +5,7 @@
 //  Created by Krzysztof Lema on 02/01/2025.
 //
 
+import EgzaminyULCEditorFeature
 import SwiftUI
 
 @main
