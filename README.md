@@ -52,7 +52,7 @@ This project includes the following supporting components:
 - 🧩 **TCA (The Composable Architecture)**  
 - 🚀 **Swift Concurrency**  
 - 🏗️ **Fully Modularized Project Architecture**  
-  - The project template is inspired by [SwiftyStack](https://www.swiftystack.com) and [Point-Free's isowords](https://github.com/pointfreeco/isowords).  
+  - The project template is from [SwiftyStack](https://www.swiftystack.com) and app is inspired [Point-Free's isowords](https://github.com/pointfreeco/isowords).  
 
 ### 📦 **Dependencies**  
 
