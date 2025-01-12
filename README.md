@@ -17,25 +17,30 @@ This application was built with the goal of making exam preparation more efficie
 > **🎨 Inspired by "The Ugly Sketchbook" by [Tawnie Jeanne Studios](https://www.instagram.com/tawniejeannestudios?igshid=Y3l3aXltZ3NrNXN3)**  
 This app was created as a learning project. While it has bugs and some imperfect code, it reflects the philosophy that it's better to create and improve something imperfect than to do nothing.  
 
+**Note**: Some features are still in development and are not yet available in the public version of this project. The application code is currently in a private repository.  
 
-## 🛠️ Features  
 
-- 🎯 **Comprehensive Question Bank**: Access a wide range of questions tailored to ULC's requirements.  
-- 📝 **Exam Simulation**: Practice under real exam-like conditions.  
-- 📊 **Progress Tracking**: Monitor your performance to identify strengths and areas for improvement.  
-- 🛠️ **Feature Flags**: Controlled feature rollouts powered by LaunchDarkly.  
+## 🛠️ Features (Partially Implemented)  
 
----
+- 🎯 **Comprehensive Question Bank**:  
+   Access a wide range of questions tailored to ULC's requirements. (In-progress)  
+- 📝 **Exam Simulation**:  
+   Practice under real exam-like conditions. (In-progress)  
+- 📊 **Progress Tracking**:  
+   Monitor your performance to identify strengths and areas for improvement. (In-progress)  
+- 🛠️ **Feature Flags**:  
+   Controlled feature rollouts powered by LaunchDarkly.  
+
 
 ## 🖥️ Supporting Ecosystem  
 
 This project includes the following supporting components:  
 
 1. **🖥️ macOS Application**:  
-   A lightweight macOS application was created to manage questions, providing an easy way to add, update, or delete entries in the JSON dataset.  
+   A lightweight macOS application was created to manage questions, providing an easy way to add, update, or delete entries in the JSON dataset. (Not yet released)  
 
 2. **🌐 Backend API**:  
-   A backend built with [Vapor](https://vapor.codes/) is hosted on [Fly.io](https://fly.io/). It serves as the central hub for syncing question data and managing updates.  
+   A backend built with [Vapor](https://vapor.codes/) is hosted on [Fly.io](https://fly.io/). It serves as the central hub for syncing question data and managing updates. (Not yet released)  
 
 
 ## 🛠️ Built With  
@@ -47,14 +52,7 @@ This project includes the following supporting components:
 - 🧩 **TCA (The Composable Architecture)**  
 - 🚀 **Swift Concurrency**  
 - 🏗️ **Fully Modularized Project Architecture**  
-- The project template is inspired by [SwiftyStack](https://www.swiftystack.com) and [Point-Free's isowords](https://github.com/pointfreeco/isowords).
-
-
-## 🚨 Repository Status  
-
-🚨 **Important Notice** 🚨  
-This project has been moved to a **private repository** for further development and maintenance.  
-
+  - The project template is inspired by [SwiftyStack](https://www.swiftystack.com) and [Point-Free's isowords](https://github.com/pointfreeco/isowords).  
 
 ### 📦 **Dependencies**  
 
