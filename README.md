@@ -87,3 +87,5 @@ Here’s a preview of the app in action:
 
 ![📊 Progress Tracking](path-to-progress-tracking-image)  
 *Track your progress*
+
+🏆 Created by Krzysztof Lema | [GitHub](https://github.com/KrzysztofLema) | [LinkedIn](https://www.linkedin.com/in/krzysztoflema/)
