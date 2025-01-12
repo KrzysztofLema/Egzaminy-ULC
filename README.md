@@ -9,7 +9,6 @@
 - 🚁 PPL(H) ENG  
 - 🪁 SPL  
 
----
 
 ## 🌟 Project Overview  
 
@@ -18,7 +17,6 @@ This application was built with the goal of making exam preparation more efficie
 > **🎨 Inspired by "The Ugly Sketchbook" by [Tawnie Jeanne Studios](https://www.instagram.com/tawniejeannestudios?igshid=Y3l3aXltZ3NrNXN3)**  
 This app was created as a learning project. While it has bugs and some imperfect code, it reflects the philosophy that it's better to create and improve something imperfect than to do nothing.  
 
----
 
 ## 🛠️ Features  
 
@@ -39,7 +37,6 @@ This project includes the following supporting components:
 2. **🌐 Backend API**:  
    A backend built with [Vapor](https://vapor.codes/) is hosted on [Fly.io](https://fly.io/). It serves as the central hub for syncing question data and managing updates.  
 
----
 
 ## 🛠️ Built With  
 
@@ -50,7 +47,14 @@ This project includes the following supporting components:
 - 🧩 **TCA (The Composable Architecture)**  
 - 🚀 **Swift Concurrency**  
 - 🏗️ **Fully Modularized Project Architecture**  
-  - The project template is inspired by [SwiftyStack](https://www.swiftystack.com) and [Point-Free's isowords](https://github.com/pointfreeco/isowords).  
+- The project template is inspired by [SwiftyStack](https://www.swiftystack.com) and [Point-Free's isowords](https://github.com/pointfreeco/isowords).
+
+
+## 🚨 Repository Status  
+
+🚨 **Important Notice** 🚨  
+This project has been moved to a **private repository** for further development and maintenance.  
+
 
 ### 📦 **Dependencies**  
 
@@ -62,7 +66,6 @@ This project includes the following supporting components:
 - [SwiftLint Plugins](https://github.com/SimplyDanny/SwiftLintPlugins) (v0.57.0)  
 - [LaunchDarkly iOS Client SDK](https://github.com/launchdarkly/ios-client-sdk.git) (v9.12.0)  
 
----
 
 ## 📚 Learning Inspiration  
 
@@ -73,7 +76,6 @@ This project was developed while learning from courses and resources provided by
 
 Their teachings significantly influenced the architectural decisions and implementation strategies used in this app.  
 
----
 
 ## 📸 Screenshots  
 
